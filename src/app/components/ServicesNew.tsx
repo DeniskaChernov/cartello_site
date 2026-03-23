@@ -118,7 +118,7 @@ export function ServicesNew() {
       description: t('services.soundproofingDesc'),
       price: t('services.soundproofingPrice'),
       icon: VolumeX,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnRlcmlvciUyMGRldGFpbGluZ3xlbnwxfHx8fDE3NzAyODI4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
       featured: false
     },
     {
@@ -134,7 +134,7 @@ export function ServicesNew() {
       description: t('services.interiorCeramicDesc'),
       price: t('services.interiorCeramicPrice'),
       icon: ShieldCheck,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnRlcmlvciUyMGRldGFpbGluZ3xlbnwxfHx8fDE3NzAyODI4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
       featured: false,
       priceOnRequest: false
     },
@@ -179,7 +179,7 @@ export function ServicesNew() {
       description: t('services.evRepairDesc'),
       price: t('services.priceOnRequest'),
       icon: Battery,
-      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMGNhcnxlbnwxfHx8fDE3Mzk1NTg0MDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1080&q=80",
       featured: false,
       priceOnRequest: true
     },
@@ -188,7 +188,7 @@ export function ServicesNew() {
       description: t('services.audioInstallDesc'),
       price: t('services.priceOnRequest'),
       icon: Radio,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnRlcmlvciUyMGRldGFpbGluZ3xlbnwxfHx8fDE3NzAyODI4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
       featured: false,
       priceOnRequest: true
     },
@@ -197,7 +197,7 @@ export function ServicesNew() {
       description: t('services.bodyworkDesc'),
       price: t('services.priceOnRequest'),
       icon: Paintbrush,
-      image: "https://images.unsplash.com/photo-1708805282676-0c15476eb8a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBwb2xpc2hpbmclMjBkZXRhaWxpbmd8ZW58MXx8fHwxNzcwMjgyODgxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1708805282676-0c15476eb8a2?w=1080&q=80",
       featured: false,
       priceOnRequest: true
     },
@@ -215,7 +215,7 @@ export function ServicesNew() {
       description: t('services.plasticProtectionDesc'),
       price: t('services.priceOnRequest'),
       icon: Smartphone,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnRlcmlvciUyMGRldGFpbGluZ3xlbnwxfHx8fDE3NzAyODI4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
       featured: false,
       priceOnRequest: true
     },
@@ -224,7 +224,7 @@ export function ServicesNew() {
       description: t('services.atelierServiceDesc'),
       price: t('services.priceOnRequest'),
       icon: Shirt,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnRlcmlvciUyMGRldGFpbGluZ3xlbnwxfHx8fDE3NzAyODI4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
       featured: false,
       priceOnRequest: true
     }

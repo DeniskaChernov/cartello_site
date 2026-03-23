@@ -2,10 +2,10 @@ import { Hono } from "npm:hono";
 import { cors } from "npm:hono/cors";
 import { logger } from "npm:hono/logger";
 import { appendToSheet } from "./google-sheets.tsx";
+
 const app = new Hono();
 
-// Enable logger
-app.use('*', logger(console.log));
+app.use("*", logger(console.log));
 
 function corsOrigin(): string | string[] | ((origin: string) => string | undefined | null) {
   const raw = Deno.env.get("ALLOWED_ORIGINS")?.trim();
@@ -22,7 +22,6 @@ function corsOrigin(): string | string[] | ((origin: string) => string | undefin
   return (origin: string) => (list.includes(origin) ? origin : list[0]);
 }
 
-// CORS: на Railway задайте ALLOWED_ORIGINS=https://ваш-фронт.up.railway.app
 app.use(
   "/*",
   cors({
@@ -34,13 +33,11 @@ app.use(
   }),
 );
 
-// Health check endpoint
-app.get("/make-server-cc5df832/health", (c) => {
+app.get("/health", (c) => {
   return c.json({ status: "ok" });
 });
 
-// Telegram notification endpoint
-app.post("/make-server-cc5df832/send-telegram", async (c) => {
+app.post("/api/send-telegram", async (c) => {
   try {
     const body = await c.req.json();
     const { name, phone, service, email, comment } = body as {
@@ -63,7 +60,6 @@ app.post("/make-server-cc5df832/send-telegram", async (c) => {
       return c.json({ error: "Telegram not configured" }, 500);
     }
 
-    // Format message
     const extraLines = [
       service ? `🔧 *Услуга:* ${service}` : "",
       email ? `📧 *Email:* ${email}` : "",
@@ -79,10 +75,9 @@ app.post("/make-server-cc5df832/send-telegram", async (c) => {
 📱 *Телефон:* ${phone}
 ${extraLines}
 
-📅 *Время:* ${new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent' })}
+📅 *Время:* ${new Date().toLocaleString("ru-RU", { timeZone: "Asia/Tashkent" })}
     `.trim();
 
-    // Save to Google Sheets (parallel, non-blocking)
     appendToSheet({ name, phone, service, email, comment }).then((result) => {
       if (result.success) {
         console.log("✅ Successfully saved to Google Sheets");
@@ -91,7 +86,6 @@ ${extraLines}
       }
     });
 
-    // Send to Telegram
     const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const response = await fetch(telegramUrl, {
       method: "POST",

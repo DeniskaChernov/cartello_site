@@ -14,7 +14,7 @@ import detailingWash from "../assets/2a89bf209cf3adf33856cecccc6ee08a9477c3ca.pn
 import windshield from "../assets/af6d6d6ef8482a5c89e09e1cf0f88055fb83a75c.png";
 import contactBuilding from "../assets/b5e7a58495ea446d72aa5b83805885ba0dac4fb9.png";
 
-/** Локальные ассеты (раньше подключались как figma:asset в Make). */
+/** Локальные изображения лендинга (src/assets). */
 export const SITE_IMAGES = {
   logoCompact,
   logoWide,

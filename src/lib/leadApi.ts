@@ -1,15 +1,12 @@
-import { projectId, publicAnonKey } from "../../utils/supabase/info";
-
-const DEFAULT_PATH = "/make-server-cc5df832/send-telegram";
+const DEFAULT_PATH = "/api/send-telegram";
 
 function trimTrailingSlash(url: string): string {
   return url.replace(/\/+$/, "");
 }
 
 /**
- * Полный URL для отправки заявки (Telegram + опционально Google Sheets на бэкенде).
- * Railway: задайте VITE_LEAD_API_URL = https://ваш-сервис.up.railway.app
- * и при необходимости VITE_LEAD_API_PATH (по умолчанию тот же путь, что и у Supabase Edge).
+ * URL для отправки заявок на ваш API (Railway).
+ * Задайте VITE_LEAD_API_URL (полный URL) или VITE_API_BASE_URL + опционально VITE_LEAD_API_PATH.
  */
 export function getLeadSubmissionUrl(): string {
   const explicit = import.meta.env.VITE_LEAD_API_URL?.trim();
@@ -21,18 +18,17 @@ export function getLeadSubmissionUrl(): string {
   if (base) {
     return `${trimTrailingSlash(base)}${path.startsWith("/") ? path : `/${path}`}`;
   }
-  const pid = import.meta.env.VITE_SUPABASE_PROJECT_ID?.trim() || projectId;
-  return `https://${pid}.supabase.co/functions/v1/make-server-cc5df832/send-telegram`;
+  if (import.meta.env.DEV) {
+    return DEFAULT_PATH;
+  }
+  throw new Error(
+    "Укажите VITE_LEAD_API_URL или VITE_API_BASE_URL в переменных окружения (см. .env.example).",
+  );
 }
 
-/**
- * Заголовок Authorization: Supabase anon key или пустой секрет для своего API на Railway.
- */
+/** Опционально: API_KEY на бэкенде → тот же ключ во фронте как VITE_API_AUTH_TOKEN. */
 export function getLeadAuthHeader(): Record<string, string> {
-  const token =
-    import.meta.env.VITE_API_AUTH_TOKEN?.trim() ||
-    import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() ||
-    publicAnonKey;
+  const token = import.meta.env.VITE_API_AUTH_TOKEN?.trim();
   if (!token) {
     return {};
   }

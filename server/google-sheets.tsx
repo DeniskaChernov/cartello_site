@@ -1,29 +1,12 @@
 /**
  * Google Sheets integration for Cartello contact form
- * 
- * Setup instructions:
- * 1. Go to https://console.cloud.google.com/
- * 2. Create a new project or select existing one
- * 3. Enable Google Sheets API
- * 4. Create Service Account (IAM & Admin > Service Accounts)
- * 5. Create JSON key for the service account
- * 6. Copy the entire JSON content and save it as GOOGLE_SHEETS_CREDENTIALS secret
- * 7. Create a Google Sheet and share it with the service account email
- * 8. Copy the Sheet ID from URL and save as GOOGLE_SHEETS_ID secret
+ *
+ * Setup:
+ * 1. https://console.cloud.google.com/ — включите Google Sheets API
+ * 2. Service Account + JSON key → переменная GOOGLE_SHEETS_CREDENTIALS
+ * 3. Таблица расшарена на email сервисного аккаунта → GOOGLE_SHEETS_ID
  */
 
-interface SheetRow {
-  timestamp: string;
-  name: string;
-  phone: string;
-  service: string;
-  email: string;
-  comment: string;
-}
-
-/**
- * Appends a new row to Google Sheets
- */
 export async function appendToSheet(data: {
   name: string;
   phone: string;
@@ -43,14 +26,11 @@ export async function appendToSheet(data: {
       };
     }
 
-    // Parse credentials
     const creds = JSON.parse(credentials);
     const { client_email, private_key } = creds;
 
-    // Get OAuth2 access token
     const accessToken = await getAccessToken(client_email, private_key);
 
-    // Prepare row data
     const timestamp = new Date().toLocaleString("ru-RU", {
       timeZone: "Asia/Tashkent",
     });
@@ -63,7 +43,6 @@ export async function appendToSheet(data: {
       data.comment || "-",
     ]];
 
-    // Append to sheet (колонки A–F: время, имя, телефон, услуга, email, комментарий)
     const sheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Sheet1!A:F:append?valueInputOption=RAW`;
 
     const response = await fetch(sheetsUrl, {
@@ -90,20 +69,15 @@ export async function appendToSheet(data: {
   }
 }
 
-/**
- * Gets OAuth2 access token for Google Sheets API
- */
 async function getAccessToken(
   clientEmail: string,
   privateKey: string,
 ): Promise<string> {
-  // Create JWT header
   const header = {
     alg: "RS256",
     typ: "JWT",
   };
 
-  // Create JWT claim set
   const now = Math.floor(Date.now() / 1000);
   const claim = {
     iss: clientEmail,
@@ -113,16 +87,13 @@ async function getAccessToken(
     iat: now,
   };
 
-  // Encode header and claim
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
   const encodedClaim = base64UrlEncode(JSON.stringify(claim));
   const signatureInput = `${encodedHeader}.${encodedClaim}`;
 
-  // Sign with private key
   const signature = await sign(signatureInput, privateKey);
   const jwt = `${signatureInput}.${signature}`;
 
-  // Exchange JWT for access token
   const response = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: {
@@ -142,11 +113,7 @@ async function getAccessToken(
   return access_token;
 }
 
-/**
- * Signs data with RSA-SHA256
- */
 async function sign(data: string, privateKey: string): Promise<string> {
-  // Import private key
   const pemHeader = "-----BEGIN PRIVATE KEY-----";
   const pemFooter = "-----END PRIVATE KEY-----";
   const pemContents = privateKey
@@ -167,7 +134,6 @@ async function sign(data: string, privateKey: string): Promise<string> {
     ["sign"],
   );
 
-  // Sign data
   const encoder = new TextEncoder();
   const signature = await crypto.subtle.sign(
     "RSASSA-PKCS1-v1_5",
@@ -175,13 +141,9 @@ async function sign(data: string, privateKey: string): Promise<string> {
     encoder.encode(data),
   );
 
-  // Encode signature
   return base64UrlEncode(signature);
 }
 
-/**
- * Base64 URL encode
- */
 function base64UrlEncode(data: string | ArrayBuffer): string {
   let base64: string;
 

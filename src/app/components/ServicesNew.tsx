@@ -57,38 +57,6 @@ type ServiceItem = {
   priceOnRequest?: boolean;
 };
 
-/** Число слов в названии (для группировки карточек по рядам). */
-function countWordsInTitle(title: string): number {
-  return title.trim().split(/\s+/).filter(Boolean).length;
-}
-
-/** Ряд 1–4 слова; 5+ — отдельный хвостовой ряд. */
-function wordBucket(wordCount: number): 1 | 2 | 3 | 4 | 5 {
-  if (wordCount <= 0) return 1;
-  if (wordCount <= 4) return wordCount as 1 | 2 | 3 | 4;
-  return 5;
-}
-
-/** Одна горизонтальная группа: колонки под число карточек в ряду. */
-function groupGridClass(itemCount: number): string {
-  if (itemCount <= 1) {
-    return "grid grid-cols-1 gap-6 w-full max-w-md mx-auto";
-  }
-  if (itemCount === 2) {
-    return "grid grid-cols-1 sm:grid-cols-2 gap-6";
-  }
-  if (itemCount === 3) {
-    return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
-  }
-  if (itemCount === 4) {
-    return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6";
-  }
-  if (itemCount === 5) {
-    return "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6";
-  }
-  return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6";
-}
-
 export function ServicesNew() {
   const containerRef = useRef<HTMLElement>(null);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -265,31 +233,6 @@ export function ServicesNew() {
   const featuredServices = services.filter(s => s.featured);
   const otherServices = services.filter(s => !s.featured);
 
-  const otherByWordBucket: Record<1 | 2 | 3 | 4 | 5, ServiceItem[]> = {
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-  };
-  for (const s of otherServices) {
-    const b = wordBucket(countWordsInTitle(s.title));
-    otherByWordBucket[b].push(s);
-  }
-
-  /** Первый ряд: 1 и 2 слова в названии вместе (сначала односложные, затем двусложные). */
-  const rowOneAndTwoWords = [
-    ...otherByWordBucket[1],
-    ...otherByWordBucket[2],
-  ];
-
-  const serviceRows: { key: string; items: ServiceItem[] }[] = [
-    { key: "w1-2", items: rowOneAndTwoWords },
-    { key: "w3", items: otherByWordBucket[3] },
-    { key: "w4", items: otherByWordBucket[4] },
-    { key: "w5plus", items: otherByWordBucket[5] },
-  ];
-
   return (
     <section id="services" className="relative py-24 overflow-hidden" ref={containerRef}>
       {/* Background Gradient */}
@@ -372,75 +315,67 @@ export function ServicesNew() {
           ))}
         </div>
 
-        {/* Остальные услуги: ряд 1–2 слова; затем 3, 4, 5+ слов в названии */}
-        <div className="flex flex-col gap-10">
-          {serviceRows.map(({ key: rowKey, items: group }) => {
-            if (group.length === 0) return null;
-
-            return (
-              <div key={rowKey} className={groupGridClass(group.length)}>
-                {group.map((service, index) => (
-                  <motion.div
-                    key={`${rowKey}-${service.title}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.08,
-                      ease: [0.21, 0.45, 0.27, 0.9],
-                    }}
-                    whileHover={{ y: -5 }}
-                    onClick={() => {
-                      setSelectedService(service);
-                      setIsModalOpen(true);
-                    }}
-                    className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 hover:border-red-900/30 transition-all duration-500 min-h-[350px] flex flex-col cursor-pointer"
-                  >
-                    <div className="absolute inset-0 opacity-[0.42] group-hover:opacity-50 transition-opacity duration-700">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover grayscale"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
-                    </div>
-
-                    {service.priceOnRequest && (
-                      <div className="absolute top-4 right-4 z-20">
-                        <div className="bg-zinc-900/80 border border-cartello-beige/40 px-2.5 py-1 rounded-lg backdrop-blur-sm">
-                          <span className="text-cartello-beige font-medium text-[10px] tracking-wider uppercase">
-                            {t("services.badgeOnRequest")}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="relative flex-1 p-6 md:p-8 flex flex-col z-10 min-h-0">
-                      <div className="flex items-start justify-end min-h-[24px] shrink-0">
-                        {!service.priceOnRequest && (
-                          <span className="text-sm font-medium transition-colors text-zinc-500 group-hover:text-cartello-beige">
-                            {service.price}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="mt-auto flex flex-col gap-3 pt-2">
-                        <div className="min-h-[4.5rem] sm:min-h-[5.25rem] md:min-h-[6rem] flex flex-col justify-start w-full">
-                          <h3 className="text-2xl font-bold text-white leading-tight break-words group-hover:translate-x-1 transition-transform">
-                            {service.title}
-                          </h3>
-                        </div>
-                        <p className="text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 max-md:opacity-100 max-md:max-h-none md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover:opacity-100 md:group-hover:max-h-[16rem] md:group-hover:text-zinc-300">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+        {/* Остальные услуги: сетка по 4 карточки в ряд (как в договорённости) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {otherServices.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: [0.21, 0.45, 0.27, 0.9],
+              }}
+              whileHover={{ y: -5 }}
+              onClick={() => {
+                setSelectedService(service);
+                setIsModalOpen(true);
+              }}
+              className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 hover:border-red-900/30 transition-all duration-500 min-h-[350px] flex flex-col cursor-pointer"
+            >
+              <div className="absolute inset-0 opacity-[0.42] group-hover:opacity-50 transition-opacity duration-700">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover grayscale"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
               </div>
-            );
-          })}
+
+              {service.priceOnRequest && (
+                <div className="absolute top-4 right-4 z-20">
+                  <div className="bg-zinc-900/80 border border-cartello-beige/40 px-2.5 py-1 rounded-lg backdrop-blur-sm">
+                    <span className="text-cartello-beige font-medium text-[10px] tracking-wider uppercase">
+                      {t("services.badgeOnRequest")}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className="relative flex-1 p-6 md:p-8 flex flex-col z-10 min-h-0">
+                <div className="flex items-start justify-end min-h-[24px] shrink-0">
+                  {!service.priceOnRequest && (
+                    <span className="text-sm font-medium transition-colors text-zinc-500 group-hover:text-cartello-beige">
+                      {service.price}
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-auto flex flex-col gap-3 pt-2">
+                  <div className="min-h-[4.5rem] sm:min-h-[5.25rem] md:min-h-[6rem] flex flex-col justify-start w-full">
+                    <h3 className="text-2xl font-bold text-white leading-tight break-words group-hover:translate-x-1 transition-transform">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 max-md:opacity-100 max-md:max-h-none md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover:opacity-100 md:group-hover:max-h-[16rem] md:group-hover:text-zinc-300">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 

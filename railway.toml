@@ -1,0 +1,7 @@
+# Вариант А: один сервис — только статический фронт (Vite → dist → serve).
+# Не задавайте dockerfilePath: API в server/Dockerfile для другого сервиса, не для этого.
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "npm start"

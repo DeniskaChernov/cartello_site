@@ -2,6 +2,9 @@
   "name": "cartello-site",
   "private": true,
   "version": "0.0.1",
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "scripts": {
     "build": "node ./node_modules/vite/bin/vite.js build",

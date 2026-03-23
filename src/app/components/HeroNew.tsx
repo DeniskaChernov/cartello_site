@@ -68,7 +68,7 @@ export function HeroNew() {
 
   return (
     <section
-      className="relative min-h-[100dvh] min-h-screen overflow-x-hidden overflow-y-visible pt-20"
+      className="relative min-h-[100dvh] min-h-screen overflow-x-clip pt-20"
       ref={containerRef}
       style={{
         paddingBottom: "max(6rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem))",
@@ -236,7 +236,10 @@ export function HeroNew() {
                       <div className="text-[clamp(1rem,4.2vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
                         {stat.value}
                       </div>
-                      <div className="mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm">
+                      <div
+                        className="hero-stat-label mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm"
+                        lang="ru"
+                      >
                         {stat.label}
                       </div>
                     </div>

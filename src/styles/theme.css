@@ -2,9 +2,9 @@
 
 @theme {
   /* Typography Scale */
-  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Outfit', sans-serif;
+  --font-sans: "Outfit", system-ui, "Segoe UI", "Noto Sans", sans-serif;
+  --font-display: "Outfit", system-ui, "Segoe UI", sans-serif;
+  --font-body: "Outfit", system-ui, "Segoe UI", sans-serif;
   
   /* Cartello: бордовый #880000, золотой #AE7528 */
   --color-cartello-red: #880000;
@@ -77,13 +77,18 @@
   contain-intrinsic-size: 1px 2400px;
 }
 
+/* Подписи к цифрам в герое: кириллица через системный шрифт — корректная «Г» в «Гарантия» */
+.hero-stat-label {
+  font-family: system-ui, "Segoe UI", "Noto Sans", "Arial Unicode MS", sans-serif;
+}
+
 html {
   scrollbar-color: #880000 #18181b;
   scrollbar-width: thin;
 }
 
 html::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 html::-webkit-scrollbar-track {

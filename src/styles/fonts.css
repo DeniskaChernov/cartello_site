@@ -1,1 +1,2 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+/* Outfit в выдаче Google — в основном latin; кириллица на сайте идёт через fallback (system-ui) и .hero-stat-label */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");

@@ -13,6 +13,11 @@ import pdr from "../assets/af9854c23b2a1fd56655fdbafe9aaf9001ed33b7.png";
 import detailingWash from "../assets/2a89bf209cf3adf33856cecccc6ee08a9477c3ca.png";
 import windshield from "../assets/af6d6d6ef8482a5c89e09e1cf0f88055fb83a75c.png";
 import contactBuilding from "../assets/facade-building.png";
+import videoReel1 from "../assets/video-reel-1.png";
+import videoReel2 from "../assets/video-reel-2.png";
+import videoReel3 from "../assets/video-reel-3.png";
+import videoReel4 from "../assets/video-reel-4.png";
+import videoReel5 from "../assets/video-reel-5.png";
 
 /** Локальные изображения лендинга (src/assets). */
 export const SITE_IMAGES = {
@@ -31,4 +36,9 @@ export const SITE_IMAGES = {
   detailingWash,
   windshield,
   contactBuilding,
+  videoReel1,
+  videoReel2,
+  videoReel3,
+  videoReel4,
+  videoReel5,
 } as const;

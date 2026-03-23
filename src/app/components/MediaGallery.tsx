@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Play, Instagram, ExternalLink, ArrowRight, MoveHorizontal, Sparkles } from "lucide-react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { SITE_IMAGES } from "../../lib/siteImages";
 
 export function MediaGallery() {
   const [activeTab, setActiveTab] = useState<"videos" | "gallery">("videos");
@@ -19,7 +20,7 @@ export function MediaGallery() {
   const reels = [
     {
       id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1674632917668-6237bad1347d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80",
+      thumbnail: SITE_IMAGES.videoReel1,
       title: "Авлт 12 — полная оклейка PPF",
       subtitle: "Кузов + панорама + лобовое",
       tag: "PPF защита",
@@ -27,7 +28,7 @@ export function MediaGallery() {
     },
     {
       id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1753722928860-3b79d1f7aaca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80",
+      thumbnail: SITE_IMAGES.videoReel2,
       title: "G63 на СПА процедурах",
       subtitle: "Cartello — нам доверяют",
       tag: "Детейлинг",
@@ -35,7 +36,7 @@ export function MediaGallery() {
     },
     {
       id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1629055666341-5e505c77d49b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80",
+      thumbnail: SITE_IMAGES.videoReel3,
       title: "Mercedes GLE 450",
       subtitle: "Качество и доверие",
       tag: "Полировка",
@@ -43,7 +44,7 @@ export function MediaGallery() {
     },
     {
       id: 4,
-      thumbnail: "https://images.unsplash.com/photo-1759428132279-ce620fa51047?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80",
+      thumbnail: SITE_IMAGES.videoReel4,
       title: "BMW i5 — комплекс услуг",
       subtitle: "С душой к каждому автомобилю",
       tag: "Комплекс",
@@ -51,7 +52,7 @@ export function MediaGallery() {
     },
     {
       id: 5,
-      thumbnail: "https://images.unsplash.com/photo-1711512972494-09b38ed4916f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600&q=80",
+      thumbnail: SITE_IMAGES.videoReel5,
       title: "Антигравийная защита",
       subtitle: "Своевременная защита кузова",
       tag: "Антигравий",

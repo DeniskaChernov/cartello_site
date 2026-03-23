@@ -145,13 +145,13 @@ export function HeroNew() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side — фиксированная минимальная высота под карточку + статистику */}
+          {/* Right Side — карточка со слайдером (статистика вынесена под сетку) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ y: y2 }}
-            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(72svh,26rem)] h-[min(72svh,26rem)] sm:min-h-[min(68svh,28rem)] sm:h-[min(68svh,28rem)] md:min-h-[32rem] md:h-[32rem] lg:h-[600px] lg:min-h-[560px] lg:max-h-[min(90vh,640px)]"
+            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(65svh,22rem)] h-[min(65svh,22rem)] sm:min-h-[min(62svh,24rem)] sm:h-[min(62svh,24rem)] md:min-h-[28rem] md:h-[28rem] lg:h-[520px] lg:min-h-[500px] lg:max-h-[min(88vh,580px)]"
           >
             <div className="relative h-full min-h-[inherit] w-full">
 
@@ -159,7 +159,7 @@ export function HeroNew() {
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute right-0 top-0 h-[62%] min-h-[11rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[65%] sm:min-h-[13rem] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
+                className="absolute right-0 top-0 h-[68%] min-h-[12rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[70%] sm:min-h-[14rem] sm:max-w-none sm:rounded-3xl md:h-[72%] lg:h-[74%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
                 style={{ opacity }}
               >
                 <div className="relative w-full h-full">
@@ -195,35 +195,35 @@ export function HeroNew() {
                 </div>
               </motion.div>
 
-              {/* Stats Card */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700 bg-zinc-900/50 px-2 py-2.5 shadow-2xl backdrop-blur-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
-                style={{ opacity: statsOpacity }}
-              >
-                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-1 min-[360px]:gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-10">
-                  {[
-                    { value: "700+", label: t("hero.clients") },
-                    { value: "40+", label: t("hero.services") },
-                    { value: "100%", label: t("hero.guarantee") },
-                  ].map((stat, i) => (
-                    <div key={i} className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center">
-                      <div className="text-[clamp(1rem,4.2vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
-                        {stat.value}
-                      </div>
-                      <div className="mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
             </div>
           </motion.div>
 
         </div>
+
+        {/* Статистика — отдельная полоса по центру под колонками (как раньше) */}
+        <motion.div
+          className="mt-10 flex w-full justify-center px-2 sm:mt-12 lg:mt-14"
+          style={{ opacity: statsOpacity }}
+        >
+          <div className="w-full max-w-[min(100%,40rem)] rounded-full border border-zinc-600/80 bg-zinc-900/70 px-3 py-3 shadow-2xl backdrop-blur-xl sm:px-8 sm:py-4 md:max-w-3xl md:px-10 md:py-5">
+            <div className="grid w-full grid-cols-3 gap-x-2 sm:gap-x-6 md:gap-x-10">
+              {[
+                { value: "700+", label: t("hero.clients") },
+                { value: "40+", label: t("hero.services") },
+                { value: "100%", label: t("hero.guarantee") },
+              ].map((stat, i) => (
+                <div key={i} className="flex min-w-0 flex-col items-center justify-center text-center">
+                  <div className="text-[clamp(1.1rem,3.5vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
+                    {stat.value}
+                  </div>
+                  <div className="mt-1 text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:text-xs md:text-sm">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator — safe-area снизу, не перекрывает контент */}

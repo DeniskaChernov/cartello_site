@@ -32,6 +32,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { BookingModal } from "./BookingModal";
 import { SITE_IMAGES } from "../../lib/siteImages";
+import { SERVICE_STOCK_PHOTOS } from "../../lib/serviceStockPhotos";
 import {
   DEFAULT_OTHER_SERVICE_IDS,
   mergeOrderWithKnownIds,
@@ -131,7 +132,7 @@ export function ServicesNew() {
       description: t("services.soundproofingDesc"),
       price: t("services.soundproofingPrice"),
       icon: VolumeX,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.soundproofing,
       featured: false,
     },
     {
@@ -149,7 +150,7 @@ export function ServicesNew() {
       description: t("services.interiorCeramicDesc"),
       price: t("services.interiorCeramicPrice"),
       icon: ShieldCheck,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.interiorCeramic,
       featured: false,
       priceOnRequest: false,
     },
@@ -199,7 +200,7 @@ export function ServicesNew() {
       description: t("services.evRepairDesc"),
       price: t("services.priceOnRequest"),
       icon: Battery,
-      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.evRepair,
       featured: false,
       priceOnRequest: true,
     },
@@ -209,7 +210,7 @@ export function ServicesNew() {
       description: t("services.audioInstallDesc"),
       price: t("services.priceOnRequest"),
       icon: Radio,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.audioInstall,
       featured: false,
       priceOnRequest: true,
     },
@@ -219,7 +220,7 @@ export function ServicesNew() {
       description: t("services.bodyworkDesc"),
       price: t("services.priceOnRequest"),
       icon: Paintbrush,
-      image: "https://images.unsplash.com/photo-1708805282676-0c15476eb8a2?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.bodywork,
       featured: false,
       priceOnRequest: true,
     },
@@ -239,7 +240,7 @@ export function ServicesNew() {
       description: t("services.plasticProtectionDesc"),
       price: t("services.priceOnRequest"),
       icon: Smartphone,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.plasticProtection,
       featured: false,
       priceOnRequest: true,
     },
@@ -249,7 +250,7 @@ export function ServicesNew() {
       description: t("services.atelierServiceDesc"),
       price: t("services.priceOnRequest"),
       icon: Shirt,
-      image: "https://images.unsplash.com/photo-1750563289628-72678be3228f?w=1080&q=80",
+      image: SERVICE_STOCK_PHOTOS.atelier,
       featured: false,
       priceOnRequest: true,
     },

@@ -69,7 +69,7 @@ const translations = {
     },
     services: {
       title: 'Наши услуги',
-      subtitle: 'Полный спектр детейлинг услуг премиум класса',
+      subtitle: 'Полный спектр качественный детейлинг услуг',
       priceFrom: 'от',
       priceOnRequest: 'Цена по запросу',
       more: 'Подробнее',
@@ -437,7 +437,7 @@ const translations = {
     },
     services: {
       title: 'Bizning xizmatlarimiz',
-      subtitle: 'Premium sinf deteyling xizmatlarining to\'liq assortimenti',
+      subtitle: 'Sifatli deteyling xizmatlarining to\'liq spektri',
       priceFrom: 'dan',
       priceOnRequest: 'Narx so\'rov bo\'yicha',
       more: 'Batafsil',

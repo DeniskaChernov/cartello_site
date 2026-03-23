@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typography Scale - Premium 2026 */
+  /* Typography Scale */
   --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Outfit', sans-serif;
   
-  /* Cartello Brand Colors */
-  --color-cartello-red: #830E10;
-  --color-cartello-red-dark: #5a0a0b;
-  --color-cartello-red-light: #a51214;
-  --color-cartello-beige: #DBC19F;
-  --color-cartello-beige-light: #e8d4b8;
-  --color-cartello-beige-dark: #c9ad8a;
+  /* Cartello: бордовый #880000, золотой #AE7528 */
+  --color-cartello-red: #880000;
+  --color-cartello-red-dark: #5a0000;
+  --color-cartello-red-light: #a01010;
+  --color-cartello-beige: #AE7528;
+  --color-cartello-beige-light: #c9a060;
+  --color-cartello-beige-dark: #8a5f1e;
   
-  /* Extended Color Palette */
-  --color-red-900: #830E10;
-  --color-red-800: #a51214;
-  --color-red-700: #c41618;
-  --color-red-600: #d41a1c;
-  --color-red-500: #e31e20;
+  --color-red-900: #880000;
+  --color-red-800: #a01010;
+  --color-red-700: #b01010;
+  --color-red-600: #c01818;
+  --color-red-500: #e02020;
   --color-red-400: #e74446;
   --color-red-300: #eb6a6c;
   --color-red-200: #f39091;
@@ -38,31 +37,28 @@
   --color-zinc-900: #18181b;
   --color-zinc-950: #09090b;
 
-  /* Premium Gradients */
-  --gradient-premium: linear-gradient(135deg, #830E10 0%, #a51214 50%, #c41618 100%);
+  --gradient-premium: linear-gradient(135deg, #880000 0%, #a01010 50%, #b01010 100%);
   --gradient-dark: linear-gradient(180deg, #09090b 0%, #18181b 100%);
-  --gradient-glow: radial-gradient(circle at 50% 0%, rgba(131, 14, 16, 0.15), transparent 50%);
+  --gradient-glow: radial-gradient(circle at 50% 0%, rgba(136, 0, 0, 0.15), transparent 50%);
   
-  /* Animations */
   --animate-duration-fast: 200ms;
   --animate-duration-normal: 300ms;
   --animate-duration-slow: 500ms;
 }
 
-/* Custom Slick Carousel Styles */
 .services-carousel .slick-dots {
   bottom: -50px;
 }
 
 .services-carousel .slick-dots li button:before {
-  color: #DBC19F;
+  color: #AE7528;
   opacity: 0.3;
   font-size: 10px;
 }
 
 .services-carousel .slick-dots li.slick-active button:before {
   opacity: 1;
-  color: #DBC19F;
+  color: #AE7528;
 }
 
 .services-carousel .slick-slide > div {

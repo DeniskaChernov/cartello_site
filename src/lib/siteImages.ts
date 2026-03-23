@@ -12,7 +12,8 @@ import undercarriage from "../assets/d1b2594438cc836ad51034d39923a72da116362c.pn
 import pdr from "../assets/af9854c23b2a1fd56655fdbafe9aaf9001ed33b7.png";
 import detailingWash from "../assets/2a89bf209cf3adf33856cecccc6ee08a9477c3ca.png";
 import windshield from "../assets/af6d6d6ef8482a5c89e09e1cf0f88055fb83a75c.png";
-import contactBuilding from "../assets/b5e7a58495ea446d72aa5b83805885ba0dac4fb9.png";
+/** Фасад: замените `facade-building.jpg` на свой снимок (экспорт из HEIC в JPG). */
+import contactBuilding from "../assets/facade-building.jpg";
 
 /** Локальные изображения лендинга (src/assets). */
 export const SITE_IMAGES = {

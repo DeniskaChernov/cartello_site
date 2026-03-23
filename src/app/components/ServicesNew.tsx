@@ -297,10 +297,10 @@ export function ServicesNew() {
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  
-                  <h3 className="text-3xl font-bold text-white mb-4 leading-tight">{service.title}</h3>
-                  <p className="text-zinc-300 mb-6 line-clamp-3 group-hover:line-clamp-none transition-all duration-300">{service.description}</p>
-                  
+                  <h3 className="text-3xl font-bold text-white mb-3 md:mb-2 leading-tight">{service.title}</h3>
+                  <p className="text-zinc-300 mb-6 transition-all duration-300 max-md:opacity-100 max-md:max-h-none max-md:overflow-visible md:opacity-0 md:max-h-0 md:overflow-hidden md:mb-0 md:group-hover:opacity-100 md:group-hover:max-h-[12rem] md:group-hover:mb-6">
+                    {service.description}
+                  </p>
                   <div className="flex items-center justify-between pt-6 border-t border-white/10">
                     <span className="text-lg font-semibold text-cartello-beige">{service.price}</span>
                     <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
@@ -333,8 +333,8 @@ export function ServicesNew() {
               }}
               className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 hover:border-red-900/30 transition-all duration-500 min-h-[350px] flex flex-col cursor-pointer"
             >
-              {/* Background Image (Subtle) */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-700">
+              {/* Фоновое фото видно сразу; при наведении чуть ярче */}
+              <div className="absolute inset-0 opacity-[0.42] group-hover:opacity-50 transition-opacity duration-700">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -367,10 +367,10 @@ export function ServicesNew() {
 
                 {/* Bottom section - always at the bottom */}
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:translate-x-1 transition-transform">
+                  <h3 className="text-2xl font-bold text-white mb-3 md:mb-2 group-hover:translate-x-1 transition-transform">
                     {service.title}
                   </h3>
-                  <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors text-sm md:text-base">
+                  <p className="text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 max-md:opacity-100 max-md:max-h-none md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover:opacity-100 md:group-hover:max-h-[16rem] md:group-hover:text-zinc-300">
                     {service.description}
                   </p>
                 </div>

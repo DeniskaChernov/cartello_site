@@ -63,7 +63,7 @@ export function Benefits() {
             <img 
               src={logo} 
               alt="Cartello" 
-              className="w-56 sm:w-64 md:w-80 h-auto mx-auto opacity-80" 
+              className="w-[16.8rem] sm:w-[19.2rem] md:w-96 h-auto mx-auto opacity-80" 
             />
           </motion.div>
           <motion.p

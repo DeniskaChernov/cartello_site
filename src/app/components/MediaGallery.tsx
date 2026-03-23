@@ -257,7 +257,7 @@ interface SliderPositions {
                           className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full"
                           style={{
                             background: "rgba(131,14,16,0.75)",
-                            color: "#DBC19F",
+                            color: "#AE7528",
                             backdropFilter: "blur(8px)",
                             border: "1px solid rgba(219,193,159,0.2)",
                           }}
@@ -304,10 +304,10 @@ interface SliderPositions {
                             backdropFilter: "blur(12px)",
                           }}
                         >
-                          <span className="text-xs font-semibold text-[#DBC19F] tracking-wide">
+                          <span className="text-xs font-semibold text-[#AE7528] tracking-wide">
                             Смотреть рилс
                           </span>
-                          <ExternalLink className="w-3 h-3 text-[#DBC19F]" />
+                          <ExternalLink className="w-3 h-3 text-[#AE7528]" />
                         </div>
                       </div>
                     </a>

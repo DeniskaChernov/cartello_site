@@ -300,7 +300,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
                   <div className="flex-1">
                     <div className="text-sm text-zinc-400 mb-2">{t('contact.address')}</div>
                     <div className="text-white text-lg mb-1 group-hover:text-cartello-beige transition-colors">
-                      <span className="inline-flex items-center gap-2 underline decoration-transparent group-hover:decoration-cartello-beige decoration-1 underline-offset-4 transition-all group-hover:drop-shadow-[0_0_10px_rgba(219,193,159,0.6)]">
+                      <span className="inline-flex items-center gap-2 underline decoration-transparent group-hover:decoration-cartello-beige decoration-1 underline-offset-4 transition-all group-hover:drop-shadow-[0_0_10px_rgba(174,117,40,0.45)]">
                         {t('contact.addressValue')}
                         <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                       </span>

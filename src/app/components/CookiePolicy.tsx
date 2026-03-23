@@ -281,11 +281,11 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
             border-radius: 10px;
           }
           .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #830E10, #6b0b0d);
+            background: linear-gradient(to bottom, #880000, #5a0000);
             border-radius: 10px;
           }
           .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #a01113, #830E10);
+            background: linear-gradient(to bottom, #a01010, #880000);
           }
         `}</style>
       </motion.div>

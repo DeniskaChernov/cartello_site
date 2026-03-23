@@ -64,7 +64,7 @@ export function HeroNew() {
       <motion.div
         className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-26"
         style={{
-          background: "radial-gradient(circle, #830E10 0%, transparent 70%)",
+          background: "radial-gradient(circle, #880000 0%, transparent 70%)",
           x: mousePosition.x - 400,
           y: mousePosition.y - 400,
         }}

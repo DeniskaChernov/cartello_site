@@ -69,7 +69,7 @@ const translations = {
     },
     services: {
       title: 'Наши услуги',
-      subtitle: 'Полный спектр качественный детейлинг услуг',
+      subtitle: 'Полный спектр качественных детейлинг-услуг',
       priceFrom: 'от',
       priceOnRequest: 'Цена по запросу',
       more: 'Подробнее',

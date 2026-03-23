@@ -18,7 +18,7 @@ React + Vite + Tailwind. Локально: `npm run dev`. Сборка: `npm run
 
 Файл `railway.toml` задаёт билдер **RAILPACK** и команду запуска **`npm start`** (`serve dist -s`).
 
-**Фото фасада** в блоке контактов: файл `src/assets/facade-building.jpg`. Замените его на свой снимок (экспорт из HEIC в JPG через «Фото» / онлайн-конвертер).
+**Фото фасада** в блоке контактов: `src/assets/facade-building.png` — при смене снимка замените этот файл.
 
 Подробнее про переменные — `.env.example`.
 

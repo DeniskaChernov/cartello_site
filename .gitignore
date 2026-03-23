@@ -9,5 +9,5 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
-# исходник HEIC; в репо храним только facade-building.jpg
+# исходник HEIC (локально)
 src/assets/facade-source.HEIC

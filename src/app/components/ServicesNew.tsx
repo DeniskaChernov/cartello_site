@@ -80,7 +80,13 @@ function groupGridClass(itemCount: number): string {
   if (itemCount === 3) {
     return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
   }
-  return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6";
+  if (itemCount === 4) {
+    return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6";
+  }
+  if (itemCount === 5) {
+    return "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6";
+  }
+  return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6";
 }
 
 export function ServicesNew() {
@@ -271,7 +277,18 @@ export function ServicesNew() {
     otherByWordBucket[b].push(s);
   }
 
-  const bucketRenderOrder: (1 | 2 | 3 | 4 | 5)[] = [1, 2, 3, 4, 5];
+  /** Первый ряд: 1 и 2 слова в названии вместе (сначала односложные, затем двусложные). */
+  const rowOneAndTwoWords = [
+    ...otherByWordBucket[1],
+    ...otherByWordBucket[2],
+  ];
+
+  const serviceRows: { key: string; items: ServiceItem[] }[] = [
+    { key: "w1-2", items: rowOneAndTwoWords },
+    { key: "w3", items: otherByWordBucket[3] },
+    { key: "w4", items: otherByWordBucket[4] },
+    { key: "w5plus", items: otherByWordBucket[5] },
+  ];
 
   return (
     <section id="services" className="relative py-24 overflow-hidden" ref={containerRef}>
@@ -355,17 +372,16 @@ export function ServicesNew() {
           ))}
         </div>
 
-        {/* Остальные услуги: отдельный горизонтальный ряд на 1 / 2 / 3 / 4 слова в названии (+ ряд для 5+ слов) */}
+        {/* Остальные услуги: ряд 1–2 слова; затем 3, 4, 5+ слов в названии */}
         <div className="flex flex-col gap-10">
-          {bucketRenderOrder.map((bucket) => {
-            const group = otherByWordBucket[bucket];
+          {serviceRows.map(({ key: rowKey, items: group }) => {
             if (group.length === 0) return null;
 
             return (
-              <div key={bucket} className={groupGridClass(group.length)}>
+              <div key={rowKey} className={groupGridClass(group.length)}>
                 {group.map((service, index) => (
                   <motion.div
-                    key={`${bucket}-${service.title}`}
+                    key={`${rowKey}-${service.title}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}

@@ -256,10 +256,10 @@ interface SliderPositions {
                         <span
                           className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full"
                           style={{
-                            background: "rgba(131,14,16,0.75)",
+                            background: "rgba(136,0,0,0.75)",
                             color: "#AE7528",
                             backdropFilter: "blur(8px)",
-                            border: "1px solid rgba(219,193,159,0.2)",
+                            border: "1px solid rgba(174,117,40,0.2)",
                           }}
                         >
                           {reel.tag}
@@ -280,10 +280,10 @@ interface SliderPositions {
                         <div
                           className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                           style={{
-                            background: "rgba(131,14,16,0.85)",
-                            border: "2px solid rgba(219,193,159,0.4)",
+                            background: "rgba(136,0,0,0.85)",
+                            border: "2px solid rgba(174,117,40,0.4)",
                             backdropFilter: "blur(8px)",
-                            boxShadow: "0 0 40px rgba(131,14,16,0.5)",
+                            boxShadow: "0 0 40px rgba(136,0,0,0.5)",
                           }}
                         >
                           <Play className="w-5 h-5 text-white fill-white ml-0.5" />
@@ -299,8 +299,8 @@ interface SliderPositions {
                         <div
                           className="flex items-center justify-between rounded-xl px-3 py-2 transition-all duration-300 group-hover:brightness-110"
                           style={{
-                            background: "rgba(131,14,16,0.6)",
-                            border: "1px solid rgba(219,193,159,0.15)",
+                            background: "rgba(136,0,0,0.6)",
+                            border: "1px solid rgba(174,117,40,0.15)",
                             backdropFilter: "blur(12px)",
                           }}
                         >

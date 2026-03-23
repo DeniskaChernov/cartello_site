@@ -285,9 +285,9 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
               {t('contact.addressTitle')}
             </h3>
             
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
               {/* Left - Address & Hours */}
-              <div className="h-[280px] flex flex-col justify-center space-y-8">
+              <div className="flex min-h-0 flex-col justify-center space-y-8 lg:min-h-[360px] lg:py-2">
                 <a
                   href="https://yandex.uz/maps/10335/tashkent/?ll=69.306111%2C41.287925&mode=poi&poi%5Bpoint%5D=69.306121%2C41.288030&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D4770057567&z=20.65"
                   target="_blank"
@@ -329,14 +329,16 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
                 </div>
               </div>
 
-              {/* Right - Photo — весь кадр без обрезки */}
-              <div className="relative h-[320px] sm:h-[360px] rounded-2xl overflow-hidden bg-zinc-950">
+              {/* Right — фиксированная высота окна; фото по центру без смещения (object-contain + flex) */}
+              <div className="relative flex h-[320px] w-full shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-zinc-950 sm:h-[360px]">
                 <img
                   src={SITE_IMAGES.contactBuilding}
                   alt="Cartello Detailing Center"
-                  className="w-full h-full object-contain object-center"
+                  className="max-h-full max-w-full object-contain object-center"
+                  style={{ objectPosition: "center center" }}
+                  decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/45 to-transparent" />
               </div>
             </div>
           </div>

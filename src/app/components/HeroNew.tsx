@@ -32,8 +32,10 @@ export function HeroNew() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 150]);
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
-  const opacity = useTransform(scrollY, [0, 250], [1, 0]);
-  const statsOpacity = useTransform(scrollY, [0, 250], [1, 0]);
+  /** Мягче и дольше, чем раньше [0,250], чтобы на мобильных успели прочитать блок */
+  const opacity = useTransform(scrollY, [0, 320, 720], [1, 0.45, 0]);
+  /** Статистика остаётся читаемой: полная непрозрачность до ~600px прокрутки, затем плавное исчезновение */
+  const statsOpacity = useTransform(scrollY, [0, 600, 1100], [1, 1, 0]);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -56,13 +58,19 @@ export function HeroNew() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-20" ref={containerRef}>
+    <section
+      className="relative min-h-[100dvh] min-h-screen overflow-x-hidden overflow-y-visible pt-20"
+      ref={containerRef}
+      style={{
+        paddingBottom: "max(6rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem))",
+      }}
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-black" />
 
-      {/* Animated Gradient Orbs */}
+      {/* Animated Gradient Orbs — на мобильных без тяжёлого spring от курсора */}
       <motion.div
-        className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-26"
+        className="pointer-events-none absolute w-[min(100vw,800px)] h-[min(100vw,800px)] max-w-[800px] max-h-[800px] rounded-full blur-3xl opacity-20 md:opacity-26"
         style={{
           background: "radial-gradient(circle, #880000 0%, transparent 70%)",
           x: mousePosition.x - 400,
@@ -74,8 +82,8 @@ export function HeroNew() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-red-800/20 to-transparent rounded-full blur-3xl" />
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 min-h-screen flex flex-col justify-center">
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full py-20">
+      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-[1400px] flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-10">
+        <div className="grid w-full grid-cols-1 items-center gap-10 pt-6 sm:gap-12 sm:pt-10 lg:grid-cols-2 lg:gap-14 lg:pt-12 xl:gap-16">
 
           {/* Left Side */}
           <motion.div
@@ -83,17 +91,18 @@ export function HeroNew() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             style={{ y: y1, opacity }}
+            className="mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mb-8"
+              className="mb-6 sm:mb-8"
             >
               <img
                 src={logo}
                 alt="Cartello Detailing Centre"
-                className="w-full max-w-[280px] sm:max-w-[390px] md:max-w-[650px] h-auto object-contain"
+                className="mx-auto h-auto w-full max-w-[min(92vw,280px)] object-contain sm:mx-0 sm:max-w-[min(90vw,390px)] md:max-w-[min(95vw,650px)]"
               />
             </motion.div>
 
@@ -101,9 +110,9 @@ export function HeroNew() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mb-8 space-y-4"
+              className="mb-6 space-y-3 sm:mb-8 sm:space-y-4"
             >
-              <p className="text-xl sm:text-2xl md:text-3xl text-zinc-300 font-light">
+              <p className="text-balance text-center text-lg font-light leading-snug text-zinc-300 sm:text-left sm:text-xl md:text-2xl lg:text-3xl">
                 {t("hero.title")}
               </p>
             </motion.div>
@@ -112,44 +121,45 @@ export function HeroNew() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center gap-4"
+              className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
               <button
+                type="button"
                 onClick={scrollToContact}
-                className="group relative px-8 py-4 bg-gradient-to-r from-red-900 to-red-800 text-white rounded-2xl font-semibold overflow-hidden shadow-2xl shadow-red-900/30 hover:shadow-red-900/50 transition-all duration-300 w-full sm:w-auto"
+                className="group relative min-h-[48px] w-full rounded-2xl bg-gradient-to-r from-red-900 to-red-800 px-6 py-3.5 text-base font-semibold text-white shadow-2xl shadow-red-900/30 transition-all duration-300 hover:shadow-red-900/50 sm:w-auto sm:px-8 sm:py-4"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {t("hero.bookNow")}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-800 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-red-800 to-red-700 opacity-0 transition-opacity group-hover:opacity-100" />
               </button>
 
               <a
                 href="tel:+998958350110"
-                className="group px-8 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/10 text-white rounded-2xl font-semibold hover:bg-white/10 hover:border-cartello-beige/30 transition-all duration-300 flex items-center gap-2 w-full sm:w-auto justify-center"
+                className="group flex min-h-[48px] w-full items-center justify-center gap-2 rounded-2xl border-2 border-white/10 bg-white/5 px-6 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-cartello-beige/30 hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4"
               >
-                <Phone className="w-5 h-5 text-cartello-beige" />
+                <Phone className="h-5 w-5 shrink-0 text-cartello-beige" />
                 95 835 01 10
               </a>
             </motion.div>
           </motion.div>
 
-          {/* Right Side */}
+          {/* Right Side — фиксированная минимальная высота под карточку + статистику */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ y: y2 }}
-            className="relative lg:h-[600px] h-[400px]"
+            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(72svh,26rem)] h-[min(72svh,26rem)] sm:min-h-[min(68svh,28rem)] sm:h-[min(68svh,28rem)] md:min-h-[32rem] md:h-[32rem] lg:h-[600px] lg:min-h-[560px] lg:max-h-[min(90vh,640px)]"
           >
-            <div className="relative w-full h-full">
+            <div className="relative h-full min-h-[inherit] w-full">
 
               {/* Main Image Card */}
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-[80%] h-[70%] rounded-3xl overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl"
+                className="absolute right-0 top-0 h-[62%] min-h-[11rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[65%] sm:min-h-[13rem] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
                 style={{ opacity }}
               >
                 <div className="relative w-full h-full">
@@ -176,33 +186,35 @@ export function HeroNew() {
               <motion.div
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-20 left-10 p-4 rounded-xl glass backdrop-blur-2xl border-zinc-700"
+                className="absolute left-2 top-10 z-[5] rounded-xl border border-zinc-700 bg-zinc-900/40 p-2.5 backdrop-blur-2xl sm:left-6 sm:top-16 sm:p-3 md:left-10 md:top-20 md:p-4"
                 style={{ opacity }}
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cartello-beige mb-1">5.0</div>
-                  <div className="text-xs text-zinc-400">⭐⭐⭐⭐⭐</div>
+                  <div className="text-lg font-bold text-cartello-beige sm:text-xl md:text-2xl">5.0</div>
+                  <div className="mt-0.5 text-[10px] leading-none text-zinc-400 sm:text-xs">⭐⭐⭐⭐⭐</div>
                 </div>
               </motion.div>
 
               {/* Stats Card */}
               <motion.div
-                animate={{ y: [0, 15, 0] }}
+                animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                className="absolute bottom-8 left-[60%] -translate-x-1/2 p-4 sm:p-5 md:p-6 rounded-2xl glass backdrop-blur-2xl border-zinc-700 shadow-2xl w-[90%] sm:w-auto max-w-sm"
+                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700 bg-zinc-900/50 px-2 py-2.5 shadow-2xl backdrop-blur-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
                 style={{ opacity: statsOpacity }}
               >
-                <div className="grid grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-1 min-[360px]:gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-10">
                   {[
                     { value: "700+", label: t("hero.clients") },
                     { value: "40+", label: t("hero.services") },
                     { value: "100%", label: t("hero.guarantee") },
                   ].map((stat, i) => (
-                    <div key={i} className="text-center min-w-0 flex flex-col items-center">
-                      <div className="text-xl sm:text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light mb-1 overflow-visible leading-none py-1">
+                    <div key={i} className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center">
+                      <div className="text-[clamp(1rem,4.2vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
                         {stat.value}
                       </div>
-                      <div className="text-[10px] sm:text-xs text-zinc-400 leading-tight">{stat.label}</div>
+                      <div className="mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -214,15 +226,16 @@ export function HeroNew() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator — safe-area снизу, не перекрывает контент */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+        className="absolute left-1/2 z-20 -translate-x-1/2 max-sm:bottom-[max(5.5rem,env(safe-area-inset-bottom,0px))] bottom-[max(2rem,env(safe-area-inset-bottom,0px))] sm:bottom-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
+        aria-hidden
       >
-        <div className="w-6 h-10 rounded-full border-2 border-zinc-700 flex justify-center p-2">
+        <div className="flex h-10 w-6 justify-center rounded-full border-2 border-zinc-700 p-2">
           <motion.div
-            className="w-1 h-2 bg-red-900 rounded-full"
+            className="h-2 w-1 rounded-full bg-red-900"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />

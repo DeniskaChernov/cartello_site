@@ -1,6 +1,7 @@
 import { Hono } from "npm:hono";
 import { cors } from "npm:hono/cors";
 import { logger } from "npm:hono/logger";
+import { getDb, pingDb, saveLead } from "./db.tsx";
 import { appendToSheet } from "./google-sheets.tsx";
 
 const app = new Hono();
@@ -33,19 +34,32 @@ app.use(
   }),
 );
 
-app.get("/health", (c) => {
-  return c.json({ status: "ok" });
+app.get("/health", async (c) => {
+  const payload: Record<string, unknown> = { status: "ok" };
+  if (getDb()) {
+    try {
+      await pingDb();
+      payload.database = "ok";
+    } catch (e) {
+      console.error("Database health check failed:", e);
+      payload.database = "error";
+    }
+  } else {
+    payload.database = "not_configured";
+  }
+  return c.json(payload);
 });
 
 app.post("/api/send-telegram", async (c) => {
   try {
     const body = await c.req.json();
-    const { name, phone, service, email, comment } = body as {
+    const { name, phone, service, email, comment, source } = body as {
       name?: string;
       phone?: string;
       service?: string;
       email?: string;
       comment?: string;
+      source?: string;
     };
 
     if (!name || !phone) {
@@ -103,6 +117,21 @@ ${extraLines}
       const errorText = await response.text();
       console.error("Telegram API error:", errorText);
       return c.json({ error: "Failed to send message" }, 500);
+    }
+
+    if (getDb()) {
+      try {
+        await saveLead({
+          name,
+          phone,
+          service,
+          email,
+          comment,
+          source,
+        });
+      } catch (dbErr) {
+        console.error("Failed to save lead to database (Telegram already sent):", dbErr);
+      }
     }
 
     return c.json({ success: true, message: "Заявка отправлена в Telegram" });

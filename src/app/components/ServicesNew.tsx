@@ -296,8 +296,10 @@ export function ServicesNew() {
               )}
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-3xl font-bold text-white mb-3 md:mb-2 leading-tight">{service.title}</h3>
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 w-full">
+                  <div className="min-h-[4rem] md:min-h-[4.5rem] flex flex-col justify-start mb-3 md:mb-2">
+                    <h3 className="text-3xl font-bold text-white leading-tight break-words">{service.title}</h3>
+                  </div>
                   <p className="text-zinc-300 mb-6 transition-all duration-300 max-md:opacity-100 max-md:max-h-none max-md:overflow-visible md:opacity-0 md:max-h-0 md:overflow-hidden md:mb-0 md:group-hover:opacity-100 md:group-hover:max-h-[12rem] md:group-hover:mb-6">
                     {service.description}
                   </p>
@@ -354,10 +356,9 @@ export function ServicesNew() {
                 </div>
               )}
 
-              {/* Content */}
-              <div className="relative flex-1 p-6 md:p-8 flex flex-col justify-between z-10">
-                {/* Top section - price or empty space */}
-                <div className="flex items-start justify-end min-h-[24px]">
+              {/* Content: цена сверху; заголовок + описание снизу. Область заголовка с min-height — первая строка названий на одном уровне в ряду */}
+              <div className="relative flex-1 p-6 md:p-8 flex flex-col z-10 min-h-0">
+                <div className="flex items-start justify-end min-h-[24px] shrink-0">
                   {!service.priceOnRequest && (
                     <span className="text-sm font-medium transition-colors text-zinc-500 group-hover:text-cartello-beige">
                       {service.price}
@@ -365,11 +366,12 @@ export function ServicesNew() {
                   )}
                 </div>
 
-                {/* Bottom section - always at the bottom */}
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 md:mb-2 group-hover:translate-x-1 transition-transform">
-                    {service.title}
-                  </h3>
+                <div className="mt-auto flex flex-col gap-3 pt-2">
+                  <div className="min-h-[4.5rem] sm:min-h-[5.25rem] md:min-h-[6rem] flex flex-col justify-start w-full">
+                    <h3 className="text-2xl font-bold text-white leading-tight break-words group-hover:translate-x-1 transition-transform">
+                      {service.title}
+                    </h3>
+                  </div>
                   <p className="text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 max-md:opacity-100 max-md:max-h-none md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover:opacity-100 md:group-hover:max-h-[16rem] md:group-hover:text-zinc-300">
                     {service.description}
                   </p>

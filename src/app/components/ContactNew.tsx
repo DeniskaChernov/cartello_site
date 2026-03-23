@@ -329,12 +329,12 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
                 </div>
               </div>
 
-              {/* Right - Photo */}
-              <div className="relative h-[280px] rounded-2xl overflow-hidden">
+              {/* Right - Photo — весь кадр без обрезки */}
+              <div className="relative h-[320px] sm:h-[360px] rounded-2xl overflow-hidden bg-zinc-950">
                 <img
                   src={SITE_IMAGES.contactBuilding}
                   alt="Cartello Detailing Center"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>

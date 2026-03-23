@@ -26,17 +26,9 @@ import {
   Smartphone,
   Palette,
   ShieldCheck,
-  GripVertical,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type DragEvent,
-} from "react";
-import { toast } from "sonner";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { BookingModal } from "./BookingModal";
 import { SITE_IMAGES } from "../../lib/siteImages";
@@ -70,32 +62,6 @@ type ServiceItem = {
   badge?: string;
   priceOnRequest?: boolean;
 };
-
-const LS_EDITOR_LOCKED = "cartello_services_editor_locked";
-
-/** Редактор включён по умолчанию. Полностью скрыть без смены кода: VITE_ENABLE_SERVICES_GRID_EDITOR=false */
-function isServicesGridEditorSuppressedByEnv(): boolean {
-  return import.meta.env.VITE_ENABLE_SERVICES_GRID_EDITOR === "false";
-}
-
-function isEditorLockedInBrowser(): boolean {
-  try {
-    return localStorage.getItem(LS_EDITOR_LOCKED) === "1";
-  } catch {
-    return false;
-  }
-}
-
-function downloadServicesOrderJson(order: string[]) {
-  const blob = new Blob([JSON.stringify({ order }, null, 2)], {
-    type: "application/json;charset=utf-8",
-  });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "services-order.json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
 
 export function ServicesNew() {
   const containerRef = useRef<HTMLElement>(null);
@@ -295,9 +261,6 @@ export function ServicesNew() {
   const [otherOrderIds, setOtherOrderIds] = useState<string[]>(() => [
     ...DEFAULT_OTHER_SERVICE_IDS,
   ]);
-  const dragFrom = useRef<number | null>(null);
-  const editorUnlocked =
-    !isServicesGridEditorSuppressedByEnv() && !isEditorLockedInBrowser();
 
   useEffect(() => {
     let cancelled = false;
@@ -325,50 +288,6 @@ export function ServicesNew() {
     otherServices,
     otherOrderIds,
   );
-
-  const handleDragStart = useCallback((index: number) => {
-    dragFrom.current = index;
-  }, []);
-
-  const handleDragOver = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
-  }, []);
-
-  const handleDrop = useCallback((toIndex: number) => {
-    const from = dragFrom.current;
-    dragFrom.current = null;
-    if (from === null || from === toIndex) return;
-    setOtherOrderIds((prev) => {
-      const next = [...prev];
-      const [item] = next.splice(from, 1);
-      next.splice(toIndex, 0, item);
-      return next;
-    });
-  }, []);
-
-  const handleDragEnd = useCallback(() => {
-    dragFrom.current = null;
-  }, []);
-
-  const handleSaveOrderFile = () => {
-    downloadServicesOrderJson(otherOrderIds);
-    toast.success(
-      "Файл services-order.json скачан. Положите его в папку public/ репозитория, закоммитьте и задеплойте.",
-    );
-  };
-
-  const handleLockEditor = () => {
-    try {
-      localStorage.setItem(LS_EDITOR_LOCKED, "1");
-    } catch {
-      /* ignore */
-    }
-    toast.success(
-      "Редактор скрыт в этом браузере. Чтобы отключить у всех без смены кода: VITE_ENABLE_SERVICES_GRID_EDITOR=false в сборке.",
-    );
-    setTimeout(() => window.location.reload(), 500);
-  };
 
   const openBooking = (service: ServiceItem) => {
     setSelectedService(service);
@@ -454,26 +373,11 @@ export function ServicesNew() {
           ))}
         </div>
 
-        {/* Остальные услуги: сетка 4 колонки; в режиме редактора — перетаскивание */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ${
-            editorUnlocked ? "relative rounded-2xl p-1 ring-2 ring-cartello-beige/40 ring-offset-2 ring-offset-zinc-950" : ""
-          }`}
-        >
+        {/* Остальные услуги: порядок из public/services-order.json, сетка 4 колонки */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {orderedOtherServices.map((service, index) => (
             <motion.div
               key={service.id}
-              layout={false}
-              draggable={editorUnlocked}
-              onDragStart={(e) => {
-                if (!editorUnlocked) return;
-                e.dataTransfer.effectAllowed = "move";
-                e.dataTransfer.setData("text/plain", service.id);
-                handleDragStart(index);
-              }}
-              onDragOver={editorUnlocked ? handleDragOver : undefined}
-              onDrop={() => editorUnlocked && handleDrop(index)}
-              onDragEnd={editorUnlocked ? handleDragEnd : undefined}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -482,31 +386,10 @@ export function ServicesNew() {
                 delay: index * 0.05,
                 ease: [0.21, 0.45, 0.27, 0.9],
               }}
-              whileHover={editorUnlocked ? undefined : { y: -5 }}
-              onClick={() => {
-                if (editorUnlocked) return;
-                openBooking(service);
-              }}
-              onDoubleClick={() => {
-                if (editorUnlocked) openBooking(service);
-              }}
-              className={`group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transition-all duration-500 min-h-[350px] flex flex-col ${
-                editorUnlocked
-                  ? "cursor-grab active:cursor-grabbing border-cartello-beige/30"
-                  : "hover:border-red-900/30 cursor-pointer"
-              }`}
+              whileHover={{ y: -5 }}
+              onClick={() => openBooking(service)}
+              className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 hover:border-red-900/30 transition-all duration-500 min-h-[350px] flex flex-col cursor-pointer"
             >
-              {editorUnlocked && (
-                <div
-                  className="absolute left-3 top-3 z-30 flex items-center gap-1 rounded-lg bg-black/70 px-2 py-1 text-cartello-beige pointer-events-none"
-                  aria-hidden
-                >
-                  <GripVertical className="h-4 w-4" />
-                  <span className="text-[10px] font-medium uppercase tracking-wide">
-                    {index + 1}
-                  </span>
-                </div>
-              )}
               <div className="absolute inset-0 opacity-[0.42] group-hover:opacity-50 transition-opacity duration-700">
                 <img
                   src={service.image}
@@ -550,31 +433,6 @@ export function ServicesNew() {
           ))}
         </div>
       </div>
-
-      {editorUnlocked && (
-        <div className="fixed bottom-6 left-1/2 z-[60] w-[min(100%-2rem,36rem)] -translate-x-1/2 rounded-2xl border border-cartello-beige/40 bg-zinc-950/95 px-4 py-3 shadow-2xl backdrop-blur-md">
-          <p className="mb-2 text-center text-xs text-zinc-400">
-            Редактор сетки услуг: перетащите карточки. Открыть заявку —{" "}
-            <span className="text-cartello-beige">двойной клик</span> по карточке.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <button
-              type="button"
-              onClick={handleSaveOrderFile}
-              className="rounded-xl bg-cartello-beige px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:opacity-90"
-            >
-              Скачать services-order.json
-            </button>
-            <button
-              type="button"
-              onClick={handleLockEditor}
-              className="rounded-xl border border-zinc-600 px-4 py-2 text-sm text-zinc-200 transition hover:bg-zinc-800"
-            >
-              Заблокировать редактор
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Booking Modal */}
       <BookingModal

@@ -73,8 +73,9 @@ type ServiceItem = {
 
 const LS_EDITOR_LOCKED = "cartello_services_editor_locked";
 
-function isServicesGridEditorEnabled(): boolean {
-  return import.meta.env.VITE_ENABLE_SERVICES_GRID_EDITOR === "true";
+/** Редактор включён по умолчанию. Полностью скрыть без смены кода: VITE_ENABLE_SERVICES_GRID_EDITOR=false */
+function isServicesGridEditorSuppressedByEnv(): boolean {
+  return import.meta.env.VITE_ENABLE_SERVICES_GRID_EDITOR === "false";
 }
 
 function isEditorLockedInBrowser(): boolean {
@@ -296,7 +297,7 @@ export function ServicesNew() {
   ]);
   const dragFrom = useRef<number | null>(null);
   const editorUnlocked =
-    isServicesGridEditorEnabled() && !isEditorLockedInBrowser();
+    !isServicesGridEditorSuppressedByEnv() && !isEditorLockedInBrowser();
 
   useEffect(() => {
     let cancelled = false;
@@ -364,7 +365,7 @@ export function ServicesNew() {
       /* ignore */
     }
     toast.success(
-      "Редактор отключён на этом устройстве. Уберите VITE_ENABLE_SERVICES_GRID_EDITOR при следующем деплое.",
+      "Редактор скрыт в этом браузере. Чтобы отключить у всех без смены кода: VITE_ENABLE_SERVICES_GRID_EDITOR=false в сборке.",
     );
     setTimeout(() => window.location.reload(), 500);
   };

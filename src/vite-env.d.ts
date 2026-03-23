@@ -5,7 +5,7 @@ interface ImportMetaEnv {
   readonly VITE_API_BASE_URL?: string;
   readonly VITE_LEAD_API_PATH?: string;
   readonly VITE_API_AUTH_TOKEN?: string;
-  /** true — показать drag-and-drop редактор порядка карточек услуг (после настройки уберите) */
+  /** По умолчанию редактор включён; задайте "false", чтобы скрыть без правки кода */
   readonly VITE_ENABLE_SERVICES_GRID_EDITOR?: string;
 }
 

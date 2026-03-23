@@ -1,0 +1,10 @@
+# Ускоряет любую Docker-сборку, если контекст случайно = весь репозиторий
+node_modules
+dist
+.git
+.env
+.env.*
+*.log
+.vscode
+.idea
+coverage

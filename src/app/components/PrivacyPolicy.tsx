@@ -376,22 +376,6 @@ export function PrivacyPolicy({ onClose }: PrivacyPolicyProps) {
           </button>
         </div>
 
-        <style>{`
-          .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(39, 39, 42, 0.3);
-            border-radius: 10px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #880000, #5a0000);
-            border-radius: 10px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #a01010, #880000);
-          }
-        `}</style>
       </motion.div>
     </motion.div>
   );

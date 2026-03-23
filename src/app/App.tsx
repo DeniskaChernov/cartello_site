@@ -1,9 +1,5 @@
+import { lazy, Suspense, useState } from "react";
 import { HeroNew } from "./components/HeroNew";
-import { ServicesNew } from "./components/ServicesNew";
-import { Benefits } from "./components/Benefits";
-import { MediaGallery } from "./components/MediaGallery";
-import { ContactNew } from "./components/ContactNew";
-import { FooterNew } from "./components/FooterNew";
 import { FloatingCTA } from "./components/FloatingCTA";
 import { Header } from "./components/Header";
 import { BackToTop } from "./components/BackToTop";
@@ -13,7 +9,14 @@ import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { CookieConsentProvider } from "./components/CookieConsent";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { Toaster } from "./components/ui/sonner";
-import { useState } from "react";
+
+const BelowFold = lazy(() =>
+  import("./components/BelowFold").then((m) => ({ default: m.BelowFold })),
+);
+
+function BelowFoldFallback() {
+  return <div className="min-h-[50vh] w-full bg-[#1c0a0a]" aria-hidden />;
+}
 
 export default function App() {
   const [showCookiePolicy, setShowCookiePolicy] = useState(false);
@@ -26,15 +29,13 @@ export default function App() {
         <div className="min-h-screen noise relative">
           <Header />
           <HeroNew />
-          <div style={{ backgroundColor: '#1c0a0a' }}>
-            <ServicesNew />
-            <Benefits />
-            <MediaGallery />
-            <ContactNew onOpenPrivacyPolicy={() => setShowPrivacyPolicy(true)} />
-            <FooterNew 
-              onOpenCookiePolicy={() => setShowCookiePolicy(true)}
-              onOpenPrivacyPolicy={() => setShowPrivacyPolicy(true)}
-            />
+          <div style={{ backgroundColor: "#1c0a0a" }} className="content-below-fold">
+            <Suspense fallback={<BelowFoldFallback />}>
+              <BelowFold
+                onOpenPrivacyPolicy={() => setShowPrivacyPolicy(true)}
+                onOpenCookiePolicy={() => setShowCookiePolicy(true)}
+              />
+            </Suspense>
           </div>
           <FloatingCTA />
           <BackToTop />

@@ -306,7 +306,7 @@ export function ServicesNew() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6"
           >
@@ -316,7 +316,7 @@ export function ServicesNew() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.2 }}
             className="text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg font-light leading-relaxed px-4"
           >
@@ -331,7 +331,7 @@ export function ServicesNew() {
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.2 }}
               onClick={() => openBooking(service)}
               className="group relative h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 cursor-pointer"
@@ -381,7 +381,7 @@ export function ServicesNew() {
               key={service.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, amount: 0.2, margin: "-50px" }}
               transition={{
                 duration: 0.5,
                 delay: index * 0.05,

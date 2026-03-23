@@ -145,7 +145,7 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
               3. Использование сторонних сервисов
             </h3>
             <p className="text-zinc-300 text-base leading-relaxed">
-              На сайте могут ��рименяться сторонние инструменты аналитики и рекламы, которые также используют cookies в соответствии со своими политиками конфиденциальности.
+              На сайте могут применяться сторонние инструменты аналитики и рекламы, которые также используют cookies в соответствии со своими политиками конфиденциальности.
             </p>
           </div>
 
@@ -182,7 +182,7 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
               5. Согласие пользователя
             </h3>
             <p className="text-zinc-300 text-base leading-relaxed">
-              Продолжая использовать сайт Cartello Group, пользователь подтверждает согласие на использование файлов cookies в соотв��тствии с настоящей Политикой.
+              Продолжая использовать сайт Cartello Group, пользователь подтверждает согласие на использование файлов cookies в соответствии с настоящей Политикой.
             </p>
           </div>
 
@@ -272,22 +272,6 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
           </button>
         </div>
 
-        <style>{`
-          .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(39, 39, 42, 0.3);
-            border-radius: 10px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #880000, #5a0000);
-            border-radius: 10px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #a01010, #880000);
-          }
-        `}</style>
       </motion.div>
     </motion.div>
   );

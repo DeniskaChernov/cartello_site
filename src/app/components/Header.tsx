@@ -3,6 +3,7 @@ import { Phone, Menu, X, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { SITE_IMAGES } from "../../lib/siteImages";
+import { useLightMotion } from "../../lib/useLightMotion";
 
 const logo = SITE_IMAGES.logoCompact;
 
@@ -12,6 +13,7 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("");
   const { scrollY } = useScroll();
   const headerOpacity = useTransform(scrollY, [0, 100], [0.8, 1]);
+  const lightMotion = useLightMotion();
   
   // Language hook
   const { language, setLanguage, t } = useLanguage();
@@ -62,7 +64,7 @@ export function Header() {
   return (
     <>
       <motion.header
-        style={{ opacity: headerOpacity }}
+        style={{ opacity: lightMotion ? 1 : headerOpacity }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-900 shadow-2xl"

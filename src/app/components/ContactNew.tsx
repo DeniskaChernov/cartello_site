@@ -75,7 +75,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="text-lg sm:text-xl text-zinc-400 px-4"
           >
             {t('contact.formSubtitle')}
@@ -87,7 +87,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-6 sm:p-8 md:p-10">
               <h3 className="text-2xl sm:text-3xl text-white mb-8 sm:mb-[62px] font-bold">
@@ -195,7 +195,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             {/* Quick Contact */}
             <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-10 h-full flex flex-col">
@@ -277,7 +277,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="mt-12 max-w-7xl mx-auto"
         >
           <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-10 overflow-hidden">

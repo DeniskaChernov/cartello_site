@@ -26,7 +26,7 @@ export function FooterNew({ onOpenCookiePolicy, onOpenPrivacyPolicy }: FooterNew
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <img 
                 src={logo} 
@@ -63,7 +63,7 @@ export function FooterNew({ onOpenCookiePolicy, onOpenPrivacyPolicy }: FooterNew
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.1 }}
             >
               <h4 className="text-white font-semibold mb-4">{t('footer.servicesTitle')}</h4>
@@ -94,7 +94,7 @@ export function FooterNew({ onOpenCookiePolicy, onOpenPrivacyPolicy }: FooterNew
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.2 }}
             >
               <h4 className="text-white font-semibold mb-4">{t('footer.contactTitle')}</h4>
@@ -132,7 +132,7 @@ export function FooterNew({ onOpenCookiePolicy, onOpenPrivacyPolicy }: FooterNew
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: 0.3 }}
             >
               <h4 className="text-white font-semibold mb-4">{t('footer.scheduleTitle')}</h4>
@@ -153,7 +153,7 @@ export function FooterNew({ onOpenCookiePolicy, onOpenPrivacyPolicy }: FooterNew
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="pt-8 border-t border-zinc-900"
         >
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500">

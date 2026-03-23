@@ -57,7 +57,7 @@ export function Benefits() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             className="mb-4"
           >
             <img 
@@ -69,7 +69,7 @@ export function Benefits() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.1 }}
             className="text-base sm:text-lg text-zinc-400 px-4"
           >
@@ -84,7 +84,7 @@ export function Benefits() {
               key={benefit.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
               className="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-red-900/30 transition-all duration-300"

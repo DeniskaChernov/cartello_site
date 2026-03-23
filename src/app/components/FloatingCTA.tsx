@@ -63,7 +63,7 @@ export function FloatingCTA() {
               }}
             >
               {/* Pulse Effect */}
-              <span className="absolute inset-0 rounded-full bg-red-900 animate-ping opacity-20"></span>
+              <span className="absolute inset-0 rounded-full bg-red-900 opacity-20 md:animate-ping" aria-hidden />
               
               {/* Content Container */}
               <div className="relative w-full h-full flex items-center justify-center">

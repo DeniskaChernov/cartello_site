@@ -3,6 +3,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { SITE_IMAGES } from "../../lib/siteImages";
+import { useLightMotion } from "../../lib/useLightMotion";
 
 const logo = SITE_IMAGES.logoWide;
 const polishingImage = SITE_IMAGES.polishing;
@@ -36,6 +37,7 @@ export function HeroNew() {
   const opacity = useTransform(scrollY, [0, 320, 720], [1, 0.45, 0]);
   /** Статистика остаётся читаемой: полная непрозрачность до ~600px прокрутки, затем плавное исчезновение */
   const statsOpacity = useTransform(scrollY, [0, 600, 1100], [1, 1, 0]);
+  const lightMotion = useLightMotion();
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -49,9 +51,16 @@ export function HeroNew() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 3000);
+    }, 5500);
     return () => clearInterval(timer);
   }, []);
+
+  /** Предзагрузка следующего кадра слайдера — меньше рывков при смене */
+  useEffect(() => {
+    const next = (currentSlide + 1) % heroSlides.length;
+    const img = new Image();
+    img.src = heroSlides[next];
+  }, [currentSlide]);
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -68,9 +77,9 @@ export function HeroNew() {
       {/* Background */}
       <div className="absolute inset-0 bg-black" />
 
-      {/* Animated Gradient Orbs — на мобильных без тяжёлого spring от курсора */}
+      {/* Орб за курсором — только md+, на телефоне убирает лишний слой и артефакты */}
       <motion.div
-        className="pointer-events-none absolute w-[min(100vw,800px)] h-[min(100vw,800px)] max-w-[800px] max-h-[800px] rounded-full blur-3xl opacity-20 md:opacity-26"
+        className="pointer-events-none hidden md:block absolute w-[min(100vw,800px)] h-[min(100vw,800px)] max-w-[800px] max-h-[800px] rounded-full blur-3xl opacity-20 md:opacity-26"
         style={{
           background: "radial-gradient(circle, #880000 0%, transparent 70%)",
           x: mousePosition.x - 400,
@@ -78,8 +87,8 @@ export function HeroNew() {
         }}
         transition={{ type: "spring", damping: 50, stiffness: 100 }}
       />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-red-900/20 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-red-800/20 to-transparent rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute top-0 right-0 hidden h-[min(100vw,600px)] w-[min(100vw,600px)] bg-gradient-to-br from-red-900/20 to-transparent blur-3xl md:block" />
+      <div className="pointer-events-none absolute bottom-0 left-0 hidden h-[min(100vw,500px)] w-[min(100vw,500px)] bg-gradient-to-tr from-red-800/20 to-transparent blur-3xl md:block" />
 
       {/* Main Content */}
       <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-[1400px] flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-10">
@@ -90,7 +99,7 @@ export function HeroNew() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            style={{ y: y1, opacity }}
+            style={{ y: lightMotion ? 0 : y1, opacity: lightMotion ? 1 : opacity }}
             className="mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
           >
             <motion.div
@@ -145,35 +154,42 @@ export function HeroNew() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side — карточка со слайдером (статистика вынесена под сетку) */}
+          {/* Right Side — слайдер + статистика внизу карточки (как в первой версии) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ y: y2 }}
-            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(65svh,22rem)] h-[min(65svh,22rem)] sm:min-h-[min(62svh,24rem)] sm:h-[min(62svh,24rem)] md:min-h-[28rem] md:h-[28rem] lg:h-[520px] lg:min-h-[500px] lg:max-h-[min(88vh,580px)]"
+            style={{ y: lightMotion ? 0 : y2 }}
+            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(72svh,26rem)] h-[min(72svh,26rem)] sm:min-h-[min(68svh,28rem)] sm:h-[min(68svh,28rem)] md:min-h-[32rem] md:h-[32rem] lg:h-[600px] lg:min-h-[560px] lg:max-h-[min(90vh,640px)]"
           >
             <div className="relative h-full min-h-[inherit] w-full">
 
               {/* Main Image Card */}
               <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute right-0 top-0 h-[68%] min-h-[12rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[70%] sm:min-h-[14rem] sm:max-w-none sm:rounded-3xl md:h-[72%] lg:h-[74%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
-                style={{ opacity }}
+                animate={lightMotion ? { y: 0 } : { y: [0, -20, 0] }}
+                transition={
+                  lightMotion
+                    ? { duration: 0 }
+                    : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                }
+                className="absolute right-0 top-0 h-[62%] min-h-[11rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[65%] sm:min-h-[13rem] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
+                style={{ opacity: lightMotion ? 1 : opacity }}
               >
                 <div className="relative w-full h-full">
-                  {/* Crossfade slider — no darkening */}
+                  {/* Crossfade slider — короче кроссфейд = меньше нагрузка на GPU */}
                   <AnimatePresence>
                     <motion.img
                       key={currentSlide}
                       src={heroSlides[currentSlide]}
                       alt="Cartello Detailing"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      sizes="(max-width: 1024px) min(88vw, 420px) 420px"
+                      decoding="async"
+                      fetchPriority={currentSlide === 0 ? "high" : "low"}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 1.2, ease: "easeInOut" }}
+                      transition={{ duration: 0.65, ease: "easeInOut" }}
                     />
                   </AnimatePresence>
 
@@ -184,10 +200,14 @@ export function HeroNew() {
 
               {/* Rating Badge */}
               <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                animate={lightMotion ? { y: 0 } : { y: [0, -15, 0] }}
+                transition={
+                  lightMotion
+                    ? { duration: 0 }
+                    : { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                }
                 className="absolute left-2 top-10 z-[5] rounded-xl border border-zinc-700 bg-zinc-900/40 p-2.5 backdrop-blur-2xl sm:left-6 sm:top-16 sm:p-3 md:left-10 md:top-20 md:p-4"
-                style={{ opacity }}
+                style={{ opacity: lightMotion ? 1 : opacity }}
               >
                 <div className="text-center">
                   <div className="text-lg font-bold text-cartello-beige sm:text-xl md:text-2xl">5.0</div>
@@ -195,49 +215,52 @@ export function HeroNew() {
                 </div>
               </motion.div>
 
+              {/* Stats — компактная плашка внизу правой колонки (изначальный вид) */}
+              <motion.div
+                animate={lightMotion ? { y: 0 } : { y: [0, 8, 0] }}
+                transition={
+                  lightMotion
+                    ? { duration: 0 }
+                    : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
+                }
+                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700 bg-zinc-900/50 px-2 py-2.5 shadow-2xl backdrop-blur-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
+                style={{ opacity: lightMotion ? 1 : statsOpacity }}
+              >
+                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-1 min-[360px]:gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-10">
+                  {[
+                    { value: "700+", label: t("hero.clients") },
+                    { value: "40+", label: t("hero.services") },
+                    { value: "100%", label: t("hero.guarantee") },
+                  ].map((stat, i) => (
+                    <div key={i} className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center">
+                      <div className="text-[clamp(1rem,4.2vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
+                        {stat.value}
+                      </div>
+                      <div className="mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 
         </div>
-
-        {/* Статистика — отдельная полоса по центру под колонками (как раньше) */}
-        <motion.div
-          className="mt-10 flex w-full justify-center px-2 sm:mt-12 lg:mt-14"
-          style={{ opacity: statsOpacity }}
-        >
-          <div className="w-full max-w-[min(100%,40rem)] rounded-full border border-zinc-600/80 bg-zinc-900/70 px-3 py-3 shadow-2xl backdrop-blur-xl sm:px-8 sm:py-4 md:max-w-3xl md:px-10 md:py-5">
-            <div className="grid w-full grid-cols-3 gap-x-2 sm:gap-x-6 md:gap-x-10">
-              {[
-                { value: "700+", label: t("hero.clients") },
-                { value: "40+", label: t("hero.services") },
-                { value: "100%", label: t("hero.guarantee") },
-              ].map((stat, i) => (
-                <div key={i} className="flex min-w-0 flex-col items-center justify-center text-center">
-                  <div className="text-[clamp(1.1rem,3.5vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1 text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:text-xs md:text-sm">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Scroll Indicator — safe-area снизу, не перекрывает контент */}
       <motion.div
         className="absolute left-1/2 z-20 -translate-x-1/2 max-sm:bottom-[max(5.5rem,env(safe-area-inset-bottom,0px))] bottom-[max(2rem,env(safe-area-inset-bottom,0px))] sm:bottom-10"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={lightMotion ? { y: 0 } : { y: [0, 10, 0] }}
+        transition={lightMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
         aria-hidden
       >
         <div className="flex h-10 w-6 justify-center rounded-full border-2 border-zinc-700 p-2">
           <motion.div
             className="h-2 w-1 rounded-full bg-red-900"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={lightMotion ? { y: 0 } : { y: [0, 12, 0] }}
+            transition={lightMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
           />
         </div>
       </motion.div>

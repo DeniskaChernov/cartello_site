@@ -198,7 +198,7 @@ interface SliderPositions {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: 0.1 }}
             className="text-lg sm:text-xl text-zinc-400 mb-8 px-4"
           >
@@ -230,7 +230,7 @@ interface SliderPositions {
                     key={reel.id}
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: index * 0.1 }}
                     className="relative flex-shrink-0 w-[240px] md:w-[280px]"
                     style={{ aspectRatio: "9/16" }}
@@ -332,7 +332,7 @@ interface SliderPositions {
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: index * 0.1 }}
                     className={`
                       relative group
@@ -403,7 +403,7 @@ interface SliderPositions {
                         <motion.div
                           initial={{ y: 20, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
-                          viewport={{ once: true }}
+                          viewport={{ once: true, amount: 0.2 }}
                           className="glass-dark backdrop-blur-xl rounded-2xl p-6 border-zinc-800"
                         >
                           <div className="flex items-start justify-between gap-4">
@@ -430,7 +430,7 @@ interface SliderPositions {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="mt-20 text-center"
               >
                 <div className="inline-block p-8 rounded-3xl glass border-zinc-800">

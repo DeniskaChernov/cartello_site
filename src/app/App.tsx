@@ -30,15 +30,17 @@ export default function App() {
         <div className="min-h-screen noise relative">
           <SeoHead />
           <Header />
-          <HeroNew />
-          <div style={{ backgroundColor: "#1c0a0a" }} className="content-below-fold">
-            <Suspense fallback={<BelowFoldFallback />}>
-              <BelowFold
-                onOpenPrivacyPolicy={() => setShowPrivacyPolicy(true)}
-                onOpenCookiePolicy={() => setShowCookiePolicy(true)}
-              />
-            </Suspense>
-          </div>
+          <main id="main-content">
+            <HeroNew />
+            <div style={{ backgroundColor: "#1c0a0a" }} className="content-below-fold">
+              <Suspense fallback={<BelowFoldFallback />}>
+                <BelowFold
+                  onOpenPrivacyPolicy={() => setShowPrivacyPolicy(true)}
+                  onOpenCookiePolicy={() => setShowCookiePolicy(true)}
+                />
+              </Suspense>
+            </div>
+          </main>
           <FloatingCTA />
           <BackToTop />
           <CookieBanner onOpenPolicy={() => setShowCookiePolicy(true)} />

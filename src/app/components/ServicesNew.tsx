@@ -340,16 +340,16 @@ export function ServicesNew() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.2 }}
               onClick={() => openBooking(service)}
-              className="group relative h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 cursor-pointer"
+              className="group relative isolate h-[500px] cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/10"
             >
               <img
                 src={service.image}
                 alt={service.title}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 h-full w-full transform-gpu object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80" />
               
               {/* Badge "Хит" */}
               {service.badge && (
@@ -362,18 +362,24 @@ export function ServicesNew() {
                 </div>
               )}
               
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 w-full">
-                  <div className="min-h-[4rem] md:min-h-[4.5rem] flex flex-col justify-start mb-3 md:mb-2">
-                    <h3 className="text-3xl font-bold text-white leading-tight break-words">{service.title}</h3>
+              <div className="absolute inset-0 flex flex-col justify-end p-8">
+                <div className="w-full translate-y-3 transition-transform duration-300 ease-out group-hover:translate-y-0">
+                  <div className="mb-3 flex min-h-[4rem] flex-col justify-start md:mb-2 md:min-h-[4.5rem]">
+                    <h3 className="break-words text-3xl font-bold leading-tight text-white">{service.title}</h3>
                   </div>
-                  <p className="text-zinc-300 mb-6 transition-all duration-300 max-md:opacity-100 max-md:max-h-none max-md:overflow-visible md:opacity-0 md:max-h-0 md:overflow-hidden md:mb-0 md:group-hover:opacity-100 md:group-hover:max-h-[12rem] md:group-hover:mb-6">
-                    {service.description}
-                  </p>
-                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                  {/* 0fr→1fr вместо max-height — без постоянного пересчёта layout при hover */}
+                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
+                    <div className="min-h-0 overflow-hidden pb-4">
+                      <p className="text-zinc-300">{service.description}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-white/10 pt-6">
                     <span className="text-lg font-semibold text-cartello-beige">{service.price}</span>
-                    <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-                      <ArrowRight className="w-5 h-5" />
+                    <button
+                      type="button"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 group-hover:bg-white group-hover:text-black"
+                    >
+                      <ArrowRight className="h-5 w-5" />
                     </button>
                   </div>
                 </div>
@@ -395,24 +401,23 @@ export function ServicesNew() {
                 delay: index * 0.05,
                 ease: [0.21, 0.45, 0.27, 0.9],
               }}
-              whileHover={{ y: -5 }}
               onClick={() => openBooking(service)}
-              className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 hover:border-red-900/30 transition-all duration-500 min-h-[350px] flex flex-col cursor-pointer"
+              className="group relative isolate flex min-h-[350px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30"
             >
-              <div className="absolute inset-0 opacity-[0.42] group-hover:opacity-50 transition-opacity duration-700">
+              <div className="absolute inset-0 opacity-[0.42] transition-opacity duration-300 group-hover:opacity-50">
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover grayscale"
+                  className="h-full w-full object-cover grayscale"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
               </div>
 
               {service.priceOnRequest && (
                 <div className="absolute top-4 right-4 z-20">
-                  <div className="bg-zinc-900/80 border border-cartello-beige/40 px-2.5 py-1 rounded-lg backdrop-blur-sm">
+                  <div className="rounded-lg border border-cartello-beige/40 bg-zinc-900/95 px-2.5 py-1">
                     <span className="text-cartello-beige font-medium text-[10px] tracking-wider uppercase">
                       {t("services.badgeOnRequest")}
                     </span>
@@ -430,14 +435,18 @@ export function ServicesNew() {
                 </div>
 
                 <div className="mt-auto flex flex-col gap-3 pt-2">
-                  <div className="min-h-[4.5rem] sm:min-h-[5.25rem] md:min-h-[6rem] flex flex-col justify-start w-full">
-                    <h3 className="text-2xl font-bold text-white leading-tight break-words group-hover:translate-x-1 transition-transform">
+                  <div className="flex min-h-[4.5rem] w-full flex-col justify-start sm:min-h-[5.25rem] md:min-h-[6rem]">
+                    <h3 className="break-words text-2xl font-bold leading-tight text-white transition-transform duration-200 group-hover:translate-x-1">
                       {service.title}
                     </h3>
                   </div>
-                  <p className="text-zinc-400 leading-relaxed text-sm md:text-base transition-all duration-300 max-md:opacity-100 max-md:max-h-none md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover:opacity-100 md:group-hover:max-h-[16rem] md:group-hover:text-zinc-300">
-                    {service.description}
-                  </p>
+                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
+                    <div className="min-h-0 overflow-hidden pb-1">
+                      <p className="text-sm leading-relaxed text-zinc-400 transition-colors duration-200 md:text-base md:group-hover:text-zinc-300">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

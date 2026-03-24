@@ -121,9 +121,9 @@ export function HeroNew() {
               transition={{ delay: 0.6 }}
               className="mb-6 space-y-3 sm:mb-8 sm:space-y-4"
             >
-              <p className="text-balance text-center text-lg font-light leading-snug text-zinc-300 sm:text-left sm:text-xl md:text-2xl lg:text-3xl">
+              <h1 className="text-balance text-center text-lg font-light leading-snug text-zinc-300 sm:text-left sm:text-xl md:text-2xl lg:text-3xl">
                 {t("hero.title")}
-              </p>
+              </h1>
             </motion.div>
 
             <motion.div
@@ -135,13 +135,13 @@ export function HeroNew() {
               <button
                 type="button"
                 onClick={scrollToContact}
-                className="group relative min-h-[48px] w-full rounded-2xl bg-gradient-to-r from-red-900 to-red-800 px-6 py-3.5 text-base font-semibold text-white shadow-2xl shadow-red-900/30 transition-all duration-300 hover:shadow-red-900/50 sm:w-auto sm:px-8 sm:py-4"
+                className="group relative min-h-[48px] w-full appearance-none overflow-hidden rounded-2xl bg-gradient-to-r from-red-900 to-red-800 px-6 py-3.5 text-base font-semibold text-white shadow-2xl shadow-red-900/30 transition-[box-shadow] duration-300 hover:shadow-red-900/50 sm:w-auto sm:px-8 sm:py-4"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {t("hero.bookNow")}
                   <ArrowRight className="h-5 w-5 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-800 to-red-700 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-800 to-red-700 opacity-0 transition-opacity group-hover:opacity-100" />
               </button>
 
               <a
@@ -162,9 +162,8 @@ export function HeroNew() {
             style={{ y: lightMotion ? 0 : y2 }}
             className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(72svh,26rem)] h-[min(72svh,26rem)] sm:min-h-[min(68svh,28rem)] sm:h-[min(68svh,28rem)] md:min-h-[32rem] md:h-[32rem] lg:h-[600px] lg:min-h-[560px] lg:max-h-[min(90vh,640px)]"
           >
-            <div className="relative h-full min-h-[inherit] w-full">
-
-              {/* Main Image Card */}
+            <div className="flex h-full min-h-[inherit] w-full flex-col items-end">
+              {/* Карточка слайдера + сразу под ней статистика (не прижата к низу колонки) */}
               <motion.div
                 animate={lightMotion ? { y: 0 } : { y: [0, -20, 0] }}
                 transition={
@@ -172,11 +171,10 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 6, repeat: Infinity, ease: "easeInOut" }
                 }
-                className="absolute right-0 top-0 h-[62%] min-h-[11rem] w-[88%] max-w-[420px] rounded-2xl sm:h-[65%] sm:min-h-[13rem] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%] overflow-hidden glass-dark border-zinc-800 bg-zinc-900 shadow-2xl sm:w-[80%]"
+                className="relative h-[62%] min-h-[11rem] w-[88%] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border-zinc-800 bg-zinc-900 shadow-2xl glass-dark sm:h-[65%] sm:min-h-[13rem] sm:w-[80%] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%]"
                 style={{ opacity: lightMotion ? 1 : opacity }}
               >
-                <div className="relative w-full h-full">
-                  {/* Crossfade slider — короче кроссфейд = меньше нагрузка на GPU */}
+                <div className="relative h-full w-full">
                   <AnimatePresence>
                     <motion.img
                       key={currentSlide}
@@ -192,30 +190,26 @@ export function HeroNew() {
                       transition={{ duration: 0.65, ease: "easeInOut" }}
                     />
                   </AnimatePresence>
-
-                  {/* Subtle overlay */}
                   <div className="absolute inset-0 bg-black/20" />
                 </div>
+
+                <motion.div
+                  animate={lightMotion ? { y: 0 } : { y: [0, -15, 0] }}
+                  transition={
+                    lightMotion
+                      ? { duration: 0 }
+                      : { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                  }
+                  className="absolute left-2 top-10 z-[5] rounded-xl border border-zinc-700 bg-zinc-900/40 p-2.5 backdrop-blur-2xl sm:left-6 sm:top-16 sm:p-3 md:left-10 md:top-20 md:p-4"
+                  style={{ opacity: lightMotion ? 1 : opacity }}
+                >
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-cartello-beige sm:text-xl md:text-2xl">5.0</div>
+                    <div className="mt-0.5 text-[10px] leading-none text-zinc-400 sm:text-xs">⭐⭐⭐⭐⭐</div>
+                  </div>
+                </motion.div>
               </motion.div>
 
-              {/* Rating Badge */}
-              <motion.div
-                animate={lightMotion ? { y: 0 } : { y: [0, -15, 0] }}
-                transition={
-                  lightMotion
-                    ? { duration: 0 }
-                    : { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }
-                }
-                className="absolute left-2 top-10 z-[5] rounded-xl border border-zinc-700 bg-zinc-900/40 p-2.5 backdrop-blur-2xl sm:left-6 sm:top-16 sm:p-3 md:left-10 md:top-20 md:p-4"
-                style={{ opacity: lightMotion ? 1 : opacity }}
-              >
-                <div className="text-center">
-                  <div className="text-lg font-bold text-cartello-beige sm:text-xl md:text-2xl">5.0</div>
-                  <div className="mt-0.5 text-[10px] leading-none text-zinc-400 sm:text-xs">⭐⭐⭐⭐⭐</div>
-                </div>
-              </motion.div>
-
-              {/* Stats — та же ширина и привязка, что у карточки фото (right + w), чтобы ряд был по центру под слайдером */}
               <motion.div
                 animate={lightMotion ? { y: 0 } : { y: [0, 8, 0] }}
                 transition={
@@ -223,21 +217,21 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }
-                className="absolute right-0 bottom-2 z-10 w-[88%] max-w-[420px] bg-transparent px-2 py-1.5 sm:bottom-4 sm:w-[80%] sm:max-w-none sm:px-3 sm:py-2 md:bottom-6 md:px-4 md:py-2 lg:bottom-8 lg:px-5"
+                className="z-10 mt-3 w-[88%] max-w-[420px] shrink-0 bg-transparent px-1 py-1 sm:mt-4 sm:w-[80%] sm:max-w-none sm:px-2 sm:py-1.5 md:mt-5 md:px-3 md:py-2 lg:mt-6"
                 style={{ opacity: lightMotion ? 1 : statsOpacity }}
               >
-                <div className="flex w-full flex-nowrap items-start justify-center gap-x-2 min-[360px]:gap-x-2.5 sm:gap-x-3 md:gap-x-4">
+                <div className="flex w-full flex-nowrap items-start justify-center gap-x-3 min-[360px]:gap-x-4 sm:gap-x-5 md:gap-x-6">
                   {[
                     { value: "700+", label: t("hero.clients") },
                     { value: "40+", label: t("hero.services") },
                     { value: "100%", label: t("hero.guarantee") },
                   ].map((stat, i) => (
-                    <div key={i} className="flex min-w-0 shrink flex-col items-center justify-center px-0.5 text-center">
-                      <div className="text-[clamp(0.75rem,3vw,1.25rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-lg md:text-xl">
+                    <div key={i} className="flex min-w-0 shrink flex-col items-center justify-center px-1 text-center">
+                      <div className="bg-gradient-to-r from-cartello-beige to-cartello-beige-light bg-clip-text text-[clamp(1rem,4.2vw,1.65rem)] font-bold leading-none text-transparent sm:text-2xl md:text-[1.75rem] lg:text-3xl">
                         {stat.value}
                       </div>
                       <div
-                        className="hero-stat-label mt-0.5 max-w-[10rem] text-[8px] leading-tight text-zinc-400 min-[360px]:text-[9px] sm:mt-1 sm:max-w-none sm:text-[10px] md:text-xs"
+                        className="hero-stat-label mt-1 max-w-[11rem] text-[10px] leading-tight text-zinc-400 min-[360px]:text-[11px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm"
                         lang="ru"
                       >
                         {stat.label}

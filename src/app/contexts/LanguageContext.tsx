@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type Language = 'ru' | 'uz';
 
@@ -25,6 +25,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     
     return value || key;
   };
+
+  useEffect(() => {
+    document.documentElement.lang = language === 'uz' ? 'uz' : 'ru';
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

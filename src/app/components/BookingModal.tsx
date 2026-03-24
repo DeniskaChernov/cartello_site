@@ -88,13 +88,13 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
           />
 
           {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain p-4 pt-8 sm:pt-12 md:items-center md:pt-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-lg bg-zinc-900 border border-white/10 rounded-[2.5rem] p-8 shadow-2xl"
+              className="relative my-auto max-h-[min(90dvh,900px)] w-full max-w-lg overflow-y-auto overscroll-contain rounded-[2.5rem] border border-white/10 bg-zinc-900 p-8 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -160,7 +160,7 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-gradient-to-r from-cartello-red to-red-800 hover:from-cartello-red/90 hover:to-red-800/90 text-white font-semibold rounded-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full appearance-none overflow-hidden rounded-2xl bg-gradient-to-r from-cartello-red to-red-800 py-4 font-semibold text-white transition-colors hover:from-red-800 hover:to-red-900 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? t('bookingModal.sending') : t('bookingModal.send')}
                 </button>
@@ -169,16 +169,18 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
               {/* Action Buttons */}
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
                 <button
+                  type="button"
                   onClick={handleCall}
-                  className="flex items-center justify-center gap-3 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/30 rounded-2xl text-white font-semibold transition-all group"
+                  className="group flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 py-4 font-semibold text-white transition-colors hover:border-green-500/30 hover:bg-white/10"
                 >
                   <Phone className="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" />
                   {t('bookingModal.call')}
                 </button>
 
                 <button
+                  type="button"
                   onClick={handleTelegram}
-                  className="flex items-center justify-center gap-3 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/30 rounded-2xl text-white font-semibold transition-all group"
+                  className="group flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 py-4 font-semibold text-white transition-colors hover:border-blue-400/30 hover:bg-white/10"
                 >
                   <Send className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
                   {t('bookingModal.telegram')}

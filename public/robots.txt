@@ -1,0 +1,5 @@
+# https://cartello.uz — при другом домене замените URL в Sitemap и после деплоя добавьте ресурс в Google Search Console
+User-agent: *
+Allow: /
+
+Sitemap: https://cartello.uz/sitemap.xml

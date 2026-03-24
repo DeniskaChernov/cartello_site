@@ -223,21 +223,21 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }
-                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700/90 bg-zinc-950 px-2 py-2.5 shadow-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
+                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 bg-transparent px-2 py-1.5 sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3 sm:py-2 md:bottom-6 md:max-w-lg md:px-4 md:py-2 lg:bottom-8 lg:max-w-xl lg:px-5"
                 style={{ opacity: lightMotion ? 1 : statsOpacity }}
               >
-                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-1 min-[360px]:gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-10">
+                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-0.5 min-[360px]:gap-x-2 sm:gap-x-3 md:gap-x-5 lg:gap-x-8">
                   {[
                     { value: "700+", label: t("hero.clients") },
                     { value: "40+", label: t("hero.services") },
                     { value: "100%", label: t("hero.guarantee") },
                   ].map((stat, i) => (
                     <div key={i} className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center">
-                      <div className="text-[clamp(1rem,4.2vw,1.875rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-2xl md:text-3xl">
+                      <div className="text-[clamp(0.75rem,3vw,1.25rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-lg md:text-xl">
                         {stat.value}
                       </div>
                       <div
-                        className="hero-stat-label mt-1 max-w-[10rem] text-[9px] leading-tight text-zinc-400 min-[360px]:text-[10px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm"
+                        className="hero-stat-label mt-0.5 max-w-[10rem] text-[8px] leading-tight text-zinc-400 min-[360px]:text-[9px] sm:mt-1 sm:max-w-none sm:text-[10px] md:text-xs"
                         lang="ru"
                       >
                         {stat.label}

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from "react";
+import { SeoHead } from "./components/SeoHead";
 import { HeroNew } from "./components/HeroNew";
 import { FloatingCTA } from "./components/FloatingCTA";
 import { Header } from "./components/Header";
@@ -27,6 +28,7 @@ export default function App() {
       <CookieConsentProvider>
         {/* Main App Container */}
         <div className="min-h-screen noise relative">
+          <SeoHead />
           <Header />
           <HeroNew />
           <div style={{ backgroundColor: "#1c0a0a" }} className="content-below-fold">

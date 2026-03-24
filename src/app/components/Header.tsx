@@ -75,11 +75,21 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <motion.button
+              type="button"
               onClick={scrollToTop}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center cursor-pointer group"
+              aria-label={t("header.logoAria")}
             >
+              <img
+                src={logo}
+                alt=""
+                width={140}
+                height={40}
+                className="h-9 w-auto max-w-[140px] object-contain sm:h-10"
+                decoding="async"
+              />
             </motion.button>
 
             {/* Desktop Navigation */}

@@ -57,7 +57,8 @@ const translations = {
       services: 'Услуги',
       gallery: 'Галерея',
       contact: 'Контакты',
-      phone: '95 835 01 10'
+      phone: '95 835 01 10',
+      logoAria: 'Cartello — на главную',
     },
     hero: {
       title: 'Ваш надёжный детейлинг-центр',
@@ -425,7 +426,8 @@ const translations = {
       services: 'Xizmatlar',
       gallery: 'Galereya',
       contact: 'Aloqa',
-      phone: '95 835 01 10'
+      phone: '95 835 01 10',
+      logoAria: 'Cartello — bosh sahifaga',
     },
     hero: {
       title: 'Ishonchli deteyling markazingiz',

@@ -280,14 +280,14 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           viewport={{ once: true, amount: 0.2 }}
           className="mt-12 max-w-7xl mx-auto"
         >
-          <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-10 overflow-hidden">
-            <h3 className="text-2xl text-white mb-8 font-bold">
+          <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-6 sm:p-8 md:p-10 overflow-hidden">
+            <h3 className="text-xl sm:text-2xl text-white mb-6 sm:mb-8 font-bold">
               {t('contact.addressTitle')}
             </h3>
             
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:items-start">
               {/* Left - Address & Hours */}
-              <div className="flex min-h-0 flex-col justify-center space-y-8 lg:min-h-[360px] lg:py-2">
+              <div className="flex min-h-0 flex-col justify-center space-y-6 sm:space-y-8 lg:min-h-[360px] lg:py-2">
                 <a
                   href="https://yandex.uz/maps/10335/tashkent/?ll=69.306111%2C41.287925&mode=poi&poi%5Bpoint%5D=69.306121%2C41.288030&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D4770057567&z=20.65"
                   target="_blank"
@@ -329,14 +329,15 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
                 </div>
               </div>
 
-              {/* Right — фиксированная высота окна; фото по центру без смещения (object-contain + flex) */}
-              <div className="relative flex h-[320px] w-full shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-zinc-950 sm:h-[360px]">
+              {/* Фото фасада: на мобильных — aspect-ratio + cover, без «пустой рамки» как при object-contain */}
+              <div className="relative w-full min-h-0 shrink-0 overflow-hidden rounded-2xl bg-zinc-950 aspect-[5/4] sm:aspect-[16/10] lg:aspect-auto lg:h-[360px] lg:min-h-[320px]">
                 <img
                   src={SITE_IMAGES.contactBuilding}
-                  alt="Cartello Detailing Center"
-                  className="max-h-full max-w-full object-contain object-center"
-                  style={{ objectPosition: "center center" }}
+                  alt={t('contact.facadePhotoAlt')}
+                  className="h-full w-full object-cover object-[center_32%]"
+                  loading="lazy"
                   decoding="async"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/45 to-transparent" />
               </div>

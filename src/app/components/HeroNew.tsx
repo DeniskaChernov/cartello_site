@@ -215,7 +215,7 @@ export function HeroNew() {
                 </div>
               </motion.div>
 
-              {/* Stats — компактная плашка внизу правой колонки (изначальный вид) */}
+              {/* Stats — та же ширина и привязка, что у карточки фото (right + w), чтобы ряд был по центру под слайдером */}
               <motion.div
                 animate={lightMotion ? { y: 0 } : { y: [0, 8, 0] }}
                 transition={
@@ -223,16 +223,16 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }
-                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 bg-transparent px-2 py-1.5 sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3 sm:py-2 md:bottom-6 md:max-w-lg md:px-4 md:py-2 lg:bottom-8 lg:max-w-xl lg:px-5"
+                className="absolute right-0 bottom-2 z-10 w-[88%] max-w-[420px] bg-transparent px-2 py-1.5 sm:bottom-4 sm:w-[80%] sm:max-w-none sm:px-3 sm:py-2 md:bottom-6 md:px-4 md:py-2 lg:bottom-8 lg:px-5"
                 style={{ opacity: lightMotion ? 1 : statsOpacity }}
               >
-                <div className="grid w-full grid-cols-3 gap-x-1 gap-y-0.5 min-[360px]:gap-x-2 sm:gap-x-3 md:gap-x-5 lg:gap-x-8">
+                <div className="flex w-full flex-nowrap items-start justify-center gap-x-2 min-[360px]:gap-x-2.5 sm:gap-x-3 md:gap-x-4">
                   {[
                     { value: "700+", label: t("hero.clients") },
                     { value: "40+", label: t("hero.services") },
                     { value: "100%", label: t("hero.guarantee") },
                   ].map((stat, i) => (
-                    <div key={i} className="flex min-w-0 flex-col items-center justify-center px-0.5 text-center">
+                    <div key={i} className="flex min-w-0 shrink flex-col items-center justify-center px-0.5 text-center">
                       <div className="text-[clamp(0.75rem,3vw,1.25rem)] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige to-cartello-beige-light sm:text-lg md:text-xl">
                         {stat.value}
                       </div>

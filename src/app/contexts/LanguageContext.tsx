@@ -347,6 +347,7 @@ const translations = {
       schedule: 'График работы',
       scheduleValue: 'Пн-Сб: 10:00 - 19:00',
       scheduleValue2: 'Воскресенье - выходной',
+      facadePhotoAlt: 'Фасад Cartello Detailing Centre в Ташкенте',
       
       successTitle: 'Заявка отправлена!',
       successMessage: 'Мы свяжемся с вами в течение 5 минут',
@@ -716,6 +717,7 @@ const translations = {
       schedule: 'Ish tartibi',
       scheduleValue: 'Du-Sha: 10:00 - 19:00',
       scheduleValue2: 'Yakshanba - dam olish',
+      facadePhotoAlt: 'Toshkentdagi Cartello Detailing Centre fasadi',
       
       successTitle: 'Ariza yuborildi!',
       successMessage: 'Biz 5 daqiqa ichida siz bilan bog\'lanamiz',

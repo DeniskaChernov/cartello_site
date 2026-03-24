@@ -223,7 +223,7 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
                 }
-                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700 bg-zinc-900/50 px-2 py-2.5 shadow-2xl backdrop-blur-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
+                className="absolute bottom-2 left-1/2 z-10 w-[min(calc(100vw-2rem),24rem)] -translate-x-1/2 rounded-2xl border border-zinc-700/90 bg-zinc-950 px-2 py-2.5 shadow-2xl sm:bottom-4 sm:w-[min(calc(100%-0.5rem),26rem)] sm:px-3.5 sm:py-3.5 md:bottom-6 md:max-w-lg md:px-5 md:py-4 lg:bottom-8 lg:max-w-xl lg:px-6"
                 style={{ opacity: lightMotion ? 1 : statsOpacity }}
               >
                 <div className="grid w-full grid-cols-3 gap-x-1 gap-y-1 min-[360px]:gap-x-2 sm:gap-x-4 md:gap-x-6 lg:gap-x-10">

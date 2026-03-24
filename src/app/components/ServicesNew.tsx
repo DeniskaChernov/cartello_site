@@ -32,7 +32,6 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { BookingModal } from "./BookingModal";
 import { SITE_IMAGES } from "../../lib/siteImages";
-import { SERVICE_STOCK_PHOTOS } from "../../lib/serviceStockPhotos";
 import {
   DEFAULT_OTHER_SERVICE_IDS,
   mergeOrderWithKnownIds,
@@ -51,6 +50,13 @@ const undercarriageImage = SITE_IMAGES.undercarriage;
 const pdrImage = SITE_IMAGES.pdr;
 const detailingWashImage = SITE_IMAGES.detailingWash;
 const windshieldImage = SITE_IMAGES.windshield;
+const serviceSoundproofingImage = SITE_IMAGES.serviceSoundproofing;
+const serviceInteriorCeramicImage = SITE_IMAGES.serviceInteriorCeramic;
+const serviceEvRepairImage = SITE_IMAGES.serviceEvRepair;
+const serviceAudioInstallImage = SITE_IMAGES.serviceAudioInstall;
+const serviceBodyworkImage = SITE_IMAGES.serviceBodywork;
+const servicePlasticProtectionImage = SITE_IMAGES.servicePlasticProtection;
+const serviceAtelierImage = SITE_IMAGES.serviceAtelier;
 
 type ServiceItem = {
   id: string;
@@ -132,7 +138,7 @@ export function ServicesNew() {
       description: t("services.soundproofingDesc"),
       price: t("services.soundproofingPrice"),
       icon: VolumeX,
-      image: SERVICE_STOCK_PHOTOS.soundproofing,
+      image: serviceSoundproofingImage,
       featured: false,
     },
     {
@@ -150,7 +156,7 @@ export function ServicesNew() {
       description: t("services.interiorCeramicDesc"),
       price: t("services.interiorCeramicPrice"),
       icon: ShieldCheck,
-      image: SERVICE_STOCK_PHOTOS.interiorCeramic,
+      image: serviceInteriorCeramicImage,
       featured: false,
       priceOnRequest: false,
     },
@@ -200,7 +206,7 @@ export function ServicesNew() {
       description: t("services.evRepairDesc"),
       price: t("services.priceOnRequest"),
       icon: Battery,
-      image: SERVICE_STOCK_PHOTOS.evRepair,
+      image: serviceEvRepairImage,
       featured: false,
       priceOnRequest: true,
     },
@@ -210,7 +216,7 @@ export function ServicesNew() {
       description: t("services.audioInstallDesc"),
       price: t("services.priceOnRequest"),
       icon: Radio,
-      image: SERVICE_STOCK_PHOTOS.audioInstall,
+      image: serviceAudioInstallImage,
       featured: false,
       priceOnRequest: true,
     },
@@ -220,7 +226,7 @@ export function ServicesNew() {
       description: t("services.bodyworkDesc"),
       price: t("services.priceOnRequest"),
       icon: Paintbrush,
-      image: SERVICE_STOCK_PHOTOS.bodywork,
+      image: serviceBodyworkImage,
       featured: false,
       priceOnRequest: true,
     },
@@ -240,7 +246,7 @@ export function ServicesNew() {
       description: t("services.plasticProtectionDesc"),
       price: t("services.priceOnRequest"),
       icon: Smartphone,
-      image: SERVICE_STOCK_PHOTOS.plasticProtection,
+      image: servicePlasticProtectionImage,
       featured: false,
       priceOnRequest: true,
     },
@@ -250,7 +256,7 @@ export function ServicesNew() {
       description: t("services.atelierServiceDesc"),
       price: t("services.priceOnRequest"),
       icon: Shirt,
-      image: SERVICE_STOCK_PHOTOS.atelier,
+      image: serviceAtelierImage,
       featured: false,
       priceOnRequest: true,
     },

@@ -18,6 +18,13 @@ import videoReel2 from "../assets/video-reel-2.png";
 import videoReel3 from "../assets/video-reel-3.png";
 import videoReel4 from "../assets/video-reel-4.png";
 import videoReel5 from "../assets/video-reel-5.png";
+import serviceAtelier from "../assets/service-atelier.png";
+import serviceBodywork from "../assets/service-bodywork.png";
+import serviceEvRepair from "../assets/service-ev-repair.png";
+import servicePlasticProtection from "../assets/service-plastic-protection.png";
+import serviceAudioInstall from "../assets/service-audio-install.png";
+import serviceInteriorCeramic from "../assets/service-interior-ceramic.png";
+import serviceSoundproofing from "../assets/service-soundproofing.png";
 
 /** Локальные изображения лендинга (src/assets). */
 export const SITE_IMAGES = {
@@ -41,4 +48,11 @@ export const SITE_IMAGES = {
   videoReel3,
   videoReel4,
   videoReel5,
+  serviceAtelier,
+  serviceBodywork,
+  serviceEvRepair,
+  servicePlasticProtection,
+  serviceAudioInstall,
+  serviceInteriorCeramic,
+  serviceSoundproofing,
 } as const;

@@ -160,9 +160,9 @@ export function HeroNew() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ y: lightMotion ? 0 : y2 }}
-            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:mx-0 min-h-[min(72svh,26rem)] h-[min(72svh,26rem)] sm:min-h-[min(68svh,28rem)] sm:h-[min(68svh,28rem)] md:min-h-[32rem] md:h-[32rem] lg:h-[600px] lg:min-h-[560px] lg:max-h-[min(90vh,640px)]"
+            className="relative mx-auto w-full max-w-lg min-h-0 lg:max-w-none lg:mx-0 lg:min-h-[min(560px,90vh)] lg:max-h-[min(90vh,640px)]"
           >
-            <div className="flex h-full min-h-[inherit] w-full flex-col items-end">
+            <div className="flex min-h-0 w-full flex-col items-end gap-4 sm:gap-5 md:gap-6 lg:h-full lg:min-h-[560px]">
               {/* Карточка слайдера + сразу под ней статистика (не прижата к низу колонки) */}
               <motion.div
                 animate={lightMotion ? { y: 0 } : { y: [0, -20, 0] }}
@@ -171,7 +171,7 @@ export function HeroNew() {
                     ? { duration: 0 }
                     : { duration: 6, repeat: Infinity, ease: "easeInOut" }
                 }
-                className="relative h-[62%] min-h-[11rem] w-[88%] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border-zinc-800 bg-zinc-900 shadow-2xl glass-dark sm:h-[65%] sm:min-h-[13rem] sm:w-[80%] sm:max-w-none sm:rounded-3xl md:h-[68%] lg:h-[70%]"
+                className="relative aspect-[4/3] min-h-[11rem] w-[88%] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border-zinc-800 bg-zinc-900 shadow-2xl glass-dark sm:min-h-[13rem] sm:w-[80%] sm:max-w-none sm:rounded-3xl md:aspect-[16/10] lg:aspect-auto lg:h-[min(52vh,420px)] lg:min-h-[280px] lg:max-h-[70%]"
                 style={{ opacity: lightMotion ? 1 : opacity }}
               >
                 <div className="relative h-full w-full">
@@ -211,13 +211,7 @@ export function HeroNew() {
               </motion.div>
 
               <motion.div
-                animate={lightMotion ? { y: 0 } : { y: [0, 8, 0] }}
-                transition={
-                  lightMotion
-                    ? { duration: 0 }
-                    : { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
-                }
-                className="z-10 mt-3 w-[88%] max-w-[420px] shrink-0 bg-transparent px-1 py-1 sm:mt-4 sm:w-[80%] sm:max-w-none sm:px-2 sm:py-1.5 md:mt-5 md:px-3 md:py-2 lg:mt-6"
+                className="relative z-0 w-[88%] max-w-[420px] shrink-0 bg-transparent px-1 py-0 sm:w-[80%] sm:max-w-none sm:px-2 md:px-3"
                 style={{ opacity: lightMotion ? 1 : statsOpacity }}
               >
                 <div className="flex w-full flex-nowrap items-start justify-center gap-x-3 min-[360px]:gap-x-4 sm:gap-x-5 md:gap-x-6">

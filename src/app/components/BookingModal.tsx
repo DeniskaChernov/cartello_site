@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, Phone, Send } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { useLanguage } from "../contexts/LanguageContext";
 import { getLeadAuthHeader, getLeadSubmissionUrl } from "../../lib/leadApi";
@@ -74,7 +75,16 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
     window.open("https://t.me/Cartellouz", "_blank");
   };
 
-  return (
+  useEffect(() => {
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen]);
+
+  const modal = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -84,11 +94,11 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           />
 
           {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain p-4 pt-8 sm:pt-12 md:items-center md:pt-4">
+          <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto overscroll-contain p-4 pt-8 sm:pt-12 md:items-center md:pt-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -196,4 +206,6 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
       )}
     </AnimatePresence>
   );
+
+  return createPortal(modal, document.body);
 }

@@ -410,7 +410,7 @@ export function ServicesNew() {
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover grayscale"
+                  className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
               </div>

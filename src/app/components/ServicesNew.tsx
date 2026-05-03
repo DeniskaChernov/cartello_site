@@ -68,8 +68,6 @@ type ServiceItem = {
   featured: boolean;
   badge?: string;
   priceOnRequest?: boolean;
-  /** Превью уже содержит заголовок и цену в макете — не дублировать текст в UI */
-  coverHasLabels?: boolean;
 };
 
 export function ServicesNew() {
@@ -142,7 +140,6 @@ export function ServicesNew() {
       icon: VolumeX,
       image: serviceSoundproofingImage,
       featured: false,
-      coverHasLabels: true,
     },
     {
       id: "pdr",
@@ -410,19 +407,15 @@ export function ServicesNew() {
               onClick={() => openBooking(service)}
               className="group relative isolate flex min-h-[300px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30 sm:min-h-[350px]"
             >
-              <div
-                className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-55 ${service.coverHasLabels ? "opacity-[0.62]" : "opacity-[0.48]"}`}
-              >
+              <div className="absolute inset-0 opacity-[0.48] transition-opacity duration-300 group-hover:opacity-55">
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className={`h-full w-full object-cover saturate-[1.05] ${service.coverHasLabels ? "brightness-[1.14]" : "brightness-[1.1]"}`}
+                  className="h-full w-full object-cover brightness-[1.1] saturate-[1.05]"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t from-zinc-950 ${service.coverHasLabels ? "via-zinc-950/35" : "via-zinc-950/45"} to-transparent`}
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-transparent" />
               </div>
 
               {service.priceOnRequest && (
@@ -439,24 +432,20 @@ export function ServicesNew() {
                 <p className="sr-only">
                   {service.title}. {service.price}. {service.description}
                 </p>
-                {!service.coverHasLabels && (
-                  <div className="flex items-start justify-end min-h-[24px] shrink-0">
-                    {!service.priceOnRequest && (
-                      <span className="text-sm font-medium transition-colors text-zinc-500 group-hover:text-cartello-beige">
-                        {service.price}
-                      </span>
-                    )}
-                  </div>
-                )}
+                <div className="flex items-start justify-end min-h-[24px] shrink-0">
+                  {!service.priceOnRequest && (
+                    <span className="text-sm font-medium transition-colors text-zinc-500 group-hover:text-cartello-beige">
+                      {service.price}
+                    </span>
+                  )}
+                </div>
 
                 <div className="mt-auto flex flex-col gap-3 pt-2">
-                  {!service.coverHasLabels && (
-                    <div className="flex min-h-[4.5rem] w-full flex-col justify-start sm:min-h-[5.25rem] md:min-h-[6rem]">
-                      <h3 className="break-words text-2xl font-bold leading-tight text-white transition-transform duration-200 group-hover:translate-x-1">
-                        {service.title}
-                      </h3>
-                    </div>
-                  )}
+                  <div className="flex min-h-[4.5rem] w-full flex-col justify-start sm:min-h-[5.25rem] md:min-h-[6rem]">
+                    <h3 className="break-words text-2xl font-bold leading-tight text-white transition-transform duration-200 group-hover:translate-x-1">
+                      {service.title}
+                    </h3>
+                  </div>
                   <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
                     <div className="min-h-0 overflow-hidden pb-1">
                       <p className="text-sm leading-relaxed text-zinc-400 transition-colors duration-200 md:text-base md:group-hover:text-zinc-300">

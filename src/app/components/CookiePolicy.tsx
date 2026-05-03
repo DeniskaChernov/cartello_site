@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
-import { X, Cookie, Shield, CheckCircle2, BarChart3, Settings, Megaphone, Phone, Instagram, MapPin } from "lucide-react";
-import { SITE_IMAGES } from "../../lib/siteImages";
-
-const logo = SITE_IMAGES.logoCompact;
+import { X, CheckCircle2, BarChart3, Settings, Megaphone, Phone, Instagram, MapPin } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface CookiePolicyProps {
   onClose: () => void;
 }
 
 export function CookiePolicy({ onClose }: CookiePolicyProps) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -25,25 +25,23 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
         onClick={(e) => e.stopPropagation()}
         className="relative bg-gradient-to-br from-zinc-900/95 via-zinc-900/90 to-black/95 backdrop-blur-2xl border border-zinc-800/50 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-cartello-red/5"
       >
-        {/* Decorative gradient overlay */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cartello-beige/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cartello-red/20 to-transparent" />
-        
+
         {/* Header */}
         <div className="relative bg-gradient-to-br from-zinc-900/98 via-zinc-900/95 to-zinc-950/98 backdrop-blur-xl border-b border-zinc-800/50 p-8">
-          {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-cartello-red/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-cartello-beige/5 rounded-full blur-3xl" />
-          
+
           <div className="relative flex items-start justify-between gap-4">
             <div className="flex items-start gap-4 flex-1">
               <div className="flex-1">
                 <h4 className="text-white text-lg md:text-xl font-bold font-serif mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  Политика использования файлов cookies
+                  {t("cookiePolicy.title")}
                 </h4>
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-cartello-beige" />
-                  <p className="text-cartello-beige/80 text-sm font-medium tracking-wide">CARTELLO GROUP</p>
+                  <p className="text-cartello-beige/80 text-sm font-medium tracking-wide">{t("cookiePolicy.brand")}</p>
                 </div>
               </div>
             </div>
@@ -58,162 +56,97 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
-          {/* Introduction */}
           <div className="p-6 rounded-2xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm">
-            <p className="text-zinc-300 text-base leading-relaxed">
-              Настоящая Политика использования файлов cookies объясняет, какие cookies используются на сайте Cartello Group, для каких целей и каким образом пользователь может управлять их использованием.
-            </p>
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.intro")}</p>
           </div>
 
-          {/* Section 1 */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              1. Что такое cookies
+              {t("cookiePolicy.s1Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed">
-              Cookies — это небольшие текстовые файлы, которые сохраняются на устройстве пользователя при посещении сайта. Они позволяют сайту корректно работать, запоминать настройки пользователя и улучшать качество сервиса.
-            </p>
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s1Body")}</p>
           </div>
 
-          {/* Section 2 */}
           <div className="space-y-5">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              2. Какие cookies мы используем
+              {t("cookiePolicy.s2Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed">
-              На сайте Cartello Group могут использоваться следующие виды cookies:
-            </p>
-            
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s2Body")}</p>
+
             <div className="space-y-4 pl-13">
-              {/* 2.1 */}
-              <div className="p-5 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm hover:border-zinc-700/40 transition-all duration-300 group">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cartello-beige mt-0.5 group-hover:scale-110 transition-transform" />
-                  <div className="flex-1">
-                    <h4 className="text-white font-semibold text-base mb-2">2.1. Обязательные cookies</h4>
-                    <p className="text-zinc-400 text-sm leading-relaxed">
-                      Необходимы для корректной работы сайта и его функций. Без них сайт может работать некорректно.
-                    </p>
+              {[
+                { Icon: CheckCircle2, title: t("cookiePolicy.s2_1Title"), body: t("cookiePolicy.s2_1Body") },
+                { Icon: BarChart3, title: t("cookiePolicy.s2_2Title"), body: t("cookiePolicy.s2_2Body") },
+                { Icon: Settings, title: t("cookiePolicy.s2_3Title"), body: t("cookiePolicy.s2_3Body") },
+                { Icon: Megaphone, title: t("cookiePolicy.s2_4Title"), body: t("cookiePolicy.s2_4Body") },
+              ].map(({ Icon, title, body }) => (
+                <div key={title} className="p-5 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm hover:border-zinc-700/40 transition-all duration-300 group">
+                  <div className="flex items-start gap-3">
+                    <Icon className="w-5 h-5 text-cartello-beige mt-0.5 group-hover:scale-110 transition-transform" />
+                    <div className="flex-1">
+                      <h4 className="text-white font-semibold text-base mb-2">{title}</h4>
+                      <p className="text-zinc-400 text-sm leading-relaxed">{body}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* 2.2 */}
-              <div className="p-5 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm hover:border-zinc-700/40 transition-all duration-300 group">
-                <div className="flex items-start gap-3">
-                  <BarChart3 className="w-5 h-5 text-cartello-beige mt-0.5 group-hover:scale-110 transition-transform" />
-                  <div className="flex-1">
-                    <h4 className="text-white font-semibold text-base mb-2">2.2. Аналитические cookies</h4>
-                    <p className="text-zinc-400 text-sm leading-relaxed">
-                      Используются для сбора обезличенной статистики о посещении сайта (страницы, время пребывания, источники перехода). Это помогает улучшать структуру и контент сайта.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.3 */}
-              <div className="p-5 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm hover:border-zinc-700/40 transition-all duration-300 group">
-                <div className="flex items-start gap-3">
-                  <Settings className="w-5 h-5 text-cartello-beige mt-0.5 group-hover:scale-110 transition-transform" />
-                  <div className="flex-1">
-                    <h4 className="text-white font-semibold text-base mb-2">2.3. Функциональные cookies</h4>
-                    <p className="text-zinc-400 text-sm leading-relaxed">
-                      Позволяют запоминать выборы пользователя (язык, настройки, предпочтения) для более удобного использования сайта.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.4 */}
-              <div className="p-5 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-900/20 border border-zinc-800/30 backdrop-blur-sm hover:border-zinc-700/40 transition-all duration-300 group">
-                <div className="flex items-start gap-3">
-                  <Megaphone className="w-5 h-5 text-cartello-beige mt-0.5 group-hover:scale-110 transition-transform" />
-                  <div className="flex-1">
-                    <h4 className="text-white font-semibold text-base mb-2">2.4. Маркетинговые cookies</h4>
-                    <p className="text-zinc-400 text-sm leading-relaxed">
-                      Могут использоваться для показа релевантной рекламы и оценки эффективности рекламных кампаний (в том числе через сторонние сервисы).
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Section 3 */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              3. Использование сторонних сервисов
+              {t("cookiePolicy.s3Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed">
-              На сайте могут применяться сторонние инструменты аналитики и рекламы, которые также используют cookies в соответствии со своими политиками конфиденциальности.
-            </p>
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s3Body")}</p>
           </div>
 
-          {/* Section 4 */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              4. Управление cookies
+              {t("cookiePolicy.s4Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed mb-3">Пользователь может:</p>
+            <p className="text-zinc-300 text-base leading-relaxed mb-3">{t("cookiePolicy.s4Lead")}</p>
             <div className="space-y-3 pl-13">
-              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-zinc-800/20 transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-cartello-beige mt-2" />
-                <span className="text-zinc-300 text-base">изменить настройки cookies в браузере;</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-zinc-800/20 transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-cartello-beige mt-2" />
-                <span className="text-zinc-300 text-base">удалить ранее сохранённые cookies;</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-zinc-800/20 transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-cartello-beige mt-2" />
-                <span className="text-zinc-300 text-base">полностью отключить использование cookies.</span>
-              </div>
+              {[t("cookiePolicy.s4_1"), t("cookiePolicy.s4_2"), t("cookiePolicy.s4_3")].map((item) => (
+                <div key={item} className="flex items-start gap-3 p-3 rounded-lg hover:bg-zinc-800/20 transition-colors">
+                  <div className="w-1.5 h-1.5 rounded-full bg-cartello-beige mt-2" />
+                  <span className="text-zinc-300 text-base">{item}</span>
+                </div>
+              ))}
             </div>
             <div className="pl-13 mt-4 p-4 rounded-xl bg-amber-900/10 border border-amber-800/20">
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                ⚠️ Обратите внимание, что отключение cookies может повлиять на корректность работы сайта.
-              </p>
+              <p className="text-zinc-400 text-sm leading-relaxed">{t("cookiePolicy.s4Note")}</p>
             </div>
           </div>
 
-          {/* Section 5 */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              5. Согласие пользователя
+              {t("cookiePolicy.s5Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed">
-              Продолжая использовать сайт Cartello Group, пользователь подтверждает согласие на использование файлов cookies в соответствии с настоящей Политикой.
-            </p>
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s5Body")}</p>
           </div>
 
-          {/* Section 6 */}
           <div className="space-y-4">
             <h3 className="text-white font-bold text-xl font-serif" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              6. Изменения политики cookies
+              {t("cookiePolicy.s6Title")}
             </h3>
-            <p className="text-zinc-300 text-base leading-relaxed">
-              Компания вправе вносить изменения в настоящую Политику без предварительного уведомления. Актуальная версия всегда доступна на сайте.
-            </p>
+            <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s6Body")}</p>
           </div>
 
-          {/* Section 7 - Contact Info */}
+          {/* Contact */}
           <div className="relative rounded-2xl bg-gradient-to-br from-cartello-red/10 via-zinc-900/40 to-zinc-900/60 border border-cartello-red/20 p-8 overflow-hidden backdrop-blur-sm">
-            {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-cartello-beige/5 rounded-full blur-3xl" />
-            
+
             <div className="relative space-y-5">
               <h3 className="text-white font-bold text-xl font-serif mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                7. Контактная информация
+                {t("cookiePolicy.s7Title")}
               </h3>
 
-              <p className="text-zinc-300 text-base leading-relaxed">
-                По вопросам, связанным с использованием cookies, пользователь может обратиться:
-              </p>
+              <p className="text-zinc-300 text-base leading-relaxed">{t("cookiePolicy.s7Lead")}</p>
 
               <div className="space-y-4 pt-4">
                 <div className="flex items-center gap-3">
                   <div className="w-1 h-8 bg-gradient-to-b from-cartello-beige to-transparent rounded-full" />
-                  <p className="text-cartello-beige font-bold text-lg tracking-wide">CARTELLO GROUP</p>
+                  <p className="text-cartello-beige font-bold text-lg tracking-wide">{t("cookiePolicy.brand")}</p>
                 </div>
 
                 <div className="space-y-3 pl-4">
@@ -222,7 +155,7 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
                       <Phone className="w-4 h-4 text-cartello-beige" />
                     </div>
                     <div>
-                      <p className="text-zinc-400 text-xs">Телефон</p>
+                      <p className="text-zinc-400 text-xs">{t("cookiePolicy.phoneLabel")}</p>
                       <p className="text-white font-medium group-hover:text-cartello-beige transition-colors">+998 95 835 01 10</p>
                     </div>
                   </a>
@@ -232,7 +165,7 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
                       <Phone className="w-4 h-4 text-cartello-beige" />
                     </div>
                     <div>
-                      <p className="text-zinc-400 text-xs">Телефон</p>
+                      <p className="text-zinc-400 text-xs">{t("cookiePolicy.phoneLabel")}</p>
                       <p className="text-white font-medium group-hover:text-cartello-beige transition-colors">+998 90 907 79 10</p>
                     </div>
                   </a>
@@ -242,7 +175,7 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
                       <Instagram className="w-4 h-4 text-cartello-beige" />
                     </div>
                     <div>
-                      <p className="text-zinc-400 text-xs">Instagram</p>
+                      <p className="text-zinc-400 text-xs">{t("cookiePolicy.instagramLabel")}</p>
                       <p className="text-white font-medium group-hover:text-cartello-beige transition-colors">@cartello.uz</p>
                     </div>
                   </a>
@@ -252,8 +185,8 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
                       <MapPin className="w-4 h-4 text-cartello-beige" />
                     </div>
                     <div>
-                      <p className="text-zinc-400 text-xs">Адрес</p>
-                      <p className="text-white font-medium">г. Ташкент, ул. Баку 179А</p>
+                      <p className="text-zinc-400 text-xs">{t("cookiePolicy.addressLabel")}</p>
+                      <p className="text-white font-medium">{t("cookiePolicy.address")}</p>
                     </div>
                   </div>
                 </div>
@@ -268,10 +201,9 @@ export function CookiePolicy({ onClose }: CookiePolicyProps) {
             onClick={onClose}
             className="w-full py-4 bg-gradient-to-r from-cartello-red via-red-900 to-red-950 hover:from-red-800 hover:via-red-850 hover:to-red-900 text-white text-base font-bold rounded-2xl transition-all duration-300 shadow-lg shadow-cartello-red/20 hover:shadow-cartello-red/30 hover:scale-[1.02] border border-cartello-red/20"
           >
-            Понятно
+            {t("cookiePolicy.close")}
           </button>
         </div>
-
       </motion.div>
     </motion.div>
   );

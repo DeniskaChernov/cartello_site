@@ -19,6 +19,14 @@ export function MediaGallery() {
 
   const reels = [
     {
+      id: 1,
+      thumbnail: SITE_IMAGES.videoReelShowroom,
+      title: "Cartello Detailing Centre",
+      subtitle: "Студия и стандарты сервиса",
+      tag: "О студии",
+      link: "https://www.instagram.com/reel/DDFHFsfIeql/",
+    },
+    {
       id: 2,
       thumbnail: SITE_IMAGES.videoReel2,
       title: "G63 на СПА процедурах",

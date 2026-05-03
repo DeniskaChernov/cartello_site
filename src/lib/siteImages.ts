@@ -14,7 +14,7 @@ import pdr from "../assets/af9854c23b2a1fd56655fdbafe9aaf9001ed33b7.jpg";
 import detailingWash from "../assets/2a89bf209cf3adf33856cecccc6ee08a9477c3ca.jpg";
 import windshield from "../assets/af6d6d6ef8482a5c89e09e1cf0f88055fb83a75c.jpg";
 import contactBuilding from "../assets/facade-building.png";
-import videoReel1 from "../assets/video-reel-1.jpg";
+import videoReelShowroom from "../assets/video-reel-showroom-presenter.png";
 import videoReel2 from "../assets/video-reel-2.jpg";
 import videoReel3 from "../assets/video-reel-3.jpg";
 import videoReel4 from "../assets/video-reel-4.jpg";
@@ -44,7 +44,7 @@ export const SITE_IMAGES = {
   detailingWash,
   windshield,
   contactBuilding,
-  videoReel1,
+  videoReelShowroom,
   videoReel2,
   videoReel3,
   videoReel4,

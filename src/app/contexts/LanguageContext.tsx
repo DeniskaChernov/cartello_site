@@ -536,11 +536,11 @@ const translations = {
       
       // Featured Services
       polishing: 'Kuzovni jilolash',
-      polishingDesc: 'Rangni qayta tiklash va zerkal muhito\'qni ta\'minlash, kuzovni avtomobilning tashqi ko\'rinishini buzadigan xatolardan qochish.',
+      polishingDesc: 'Rangning to‘yinishini va ko‘zgu dayoq porloqni tiklaymiz, avtomobil tashqi ko‘rinishini buzadigan nuqsonlardan xalos qilamiz.',
       polishingPrice: '1.500.000 so\'mdan',
       
-      ppf: 'Antigraviy plastinka',
-      ppfDesc: 'Yoldagi har bir qaychi haqida o\'ylamaymiz. Kuzov himoya qilinadi, hech qanday qo\'lga kelsa ham.',
+      ppf: 'Antigraviy plyonka',
+      ppfDesc: 'Poliuretan plyonka bilan qoplash mustahkam himoya qatlami yaratadi: LKPni chipish, qum va agressiv muhitdan saqlaydi.',
       ppfPrice: '2.400.000 so\'mdan',
       
       tinting: 'Oynalarni tonlash',
@@ -553,27 +553,27 @@ const translations = {
       ceramicCoatingPrice: '1.750.000 so\'mdan',
       
       detailingWash: 'Deteyling yuvish',
-      detailingWashDesc: 'Qo\'llar bilan, yuqori sifatli kimyoviy vositalar bilan yuvamiz. Qo\'yiqchalar va oynalardagi qizilishlardan himoya.',
+      detailingWashDesc: 'Deteyling yuvish — kuzov va saloni har bir detaliga e’tibor bilan ehtiyotkor va xavfsiz tozalash.',
       detailingWashPrice: '480.000 so\'m',
       
       interiorCleaning: 'Salonni kimyoviy tozalash',
-      interiorCleaningDesc: 'Tirnashlarni, hidlarni, ichki kirlarni olib tashlaymiz. Yotib turib, tushunib olasiz — tozalangan.',
+      interiorCleaningDesc: 'Professional salon kimyoviy tozalashi ifloslanish va yoqimsiz hidlarni, interyer materiallariga xavf tug‘dirmasdan bartaraf etadi; salonga yangilik va tartibli ko‘rinish qaytariladi.',
       interiorCleaningPrice: '1.200.000 so\'mdan',
       
-      soundproofing: 'Shum o\'zroqlanishini bartaraf etish',
-      soundproofingDesc: 'Yurayotganingizda yorg\'on olmaymiz. Yoldagi shum kamayadi, uzun yo\'nalishlarda ko\'nikmaliroq.',
+      soundproofing: 'Shovqin izolyatsiyasi',
+      soundproofingDesc: 'Professional shovqin izolyatsiyasi tebranish va ortiqcha ovozlarni kamaytiradi, akustik qulaylikni oshiradi va salonda yoqimli muhit yaratadi.',
       soundproofingPrice: '3.900.000 so\'mdan',
       
       pdrService: 'Botiqlarni yo\'qotish (PDR)',
       pdrServiceDesc: 'Botiqlarni bo\'yamasdan to\'g\'rilash. Zavod lak-bo\'yoq qoplamasini va avtomobilning dastlabki ko\'rinishini saqlab qolamiz.',
       pdrServicePrice: '190.000 so\'mdan',
       
-      interiorCeramic: 'Intererni keramik qoplama',
-      interiorCeramicDesc: 'Plastik, teri va salon elementlarini keramik qoplama bilan himoya qilamiz. Olib tashlash oson, uzun muddatli ishlatish mumkin.',
+      interiorCeramic: 'Interyer uchun keramik qoplama',
+      interiorCeramicDesc: 'Interyer keramikasi ko‘rinmas himoya qatlami hosil qiladi, ifloslanish va ultrabinafsha taʼsiridan saqlaydi.',
       interiorCeramicPrice: '590.000 so\'mdan',
       
-      engineWash: 'Dvigatel bo\'shlig\'ini deteyling yuvish',
-      engineWashDesc: 'Dvigatel bo\'limini delikat yuvish va tozalash. Hamma narsa to\'g\'ri va elektronikaga xavfsiz.',
+      engineWash: 'Motor bo‘shlig‘ini deteyling yuvish',
+      engineWashDesc: 'Motor bo‘shlig‘ini ehtiyotkorlik bilan tozalash. Elektronika va uzelarga xavf tug‘dirmasdan ifloslanishni bartaraf etish.',
       engineWashPrice: '990.000 so\'mdan',
       
       wheelArchWash: 'G\'ildirak arkalari va osma deteyling yuvish',
@@ -581,20 +581,20 @@ const translations = {
       wheelArchWashPrice: '990.000 so\'mdan',
       
       undercarriageWash: 'Avtomobil tubini deteyling yuvish',
-      undercarriageWashDesc: 'Tubni tozalash va anti-korroziya ishlari. Avtomobilning xizmat muddatini uzaytirish.',
+      undercarriageWashDesc: 'Tubning ehtiyotkor tozalashi qiyin joylardan chir va qoplamlarni olib tashlaydi, avtomobilning tartibli holatini saqlaydi va elementlarining xizmat muddatini uzaytirishga yordam beradi.',
       undercarriageWashPrice: '1.490.000 so\'mdan',
       
       autoElectric: 'Avtoelektrik xizmatlari',
-      autoElectricDesc: 'Avtoelektrik xizmatlari bo\'yicha professional diagnostika va ta\'mirlash. Har qanday vazifalarni hal etamiz.',
+      autoElectricDesc: 'Avtomobil elektron tizimlarini diagnostika va ta‘mirlash; barqaror va xavfsiz ishlashini ta’minlash.',
       
       evRepair: 'Elektromobillarni ta\'mirlash',
-      evRepairDesc: 'Elektromobillarni diagnostika va ta\'mirlash. Batareyalardan, inverterlardan, to\'ldiruvdan ishlashamiz.',
+      evRepairDesc: 'Elektromobillarga texnik xususiyatlarini inobatga olgan holda xizmat: nosozliklarni bartaraf etish va tizimlarning to‘g‘ri ishlashini tiklash.',
       
-      audioInstall: 'Audio tizimini o\'rnatish',
-      audioInstallDesc: 'Audio tizimlarini tanlash va o\'rnatish. Avtomobilingizda yuqori sifatli ovoz.',
+      audioInstall: 'Akustikani o‘rnatish',
+      audioInstallDesc: 'Professional audio tizimlarini o‘rnatish ovoz sifatini ochadi va har bir sayohatni yoqimliroq qiladi.',
       
-      bodywork: 'Kuzovni qoraq qo\'yish ishlari',
-      bodyworkDesc: 'Bumperlar va g\'ildirak disklarini restavratsiya va qoraq qo\'yish. Asl holatini qaytarish.',
+      bodywork: 'Kuzov va bo‘yoq ishlari',
+      bodyworkDesc: 'Har qanday murakkablikdagi professional kuzov va bo‘yoq ishlari: shikastlanishlarni tiklashdan kosmetik ta‘mirlashgacha.',
       
       windshieldProtection: 'Loboviy oyna himoya',
       windshieldProtectionDesc: 'Maxsus plyonka loboviy oynani yorilish va yoriqlar paydo bo\'lishidan himoya qiladi va qimmat almashtirish zarurligini oldini oladi.',
@@ -602,8 +602,8 @@ const translations = {
       plasticProtection: 'Interyer detallarini himoya qilish',
       plasticProtectionDesc: 'Shaffof qoplama plastik va salonning dekorative elementlarining tashqi ko\'rinishini saqlab qoladi va ularni kundalik shikastlanishlardan himoya qiladi.',
       
-      atelierService: 'Atele xizmatlari',
-      atelierServiceDesc: 'Услуги ателье позволяют обновить и персонализировать интерьер автомобиля с учетом ваших предпочтений и стиля.',
+      atelierService: 'Atelye xizmatlari',
+      atelierServiceDesc: 'Atelye xizmatlari saloni afzalliklaringiz va uslubingizni hisobga olgan holda yangilash va shaxsiylashtirish imkonini beradi.',
       
       ppfBody: 'Kuzovni yopishtirish (PPF)',
       ppfBodyDesc: 'Avtomobil kuzovi uchun himoya poliuretan plyonkasi',
@@ -617,7 +617,7 @@ const translations = {
       ceramicBody: 'Kuzovni keramik himoya',
       ceramicBodyDesc: 'Bo\'yoq qoplamasining uzoq muddatli himoyasi',
       
-      ceramicInterior: 'Intererni keramik qoplama',
+      ceramicInterior: 'Interyer uchun keramik qoplama',
       ceramicInteriorDesc: 'Salonni ifloslanish va eskirishdan himoya qilish',
       
       ceramicGlass: 'Oynalarni keramik himoya',
@@ -669,10 +669,10 @@ const translations = {
       pdrDesc: 'Bo\'yashsiz kuzovni tiklash',
       
       leatherRepair: 'Salon terisini ta\'mirlash',
-      leatherRepairDesc: 'Teri interer elementlarini tiklash',
+      leatherRepairDesc: 'Interyerdagi teri elementlarini tiklash',
       
-      atelierServices: 'Atele xizmatlari',
-      atelierServicesDesc: 'Individual tikish va salonni qayta tortish'
+      atelierServices: 'Atelye xizmatlari',
+      atelierServicesDesc: 'Individual tikish va salonni qayta bezash'
     },
     additionalServices: {
       title: 'Qo\'shimcha xizmatlar',
@@ -748,23 +748,23 @@ const translations = {
       subtitle: 'Bajarilgan loyihalar namunalari'
     },
     mediaGallery: {
-      header: 'Ko\'rib chiqing, qanday ishlaymiz va qanday natija olamiz',
-      before: 'Oldidan',
+      header: 'Qanday ishlayotganimiz va qanday natija berayotganimizni ko‘ring',
+      before: 'Oldin',
       after: 'Keyin',
-      moreWorks: 'Instagramimizda ko\'proq ishlar',
-      views: 'ko\'rganlar'
+      moreWorks: 'Instagramimizda yanada ko‘p ishlar',
+      views: 'martaba ko‘rilgan'
     },
     videoSection: {
-      title: 'Natijalar,',
-      titleHighlight: 'o\'zlari gapiradi',
-      subtitle: 'Ustalarimizning haqiqiy ishlarini ko\'ring',
-      views: 'ko\'rganlar',
+      title: 'Natijalar',
+      titleHighlight: 'gapirishga hojat qoldirmaydi',
+      subtitle: 'Ustalarimizning haqiqiy ishlarini tomosha qiling',
+      views: 'martaba ko‘rilgan',
       
       reel1Title: 'Jilolash jarayoni',
-      reel2Title: 'PPF xavf zonalarini himoya qilish',
-      reel3Title: 'Interer deteylingi',
+      reel2Title: 'PPF: xavf zonalarini himoya qilish',
+      reel3Title: 'Interyer deteylingi',
       reel4Title: 'Keramika 9H',
-      reel5Title: 'Yakuniy ishlov berish'
+      reel5Title: 'Yakuniy ishlov'
     },
     contact: {
       title: 'Biz bilan bog\'laning',

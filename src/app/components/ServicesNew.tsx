@@ -347,9 +347,9 @@ export function ServicesNew() {
                 alt={service.title}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full transform-gpu object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                className="absolute inset-0 h-full w-full transform-gpu object-cover brightness-[1.1] saturate-[1.06] transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/35 to-transparent opacity-[0.84] transition-opacity duration-300 group-hover:opacity-[0.78]" />
               
               {/* Badge "Хит" */}
               {service.badge && (
@@ -404,15 +404,15 @@ export function ServicesNew() {
               onClick={() => openBooking(service)}
               className="group relative isolate flex min-h-[350px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30"
             >
-              <div className="absolute inset-0 opacity-[0.42] transition-opacity duration-300 group-hover:opacity-50">
+              <div className="absolute inset-0 opacity-[0.48] transition-opacity duration-300 group-hover:opacity-55">
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover brightness-[1.1] saturate-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-transparent" />
               </div>
 
               {service.priceOnRequest && (

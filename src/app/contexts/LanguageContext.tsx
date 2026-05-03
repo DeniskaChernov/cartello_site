@@ -146,8 +146,8 @@ const translations = {
       windshieldProtection: 'Защита лобового стекла',
       windshieldProtectionDesc: 'Специальная пленка защищает лобовое стекло от сколов, появления трещин, мелких ударов и помогает избежать дорогостоящей замены.',
       
-      plasticProtection: 'Защита пластика салона (ламинация)',
-      plasticProtectionDesc: 'Прозрачное ламинирование сохраняет внешний вид пластика и защищает его от повседневных повреждений.',
+      plasticProtection: 'Защита интерьерных деталей',
+      plasticProtectionDesc: 'Прозрачное покрытие сохраняет внешний вид пластика и декоративных элементов салона и защищает их от повседневных повреждений.',
       
       atelierService: 'Услуги ателье',
       atelierServiceDesc: 'Услуги ателье позволяют обновить и персонализировать интерьер автомобиля с учетом ваших предпочтений и стиля.',
@@ -516,8 +516,8 @@ const translations = {
       windshieldProtection: 'Loboviy oyna himoya',
       windshieldProtectionDesc: 'Maxsus plyonka loboviy oynani yorilish, yoriqlar paydo bo\'lishi va mayda zarbalardan himoya qiladi, qimmat almashtirish zarurligini oldini oladi.',
       
-      plasticProtection: 'Salon plastiklarini himoya (laminatsiya)',
-      plasticProtectionDesc: 'Shaffof laminatsiya plastik tashqi ko\'rinishini saqlab qoladi va uni kundalik shikastlanishlardan himoya qiladi.',
+      plasticProtection: 'Interyer detallarini himoya qilish',
+      plasticProtectionDesc: 'Shaffof qoplama plastik va salonning dekorative elementlarining tashqi ko\'rinishini saqlab qoladi va ularni kundalik shikastlanishlardan himoya qiladi.',
       
       atelierService: 'Atele xizmatlari',
       atelierServiceDesc: 'Услуги ателье позволяют обновить и персонализировать интерьер автомобиля с учетом ваших предпочтений и стиля.',

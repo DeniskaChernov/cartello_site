@@ -87,16 +87,16 @@ const translations = {
       polishingPrice: 'от 1.500.000 сум',
       
       ppf: 'Антигравийная пленка',
-      ppfDesc: 'Оклейка полиуретановой пленкой создает прочный защитный слой, который бережет лак от сколов, песка и агрессивной среды.',
+      ppfDesc: 'Оклейка полиуретановой пленкой создает прочный защитный слой, который бережет лакокрасочное покрытие от сколов, песка и агрессивной среды.',
       ppfPrice: 'от 2.400.000 сум',
       
       tinting: 'Тонирование стекол',
-      tintingDesc: 'Профессиональное тонирование стекол повышает комфорт в салоне, защищает от солнца и придает автомобилю более выразительный вид.',
+      tintingDesc: 'Профессиональное тонирование стекол повышает комфорт в салоне, защищает от ультрафиолетовых лучей и придает автомобилю более выразительный вид.',
       tintingPrice: 'от 780.000 сум',
       
       // Other Services
       ceramicCoating: 'Покрытие кузова керамическим составом',
-      ceramicCoatingDesc: 'Керамика усиливает глубину цвета, добавляет зеркальный блеск и защищает поверхность от влаги, грязи и реагентов.',
+      ceramicCoatingDesc: 'Керамика усиливает глубину цвета, добавляет зеркальный блеск, гидрофобный эффект и защищает от ультрафиолетовых лучей, грязи и реагентов.',
       ceramicCoatingPrice: 'от 1.750.000 сум',
       
       detailingWash: 'Детейлинг мойка',
@@ -112,7 +112,7 @@ const translations = {
       soundproofingPrice: 'от 3.900.000 сум',
       
       pdrService: 'Ремонт вмятин (PDR)',
-      pdrServiceDesc: 'Выпрямление вмятины без покраски. Сохраняем заводское лакокрасочное покрытие и первоначальный вид автомобиля.',
+      pdrServiceDesc: 'Выпрямление вмятин без покраски. Сохраняем заводское лакокрасочное покрытие и первоначальный вид автомобиля.',
       pdrServicePrice: 'от 190.000 сум',
       
       interiorCeramic: 'Керамическое покрытие для интерьера',
@@ -123,8 +123,8 @@ const translations = {
       engineWashDesc: 'Бережная очистка подкапотного пространства. Устранение загрязнения без риска для электроники и узлов автомобиля.',
       engineWashPrice: 'от 990.000 сум',
       
-      wheelArchWash: 'Детейлинг мойка колесных арок',
-      wheelArchWashDesc: 'Детейлинг мойка колесных арок позволяет полностью удалить грязь из труднодоступных зон и поддерживать чистоту автомобиля.',
+      wheelArchWash: 'Детейлинг мойка колесных арок и подвески',
+      wheelArchWashDesc: 'Детейлинг мойка колесных арок и подвески позволяет полностью удалить грязь из труднодоступных зон и поддерживать чистоту узлов подвески.',
       wheelArchWashPrice: 'от 990.000 сум',
       
       undercarriageWash: 'Детейлинг мойка днища автомобиля',
@@ -144,7 +144,7 @@ const translations = {
       bodyworkDesc: 'Профессиональные кузовные и покрасочные работы любой сложности: от восстановления повреждений до косметического ремонта.',
       
       windshieldProtection: 'Защита лобового стекла',
-      windshieldProtectionDesc: 'Специальная пленка защищает лобовое стекло от сколов, появления трещин, мелких ударов и помогает избежать дорогостоящей замены.',
+      windshieldProtectionDesc: 'Специальная пленка защищает лобовое стекло от сколов и появления трещин и помогает избежать дорогостоящей замены.',
       
       plasticProtection: 'Защита интерьерных деталей',
       plasticProtectionDesc: 'Прозрачное покрытие сохраняет внешний вид пластика и декоративных элементов салона и защищает их от повседневных повреждений.',
@@ -273,10 +273,10 @@ const translations = {
       subtitle: 'Наши преимущества и гарантии качества',
       
       professionalEquipment: 'Профессиональное оборудование',
-      professionalEquipmentDesc: 'Используем современное оборудование и технологии премиум-класса',
+      professionalEquipmentDesc: 'Используем современное оборудование и материалы премиум-класса',
       
       experiencedMasters: 'Опытные мастера',
-      experiencedMastersDesc: 'Команда сертифицированных специалистов с многолетним опытом',
+      experiencedMastersDesc: 'Команда профессиональных специалистов с многолетним опытом',
       
       qualityMaterials: 'Качественные материалы',
       qualityMaterialsDesc: 'Работаем только с проверенными брендами и оригинальными материалами',
@@ -544,12 +544,12 @@ const translations = {
       ppfPrice: '2.400.000 so\'mdan',
       
       tinting: 'Oynalarni tonlash',
-      tintingDesc: 'Salonda suz, tashqarida ko\'rinmaydi. Materiallar tekshirilgan ishlab chiqaruvchilardan.',
+      tintingDesc: 'Avtomobil oynalarini professional tonirovkasi salondagi qulaylikni oshiradi, ultrabinafsha nurlardan himoya qiladi va avtomobilga yanada yorqin ko\'rinish beradi.',
       tintingPrice: '780.000 so\'mdan',
       
       // Other Services
       ceramicCoating: 'Kuzovni keramik qoplama',
-      ceramicCoatingDesc: 'Keramiqa kuzovni yorqinlikni oshiradi, zerkal muhito\'qni qo\'yadi va suv, kirlar va reagentlardan himoya qiladi.',
+      ceramicCoatingDesc: 'Keramika rang chuqurligini oshiradi, kuzovga ko\'zguday porloqlik va gidrofob ta\'sir beradi, ultrabinafsha nurlar, kir va reagentlardan himoya qiladi.',
       ceramicCoatingPrice: '1.750.000 so\'mdan',
       
       detailingWash: 'Deteyling yuvish',
@@ -565,7 +565,7 @@ const translations = {
       soundproofingPrice: '3.900.000 so\'mdan',
       
       pdrService: 'Botiqlarni yo\'qotish (PDR)',
-      pdrServiceDesc: 'Botiqlarni qoraq olmay olamiz. Qoraq qo\'yishsiz — sotish narxidan kamayish yo\'q.',
+      pdrServiceDesc: 'Botiqlarni bo\'yamasdan to\'g\'rilash. Zavod lak-bo\'yoq qoplamasini va avtomobilning dastlabki ko\'rinishini saqlab qolamiz.',
       pdrServicePrice: '190.000 so\'mdan',
       
       interiorCeramic: 'Intererni keramik qoplama',
@@ -576,8 +576,8 @@ const translations = {
       engineWashDesc: 'Dvigatel bo\'limini delikat yuvish va tozalash. Hamma narsa to\'g\'ri va elektronikaga xavfsiz.',
       engineWashPrice: '990.000 so\'mdan',
       
-      wheelArchWash: 'G\'ildirak arkalarini deteyling yuvish',
-      wheelArchWashDesc: 'G\'ildirak arkalarini kirlardan, reagentlardan va bitumdan tozalash. Korroziyadan himoya.',
+      wheelArchWash: 'G\'ildirak arkalari va osma deteyling yuvish',
+      wheelArchWashDesc: 'G\'ildirak arkalari va osma deteyling yuvishi qiyin yetib boriladigan joylardagi kirlarni to\'liq tozalash va osma tugunlarini toza saqlash imkonini beradi.',
       wheelArchWashPrice: '990.000 so\'mdan',
       
       undercarriageWash: 'Avtomobil tubini deteyling yuvish',
@@ -597,7 +597,7 @@ const translations = {
       bodyworkDesc: 'Bumperlar va g\'ildirak disklarini restavratsiya va qoraq qo\'yish. Asl holatini qaytarish.',
       
       windshieldProtection: 'Loboviy oyna himoya',
-      windshieldProtectionDesc: 'Maxsus plyonka loboviy oynani yorilish, yoriqlar paydo bo\'lishi va mayda zarbalardan himoya qiladi, qimmat almashtirish zarurligini oldini oladi.',
+      windshieldProtectionDesc: 'Maxsus plyonka loboviy oynani yorilish va yoriqlar paydo bo\'lishidan himoya qiladi va qimmat almashtirish zarurligini oldini oladi.',
       
       plasticProtection: 'Interyer detallarini himoya qilish',
       plasticProtectionDesc: 'Shaffof qoplama plastik va salonning dekorative elementlarining tashqi ko\'rinishini saqlab qoladi va ularni kundalik shikastlanishlardan himoya qiladi.',
@@ -726,10 +726,10 @@ const translations = {
       subtitle: 'Bizning afzalliklarimiz va sifat kafolatlari',
       
       professionalEquipment: 'Professional uskunalar',
-      professionalEquipmentDesc: 'Zamonaviy uskunalar va premium-sinf texnologiyalardan foydalanamiz',
+      professionalEquipmentDesc: 'Zamonaviy uskunalar va premium-sinf materiallardan foydalanamiz',
       
       experiencedMasters: 'Tajribali ustalar',
-      experiencedMastersDesc: 'Ko\'p yillik tajribaga ega sertifikatlangan mutaxassislar jamoasi',
+      experiencedMastersDesc: 'Ko\'p yillik tajribaga ega professional mutaxassislar jamoasi',
       
       qualityMaterials: 'Sifatli materiallar',
       qualityMaterialsDesc: 'Faqat tekshirilgan brendlar va asl materiallar bilan ishlaymiz',

@@ -19,14 +19,6 @@ export function MediaGallery() {
 
   const reels = [
     {
-      id: 1,
-      thumbnail: SITE_IMAGES.videoReel1,
-      title: "Авлт 12 — полная оклейка PPF",
-      subtitle: "Кузов + панорама + лобовое",
-      tag: "PPF защита",
-      link: "https://www.instagram.com/reel/C_vQzMKorOK/",
-    },
-    {
       id: 2,
       thumbnail: SITE_IMAGES.videoReel2,
       title: "G63 на СПА процедурах",

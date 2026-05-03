@@ -240,9 +240,9 @@ export function HeroNew() {
         </div>
       </div>
 
-      {/* Scroll Indicator — safe-area снизу, не перекрывает контент */}
+      {/* Scroll Indicator — safe-area снизу, не перекрывает контент. На мобильных скрыт, чтобы не перекрывал статистику. */}
       <motion.div
-        className="absolute left-1/2 z-20 -translate-x-1/2 max-sm:bottom-[max(5.5rem,env(safe-area-inset-bottom,0px))] bottom-[max(2rem,env(safe-area-inset-bottom,0px))] sm:bottom-10"
+        className="absolute left-1/2 z-20 hidden -translate-x-1/2 sm:block sm:bottom-10"
         animate={lightMotion ? { y: 0 } : { y: [0, 10, 0] }}
         transition={lightMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
         aria-hidden

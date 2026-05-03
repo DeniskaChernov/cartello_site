@@ -25,7 +25,7 @@ import serviceEvRepair from "../assets/service-ev-repair.jpg";
 import servicePlasticProtection from "../assets/service-plastic-protection.jpg";
 import serviceAudioInstall from "../assets/service-audio-install.jpg";
 import serviceInteriorCeramic from "../assets/service-interior-ceramic.jpg";
-import serviceSoundproofing from "../assets/service-soundproofing.jpg";
+import serviceSoundproofing from "../assets/service-soundproofing.png";
 
 /** Локальные изображения лендинга (src/assets). */
 export const SITE_IMAGES = {

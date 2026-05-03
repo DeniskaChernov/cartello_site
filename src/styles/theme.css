@@ -83,6 +83,7 @@
 }
 
 html {
+  scroll-padding-top: max(5rem, env(safe-area-inset-top, 0px));
   scrollbar-color: #880000 #18181b;
   scrollbar-width: thin;
 }

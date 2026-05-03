@@ -41,7 +41,11 @@ export function FloatingCTA() {
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          className="fixed bottom-8 right-8 z-50"
+          className="fixed z-50 max-w-[calc(100vw-1.5rem)] sm:max-w-none"
+          style={{
+            right: "max(1rem, env(safe-area-inset-right, 0px))",
+            bottom: "max(1.5rem, env(safe-area-inset-bottom, 0px))",
+          }}
         >
           {/* Main Button */}
           {!isExpanded ? (
@@ -58,8 +62,8 @@ export function FloatingCTA() {
               whileTap={{ scale: 0.95 }}
               className="relative flex items-center h-16 bg-gradient-to-r from-red-900 to-red-800 rounded-full shadow-2xl shadow-red-900/50 overflow-hidden"
               style={{
-                width: showNumber ? '220px' : '64px',
-                transition: 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                width: showNumber ? "min(220px, calc(100vw - 2rem))" : "64px",
+                transition: "width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
               {/* Pulse Effect */}
@@ -110,11 +114,11 @@ export function FloatingCTA() {
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-zinc-900 border-2 border-zinc-800 rounded-2xl shadow-2xl p-6 w-80"
+              className="w-[min(20rem,calc(100vw-2rem))] rounded-2xl border-2 border-zinc-800 bg-zinc-900 p-5 shadow-2xl sm:w-80 sm:p-6"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-white font-bold text-lg">Связаться с нами</h4>
+                <h4 className="text-white font-bold text-lg">{t("contact.contactTitle")}</h4>
                 <button
                   onClick={() => setIsExpanded(false)}
                   className="w-8 h-8 rounded-lg bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-colors"
@@ -130,7 +134,7 @@ export function FloatingCTA() {
                   className="w-full py-3 px-4 bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-900/30"
                 >
                   <Phone className="w-4 h-4" />
-                  Записаться на услугу
+                  {t("floatingCTA.bookFull")}
                 </button>
 
                 <a

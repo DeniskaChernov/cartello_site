@@ -4,11 +4,15 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { SITE_IMAGES } from "../../lib/siteImages";
 
+interface SliderPositions {
+  [key: number]: number;
+}
+
 export function MediaGallery() {
   const [activeTab, setActiveTab] = useState<"videos" | "gallery">("videos");
   const carouselRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  
+
   // Gallery states
   const [sliderPositions, setSliderPositions] = useState<SliderPositions>({});
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
@@ -21,83 +25,79 @@ export function MediaGallery() {
     {
       id: 1,
       thumbnail: SITE_IMAGES.videoReelShowroom,
-      title: "Cartello Detailing Centre",
-      subtitle: "Студия и стандарты сервиса",
-      tag: "О студии",
+      title: t("mediaGallery.reel1Title"),
+      subtitle: t("mediaGallery.reel1Subtitle"),
+      tag: t("mediaGallery.reel1Tag"),
       link: "https://www.instagram.com/reel/DDFHFsfIeql/",
     },
     {
       id: 2,
       thumbnail: SITE_IMAGES.videoReel2,
-      title: "G63 на СПА процедурах",
-      subtitle: "Cartello — нам доверяют",
-      tag: "Детейлинг",
+      title: t("mediaGallery.reel2Title"),
+      subtitle: t("mediaGallery.reel2Subtitle"),
+      tag: t("mediaGallery.reel2Tag"),
       link: "https://www.instagram.com/reel/C-ufS5HoXbn/",
     },
     {
       id: 3,
       thumbnail: SITE_IMAGES.videoReel3,
-      title: "Mercedes GLE 450",
-      subtitle: "Качество и доверие",
-      tag: "Полировка",
+      title: t("mediaGallery.reel3Title"),
+      subtitle: t("mediaGallery.reel3Subtitle"),
+      tag: t("mediaGallery.reel3Tag"),
       link: "https://www.instagram.com/reel/C9hs5VUoUYe/",
     },
     {
       id: 4,
       thumbnail: SITE_IMAGES.videoReel4,
-      title: "BMW i5 — комплекс услуг",
-      subtitle: "С душой к каждому автомобилю",
-      tag: "Комплекс",
+      title: t("mediaGallery.reel4Title"),
+      subtitle: t("mediaGallery.reel4Subtitle"),
+      tag: t("mediaGallery.reel4Tag"),
       link: "https://www.instagram.com/reel/C8oQm7RoqMM/",
     },
     {
       id: 5,
       thumbnail: SITE_IMAGES.videoReel5,
-      title: "Антигравийная защита",
-      subtitle: "Своевременная защита кузова",
-      tag: "Антигравий",
+      title: t("mediaGallery.reel5Title"),
+      subtitle: t("mediaGallery.reel5Subtitle"),
+      tag: t("mediaGallery.reel5Tag"),
       link: "https://www.instagram.com/reel/C87O77Co3mP/",
     },
   ];
 
-  // Gallery data
   const galleryItems = [
     {
       before: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800",
       after: "https://images.unsplash.com/photo-1708805282676-0c15476eb8a2?w=800",
-      title: "Mercedes-Benz S-Class",
-      service: "Полировка + Керамика",
+      title: t("mediaGallery.gallery1Title"),
+      service: t("mediaGallery.gallery1Service"),
       featured: true,
     },
     {
       before: "https://images.unsplash.com/photo-1552519507-b4a90ae729eb?w=800",
       after: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
-      title: "BMW X5",
-      service: "PPF оклейка",
+      title: t("mediaGallery.gallery2Title"),
+      service: t("mediaGallery.gallery2Service"),
     },
     {
       before: "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=800",
       after: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800",
-      title: "Audi A8",
-      service: "Химчистка салона",
+      title: t("mediaGallery.gallery3Title"),
+      service: t("mediaGallery.gallery3Service"),
     },
     {
       before: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800",
       after: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800",
-      title: "Porsche Cayenne",
-      service: "Тонировка стекол",
+      title: t("mediaGallery.gallery4Title"),
+      service: t("mediaGallery.gallery4Service"),
     },
     {
       before: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=800",
       after: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=800",
-      title: "Range Rover",
-      service: "Полная защита",
+      title: t("mediaGallery.gallery5Title"),
+      service: t("mediaGallery.gallery5Service"),
     },
   ];
 
-interface SliderPositions {
-  [key: number]: number;
-}
 
   // Video carousel width calculation
   useEffect(() => {
@@ -186,7 +186,7 @@ interface SliderPositions {
   }, [draggingIndex, handleMouseMove, handleMouseUp, handleTouchMove]);
 
   return (
-    <section id="media" className="relative py-32 overflow-hidden">
+    <section id="media" className="relative overflow-hidden py-16 sm:py-24 md:py-32">
       {/* Background */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-red-900/10 rounded-full blur-3xl" />
@@ -232,7 +232,7 @@ interface SliderPositions {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative flex-shrink-0 w-[240px] md:w-[280px]"
+                    className="relative w-[min(78vw,248px)] flex-shrink-0 sm:w-[240px] md:w-[280px]"
                     style={{ aspectRatio: "9/16" }}
                   >
                     <a
@@ -306,7 +306,7 @@ interface SliderPositions {
                           }}
                         >
                           <span className="text-xs font-semibold text-[#AE7528] tracking-wide">
-                            Смотреть рилс
+                            {t("mediaGallery.watchReel")}
                           </span>
                           <ExternalLink className="w-3 h-3 text-[#AE7528]" />
                         </div>
@@ -342,14 +342,14 @@ interface SliderPositions {
                     {/* Card Container */}
                     <div
                       ref={(el) => (containerRefs.current[index] = el)}
-                      className="relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 h-full min-h-[400px] select-none"
+                      className="relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 h-full min-h-[260px] sm:min-h-[360px] md:min-h-[400px] select-none"
                     >
                       {/* Image Container */}
                       <div className="absolute inset-0">
                         {/* Before Image */}
                         <img
                           src={item.before}
-                          alt={`${item.title} - До`}
+                          alt={`${item.title} — ${t("mediaGallery.before")}`}
                           className="absolute inset-0 w-full h-full object-cover"
                           draggable={false}
                         />
@@ -363,7 +363,7 @@ interface SliderPositions {
                         >
                           <img
                             src={item.after}
-                            alt={`${item.title} - После`}
+                            alt={`${item.title} — ${t("mediaGallery.after")}`}
                             className="w-full h-full object-cover"
                             draggable={false}
                           />
@@ -381,9 +381,9 @@ interface SliderPositions {
                         onTouchStart={() => handleMouseDown(index)}
                       >
                         {/* Slider Handle */}
-                        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-16 h-16 rounded-full glass backdrop-blur-2xl border border-white/20 flex items-center justify-center shadow-2xl cursor-ew-resize">
-                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900 to-red-800 flex items-center justify-center shadow-lg">
-                            <MoveHorizontal className="w-6 h-6 text-white" />
+                        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 flex h-12 w-12 cursor-ew-resize items-center justify-center rounded-full border border-white/20 glass backdrop-blur-2xl shadow-2xl sm:h-16 sm:w-16">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-red-900 to-red-800 shadow-lg sm:h-12 sm:w-12">
+                            <MoveHorizontal className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                           </div>
                         </div>
                       </div>
@@ -399,16 +399,16 @@ interface SliderPositions {
                       </div>
 
                       {/* Info Card */}
-                      <div className="absolute bottom-0 left-0 right-0 p-8 z-20 pointer-events-none">
+                      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none p-4 sm:p-6 md:p-8">
                         <motion.div
                           initial={{ y: 20, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
                           viewport={{ once: true, amount: 0.2 }}
-                          className="glass-dark backdrop-blur-xl rounded-2xl p-6 border-zinc-800"
+                          className="glass-dark backdrop-blur-xl rounded-2xl border-zinc-800 p-4 sm:p-6"
                         >
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1">
-                              <h3 className={`text-white font-bold mb-2 ${item.featured ? 'text-3xl' : 'text-2xl'}`}>
+                          <div className="flex items-start justify-between gap-3 sm:gap-4">
+                            <div className="min-w-0 flex-1">
+                              <h3 className={`text-white font-bold mb-2 break-words ${item.featured ? 'text-xl sm:text-2xl md:text-3xl' : 'text-lg sm:text-xl md:text-2xl'}`}>
                                 {item.title}
                               </h3>
                               <p className={`text-cartello-beige ${item.featured ? 'text-base' : 'text-sm'}`}>
@@ -433,7 +433,7 @@ interface SliderPositions {
                 viewport={{ once: true, amount: 0.2 }}
                 className="mt-20 text-center"
               >
-                <div className="inline-block p-8 rounded-3xl glass border-zinc-800">
+                <div className="inline-block rounded-3xl border border-zinc-800 glass p-6 sm:p-8">
                   <p className="text-xl text-zinc-300 mb-4">
                     {t('mediaGallery.moreWorks')}
                   </p>

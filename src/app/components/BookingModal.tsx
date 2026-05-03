@@ -104,7 +104,7 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative my-auto max-h-[min(90dvh,900px)] w-full max-w-lg overflow-y-auto overscroll-contain rounded-[2.5rem] border border-white/10 bg-zinc-900 p-8 shadow-2xl"
+              className="relative my-auto max-h-[min(90dvh,900px)] w-full max-w-lg overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-zinc-900 p-6 shadow-2xl sm:rounded-[2.5rem] sm:p-8"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

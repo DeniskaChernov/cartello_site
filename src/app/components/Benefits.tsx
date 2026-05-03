@@ -48,12 +48,12 @@ export function Benefits() {
   const { t } = useLanguage();
 
   return (
-    <section id="benefits" className="relative py-24 overflow-hidden">
+    <section id="benefits" className="relative overflow-hidden py-16 sm:py-24 md:py-28">
       {/* Background */}
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,6 +66,14 @@ export function Benefits() {
               className="w-[16.8rem] sm:w-[19.2rem] md:w-96 h-auto mx-auto opacity-80" 
             />
           </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-3 text-center text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl"
+          >
+            {t("benefits.title")}
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +95,7 @@ export function Benefits() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-red-900/30 transition-all duration-300"
+              className="group relative rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 transition-all duration-300 hover:border-red-900/30 sm:p-8"
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-900/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">

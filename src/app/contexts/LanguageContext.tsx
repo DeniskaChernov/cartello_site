@@ -74,6 +74,9 @@ const translations = {
     },
     services: {
       title: 'Наши услуги',
+      /** Две части заголовка — градиент только на второй (корректно для любого языка) */
+      headingLead: 'Наши',
+      headingAccent: 'услуги',
       subtitle: 'Полный спектр качественных детейлинг-услуг',
       priceFrom: 'от',
       priceOnRequest: 'Цена по запросу',
@@ -299,7 +302,33 @@ const translations = {
       before: 'До',
       after: 'После',
       moreWorks: 'Больше работ в нашем Instagram',
-      views: 'просмотров'
+      views: 'просмотров',
+      watchReel: 'Смотреть рилс',
+      reel1Title: 'Cartello Detailing Centre',
+      reel1Subtitle: 'Студия и стандарты сервиса',
+      reel1Tag: 'О студии',
+      reel2Title: 'G63 на СПА-процедурах',
+      reel2Subtitle: 'Cartello — нам доверяют',
+      reel2Tag: 'Детейлинг',
+      reel3Title: 'Mercedes GLE 450',
+      reel3Subtitle: 'Качество и доверие',
+      reel3Tag: 'Полировка',
+      reel4Title: 'BMW i5 — комплекс услуг',
+      reel4Subtitle: 'С душой к каждому автомобилю',
+      reel4Tag: 'Комплекс',
+      reel5Title: 'Антигравийная защита',
+      reel5Subtitle: 'Своевременная защита кузова',
+      reel5Tag: 'Антигравий',
+      gallery1Title: 'Mercedes-Benz S-Class',
+      gallery1Service: 'Полировка + керамика',
+      gallery2Title: 'BMW X5',
+      gallery2Service: 'Оклейка PPF',
+      gallery3Title: 'Audi A8',
+      gallery3Service: 'Химчистка салона',
+      gallery4Title: 'Porsche Cayenne',
+      gallery4Service: 'Тонировка стёкол',
+      gallery5Title: 'Range Rover',
+      gallery5Service: 'Полная защита',
     },
     videoSection: {
       title: 'Результаты,',
@@ -392,7 +421,8 @@ const translations = {
     },
     floatingCTA: {
       book: 'Записаться',
-      onService: 'на услугу'
+      onService: 'на услугу',
+      bookFull: 'Записаться на услугу',
     },
     backToTop: {
       title: 'Наверх'
@@ -401,7 +431,11 @@ const translations = {
       message: 'Мы используем cookies для улучшения вашего опыта. Продолжая использовать сайт, вы соглашаетесь с нашей',
       policy: 'политикой cookies',
       accept: 'Принять',
-      decline: 'Отклонить'
+      decline: 'Отклонить',
+      stickyTitle: 'Файлы cookie',
+      stickyDescription:
+        'Мы используем cookie для улучшения работы сайта, анализа посещаемости и персонализации контента.',
+      stickyMore: 'Подробнее',
     },
     cookiePolicy: {
       title: 'Политика использования файлов cookies',
@@ -527,6 +561,8 @@ const translations = {
     },
     services: {
       title: 'Bizning xizmatlarimiz',
+      headingLead: 'Bizning',
+      headingAccent: 'xizmatlarimiz',
       subtitle: 'Sifatli deteyling xizmatlarining to\'liq spektri',
       priceFrom: 'dan',
       priceOnRequest: 'Narx so\'rov bo\'yicha',
@@ -540,11 +576,13 @@ const translations = {
       polishingPrice: '1.500.000 so\'mdan',
       
       ppf: 'Antigraviy plyonka',
-      ppfDesc: 'Poliuretan plyonka bilan qoplash mustahkam himoya qatlami yaratadi: LKPni chipish, qum va agressiv muhitdan saqlaydi.',
+      ppfDesc:
+        'Poliuretan plyonka bilan qoplash mustahkam himoya qatlami yaratadi: lak-bo‘yoq qoplamasini chipish, qum va agressiv muhitdan saqlaydi.',
       ppfPrice: '2.400.000 so\'mdan',
       
       tinting: 'Oynalarni tonlash',
-      tintingDesc: 'Avtomobil oynalarini professional tonirovkasi salondagi qulaylikni oshiradi, ultrabinafsha nurlardan himoya qiladi va avtomobilga yanada yorqin ko\'rinish beradi.',
+      tintingDesc:
+        'Professional oyna tonlash salondagi qulaylikni oshiradi, ultrabinafsha nurlardan himoya qiladi va avtomobilga ifodaliroq ko‘rinish beradi.',
       tintingPrice: '780.000 so\'mdan',
       
       // Other Services
@@ -581,7 +619,8 @@ const translations = {
       wheelArchWashPrice: '990.000 so\'mdan',
       
       undercarriageWash: 'Avtomobil tubini deteyling yuvish',
-      undercarriageWashDesc: 'Tubning ehtiyotkor tozalashi qiyin joylardan chir va qoplamlarni olib tashlaydi, avtomobilning tartibli holatini saqlaydi va elementlarining xizmat muddatini uzaytirishga yordam beradi.',
+      undercarriageWashDesc:
+        'Tubning ehtiyotkor tozalashi qiyin joylardan iflos va cho‘kmalarni olib tashlaydi, avtomobilning tartibli holatini saqlaydi va elementlarining xizmat muddatini uzaytirishga yordam beradi.',
       undercarriageWashPrice: '1.490.000 so\'mdan',
       
       autoElectric: 'Avtoelektrik xizmatlari',
@@ -597,7 +636,8 @@ const translations = {
       bodyworkDesc: 'Har qanday murakkablikdagi professional kuzov va bo‘yoq ishlari: shikastlanishlarni tiklashdan kosmetik ta‘mirlashgacha.',
       
       windshieldProtection: 'Loboviy oyna himoya',
-      windshieldProtectionDesc: 'Maxsus plyonka loboviy oynani yorilish va yoriqlar paydo bo\'lishidan himoya qiladi va qimmat almashtirish zarurligini oldini oladi.',
+      windshieldProtectionDesc:
+        'Maxsus plyonka loboviy oynani chipish va yoriqlardan himoya qiladi, qimmatbaho almashtirish ehtiyojining oldini oladi.',
       
       plasticProtection: 'Interyer detallarini himoya qilish',
       plasticProtectionDesc: 'Shaffof qoplama plastik va salonning dekorative elementlarining tashqi ko\'rinishini saqlab qoladi va ularni kundalik shikastlanishlardan himoya qiladi.',
@@ -632,8 +672,8 @@ const translations = {
       detailingWashExterior: 'Kuzovni deteyling yuvish',
       detailingWashExteriorDesc: 'Avtomobilni professional ehtiyotkorlik bilan yuvish',
       
-      detailingWashEngine: 'Dvigatel bo\'shlig\'ini deteyling yuvish',
-      detailingWashEngineDesc: 'Dvigatel bo\'limini professional tozalash',
+      detailingWashEngine: 'Motor bo‘shlig‘ini deteyling yuvish',
+      detailingWashEngineDesc: 'Motor bo‘limini professional tozalash',
       
       detailingWashWheelArches: 'G\'ildirak arkalarini deteyling yuvish',
       detailingWashWheelArchesDesc: 'G\'ildirak arkalarini ehtiyotkorlik bilan tozalash',
@@ -695,10 +735,10 @@ const translations = {
       autoElectricianDetail2: 'Simlarni ta\'mirlash va almashtirish',
       autoElectricianDetail3: 'Signalizatsiya va kameralar o\'rnatish',
       autoElectricianDetail4: 'Multimedia tizimlari bilan ishlash',
-      autoElectricianTime: 'individual',
+      autoElectricianTime: 'individual tarzda',
       
-      detailingWashEngineTitle: 'Dvigatel bo\'shlig\'ini deteyling yuvish',
-      detailingWashEngineDesc: 'Maxsus vositalar yordamida dvigatel bo\'limini professional tozalash.',
+      detailingWashEngineTitle: 'Motor bo‘shlig‘ini deteyling yuvish',
+      detailingWashEngineDesc: 'Maxsus vositalar yordamida motor bo‘limini professional tozalash.',
       detailingWashEngineDetail1: 'Korroziyadan himoya',
       detailingWashEngineDetail2: 'Elektronikaning barqaror ishlashi',
       detailingWashEngineDetail3: 'Xizmat ko\'rsatish qulayligi',
@@ -722,7 +762,7 @@ const translations = {
       detailingWashBottomTime: '8-12 soat'
     },
     benefits: {
-      title: 'Nima uchun bizni tanlashadi',
+      title: 'Nima uchun bizni tanlaydilar?',
       subtitle: 'Bizning afzalliklarimiz va sifat kafolatlari',
       
       professionalEquipment: 'Professional uskunalar',
@@ -741,7 +781,8 @@ const translations = {
       individualApproachDesc: 'Har bir avtomobil uchun shaxsiy yechim ishlab chiqamiz',
 
       satisfiedClients: 'Mamnun mijozlar',
-      satisfiedClientsDesc: '500 dan ortiq doimiy mijozlar avtomobillarini bizga ishonib topshirishadi'
+      satisfiedClientsDesc:
+        '500 dan ortiq doimiy mijoz avtomobillarini ishonch bilan bizga topshiradi',
     },
     gallery: {
       title: 'Bizning ishlarimiz',
@@ -752,7 +793,32 @@ const translations = {
       before: 'Oldin',
       after: 'Keyin',
       moreWorks: 'Instagramimizda yanada ko‘p ishlar',
-      views: 'martaba ko‘rilgan'
+      views: 'ko‘rish',
+      watchReel: 'Rilsni koʻrish',
+      reel1Title: 'Cartello Detailing Centre',
+      reel1Subtitle: 'Studiya va xizmat standartlari',
+      reel1Tag: 'Studiya',
+      reel2Title: 'G63 SPA jarayonlarida',
+      reel2Subtitle: 'Cartello — mijozlar bizga ishonadi',
+      reel3Title: 'Mercedes GLE 450',
+      reel3Subtitle: 'Sifat va ishonch',
+      reel3Tag: 'Jilolash',
+      reel4Title: 'BMW i5 — kompleks xizmatlar',
+      reel4Subtitle: 'Har avtomobilga mehr bilan',
+      reel4Tag: 'Kompleks',
+      reel5Title: 'Antigraviy himoya',
+      reel5Subtitle: 'O‘z vaqtida kuzov himoyasi',
+      reel5Tag: 'Antigraviy',
+      gallery1Title: 'Mercedes-Benz S-Class',
+      gallery1Service: 'Jilolash + keramika',
+      gallery2Title: 'BMW X5',
+      gallery2Service: 'PPF yopishtirish',
+      gallery3Title: 'Audi A8',
+      gallery3Service: 'Salonni kimyoviy tozalash',
+      gallery4Title: 'Porsche Cayenne',
+      gallery4Service: 'Oynalarni tonlash',
+      gallery5Title: 'Range Rover',
+      gallery5Service: 'To‘liq himoya',
     },
     videoSection: {
       title: 'Natijalar',
@@ -795,7 +861,8 @@ const translations = {
       telegram: 'Telegram',
       instagram: 'Instagram',
       phoneTitle: 'Telefon',
-      infoText: 'Qulay aloqa usulini tanlang. Biz 5 daqiqa ichida javob beramiz va O\'zR "Shaxsiy ma\'lumotlar to\'g\'risida"gi Qonuniga (№ ЗРУ-547 02.07.2019 yil) muvofiq ma\'lumotlaringizning maxfiyligini kafolatlaymiz',
+      infoText:
+        'Qulay aloqa usulini tanlang. Biz 5 daqiqa ichida javob beramiz va shaxsiy maʼlumotlaringizni Oʻzbekiston Respublikasi «Shaxsiy maʼlumotlar toʻgʻrisida»gi Qonuniga (№ ЗРУ-547, 02.07.2019) muvofiq maxfiy saqlashni kafolatlaymiz.',
       
       addressTitle: 'Manzil va ish vaqti',
       address: 'Manzil',
@@ -812,14 +879,16 @@ const translations = {
       errorTitle: 'Xato',
       errorMessage: 'Arizani yuborib bo\'lmadi. Keyinroq urinib ko\'ring',
       errorMessageAlt: 'Qo\'ng\'iroq qiling yoki Telegramda yozing',
-      consentRequired: 'Rozillik talab qilinadi',
-      consentMessage: 'Iltimos, shaxsiy ma\'lumotlarni qayta ishlashga roziligingizni tasdiqlang',
+      consentRequired: 'Rozilik talab qilinadi',
+      consentMessage: 'Iltimos, shaxsiy maʼlumotlarni qayta ishlashga roziligingizni tasdiqlang',
       
       privacyText: 'Tugmani bosish orqali siz rozilik bildirasiz',
       privacyLink: 'maxfiylik siyosati',
-      privacyConsent: 'Men Cartello Detailing Centre\'ga shaxsiy ma\'lumotlarimni (ism, telefon raqami) arizani qayta ishlash va men bilan bog\'lanish maqsadida',
+      privacyConsent:
+        'Men Cartello Detailing Centreʼga arizamni qayta ishlash va men bilan bogʻlanish maqsadida shaxsiy maʼlumotlarimni (ism, telefon raqami) quyidagilar boʻyicha qayta ishlashga rozilik beraman:',
       privacyPolicy: 'Maxfiylik siyosati',
-      privacyLaw: 'va O\'zR "Shaxsiy ma\'lumotlar to\'g\'risida"gi Qonuni (№ ЗРУ-547 02.07.2019 yil) bo\'yicha qayta ishlashga roziman'
+      privacyLaw:
+        'va Oʻzbekiston Respublikasining «Shaxsiy maʼlumotlar toʻgʻrisida»gi Qonuni (№ ЗРУ-547, 02.07.2019) boʻyicha.',
     },
     footer: {
       description: 'Ishonchli deteyling markazingiz.',
@@ -845,16 +914,22 @@ const translations = {
     },
     floatingCTA: {
       book: 'Yozilish',
-      onService: 'xizmatga'
+      onService: 'xizmatga',
+      bookFull: 'Xizmatga yozilish',
     },
     backToTop: {
       title: 'Yuqoriga'
     },
     cookieBanner: {
-      message: 'Biz tajribangizni yaxshilash uchun cookie-lardan foydalanamiz. Saytdan foydalanishni davom ettirib, siz bizning',
-      policy: 'cookie siyosati',
+      message:
+        'Tajribangizni yaxshilash uchun cookie’dan foydalanamiz. Saytdan foydalanishni davom ettirsangiz, bizning',
+      policy: 'cookie siyosatimiz',
       accept: 'Qabul qilish',
-      decline: 'Rad etish'
+      decline: 'Rad etish',
+      stickyTitle: 'Cookie-fayllar',
+      stickyDescription:
+        'Sayt ishlashini yaxshilash, tashriflar tahlili va kontentni shaxsiylashtirish uchun cookie’dan foydalanamiz.',
+      stickyMore: 'Batafsil',
     },
     cookiePolicy: {
       title: 'Cookie fayllaridan foydalanish siyosati',
@@ -897,7 +972,8 @@ const translations = {
       brand: 'CARTELLO GROUP',
       intro: 'Mazkur Maxfiylik siyosati Cartello Group kompaniyasi (keyingi o\'rinlarda — Kompaniya) saytidan, ijtimoiy tarmoqlardan va xizmatlaridan foydalanishda taqdim etiladigan foydalanuvchilarning shaxsiy ma\'lumotlarini yig\'ish, saqlash, qayta ishlash va himoya qilish tartibini belgilaydi.',
       s1Title: '1. Umumiy qoidalar',
-      s1_1: 'Kompaniya foydalanuvchilarning shaxsiy ma\'lumotlarining daxlsizligi huquqini hurmat qiladi va shaxsiy ma\'lumotlarning himoyasini O\'zbekiston Respublikasi qonunchiligiga muvofiq ta\'minlaydi.',
+      s1_1:
+        'Kompaniya foydalanuvchilarning shaxsiy hayoti va shaxsiy maʼlumotlari maxfiqligi huquqini hurmat qiladi va ularning himoyasini Oʻzbekiston Respublikasi qonunchiligiga muvofiq taʼminlaydi.',
       s1_2: 'Saytdan, ijtimoiy tarmoqlardan yoki Kompaniyaning boshqa xizmatlaridan foydalangan holda foydalanuvchi mazkur Maxfiylik siyosati shartlariga rozilik bildiradi.',
       s1_3: 'Siyosat shartlariga rozi bo\'lmagan taqdirda foydalanuvchi Kompaniya xizmatlaridan foydalanishni to\'xtatishi shart.',
       s2Title: '2. Biz to\'playdigan shaxsiy ma\'lumotlar',
@@ -918,7 +994,7 @@ const translations = {
       s4Lead: 'Shaxsiy ma\'lumotlarni qayta ishlash quyidagilar asosida amalga oshiriladi:',
       s4_1: 'foydalanuvchining ixtiyoriy roziligi;',
       s4_2: 'foydalanuvchi oldidagi majburiyatlarni bajarish zarurati;',
-      s4_3: 'O\'zbekiston Respublikasi qonunchiligi talablari.',
+      s4_3: 'Oʻzbekiston Respublikasi qonunchiligining talablari.',
       s5Title: '5. Ma\'lumotlarni saqlash va himoya qilish shartlari',
       s5_1: 'Kompaniya shaxsiy ma\'lumotlarni yo\'qotishdan, ruxsatsiz kirishdan, o\'zgartirishdan yoki oshkor qilishdan himoya qilish uchun barcha asosli texnik va tashkiliy choralarni ko\'radi.',
       s5_2: 'Shaxsiy ma\'lumotlarga faqat Kompaniyaning vakolatli xodimlari kirish huquqiga ega.',
@@ -959,7 +1035,8 @@ const translations = {
       sending: 'Yuborilmoqda...',
       call: 'Qo\'ng\'iroq qilish',
       telegram: 'Telegram',
-      privacyText: 'Tugmani bosish orqali siz maxfiylik siyosati bilan rozilik bildirasiz'
+      privacyText:
+        'Tugmani bosish orqali siz maxfiylik siyosatiga rozilik bildirasiz',
     }
   }
 };

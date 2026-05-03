@@ -15,7 +15,6 @@ export function CookieBanner({ onOpenPolicy }: CookieBannerProps) {
 
   useEffect(() => {
     if (!hasConsent) {
-      // Показываем баннер через 1 секунду после загрузки
       setTimeout(() => setIsVisible(true), 1000);
     }
   }, [hasConsent]);
@@ -37,52 +36,56 @@ export function CookieBanner({ onOpenPolicy }: CookieBannerProps) {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-50"
+          className="fixed z-50 w-auto max-md:left-4 max-md:right-4 md:left-auto md:right-6 md:max-w-md"
+          style={{
+            bottom: "max(1rem, env(safe-area-inset-bottom, 0px))",
+          }}
         >
-          <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-700 shadow-2xl backdrop-blur-xl overflow-hidden">
-            {/* Close Button */}
+          <div className="relative overflow-hidden rounded-2xl border border-zinc-700 bg-gradient-to-br from-zinc-900 to-zinc-950 shadow-2xl backdrop-blur-xl">
             <button
               onClick={handleDecline}
-              className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors z-10"
+              className="absolute right-3 top-3 z-10 text-zinc-400 transition-colors hover:text-white sm:right-4 sm:top-4"
+              type="button"
             >
-              <X className="w-5 h-5" />
+              <X className="h-5 w-5" />
             </button>
 
-            <div className="p-6">
-              {/* Icon */}
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-900 to-red-800 flex items-center justify-center flex-shrink-0">
-                  <Cookie className="w-6 h-6 text-white" />
+            <div className="max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain p-4 pr-12 sm:p-6 sm:pr-14">
+              <div className="mb-4 flex items-start gap-3 sm:gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-900 to-red-800 sm:h-12 sm:w-12">
+                  <Cookie className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                 </div>
-                <div>
-                  <h3 className="text-white text-lg font-bold mb-1">
-                    Файлы cookies
+                <div className="min-w-0">
+                  <h3 className="mb-1 text-base font-bold text-white sm:text-lg">
+                    {t("cookieBanner.stickyTitle")}
                   </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">
-                    Мы используем cookies для улучшения работы сайта, анализа посещаемости и персонализации контента.{" "}
+                  <p className="text-sm leading-relaxed text-zinc-400">
+                    {t("cookieBanner.stickyDescription")}{" "}
                     <button
                       onClick={onOpenPolicy}
+                      type="button"
                       className="text-cartello-beige hover:underline"
                     >
-                      Подробнее
+                      {t("cookieBanner.stickyMore")}
                     </button>
                   </p>
                 </div>
               </div>
 
-              {/* Buttons */}
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                 <button
                   onClick={handleAccept}
-                  className="flex-1 px-4 py-2.5 bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-red-900/20"
+                  type="button"
+                  className="flex-1 rounded-lg bg-gradient-to-r from-red-900 to-red-800 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-900/20 transition-all hover:from-red-800 hover:to-red-700"
                 >
-                  Принять
+                  {t("cookieBanner.accept")}
                 </button>
                 <button
                   onClick={handleDecline}
-                  className="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium rounded-lg transition-all border border-zinc-700"
+                  type="button"
+                  className="rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 sm:flex-initial sm:px-5"
                 >
-                  Отклонить
+                  {t("cookieBanner.decline")}
                 </button>
               </div>
             </div>

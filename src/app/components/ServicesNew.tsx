@@ -302,7 +302,7 @@ export function ServicesNew() {
   };
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden" ref={containerRef}>
+    <section id="services" className="relative overflow-hidden py-16 sm:py-20 md:py-24" ref={containerRef}>
       {/* Background Gradient */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-black to-transparent pointer-events-none" />
       <div className="absolute right-0 top-[20%] w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[100px] pointer-events-none" />
@@ -316,7 +316,10 @@ export function ServicesNew() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6"
           >
-            {t("services.title").split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige via-cartello-beige-light to-cartello-beige">{t("services.title").split(' ')[1]}</span>
+            {t("services.headingLead")}{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cartello-beige via-cartello-beige-light to-cartello-beige">
+              {t("services.headingAccent")}
+            </span>
           </motion.h2>
           
           <motion.p
@@ -340,7 +343,7 @@ export function ServicesNew() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.2 }}
               onClick={() => openBooking(service)}
-              className="group relative isolate h-[500px] cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/10"
+              className="group relative isolate h-[min(32rem,78svh)] cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/10 sm:h-[500px]"
             >
               <img
                 src={service.image}
@@ -402,7 +405,7 @@ export function ServicesNew() {
                 ease: [0.21, 0.45, 0.27, 0.9],
               }}
               onClick={() => openBooking(service)}
-              className="group relative isolate flex min-h-[350px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30"
+              className="group relative isolate flex min-h-[300px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30 sm:min-h-[350px]"
             >
               <div className="absolute inset-0 opacity-[0.48] transition-opacity duration-300 group-hover:opacity-55">
                 <img

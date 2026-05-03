@@ -38,7 +38,7 @@ export function HeroNew() {
   /** Статистика остаётся читаемой: полная непрозрачность до ~600px прокрутки, затем плавное исчезновение */
   const statsOpacity = useTransform(scrollY, [0, 600, 1100], [1, 1, 0]);
   const lightMotion = useLightMotion();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -226,7 +226,7 @@ export function HeroNew() {
                       </div>
                       <div
                         className="hero-stat-label mt-1 max-w-[11rem] text-[10px] leading-tight text-zinc-400 min-[360px]:text-[11px] sm:mt-1.5 sm:max-w-none sm:text-xs md:text-sm"
-                        lang="ru"
+                        lang={language === "uz" ? "uz" : "ru"}
                       >
                         {stat.label}
                       </div>

@@ -64,14 +64,14 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
   };
 
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
+    <section id="contact" className="relative overflow-hidden py-16 sm:py-24 md:py-32">
       {/* Background */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-red-900/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 relative">
+        <div className="relative mx-auto mb-12 max-w-3xl text-center sm:mb-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,15 +82,15 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-stretch">
+        <div className="mx-auto grid max-w-7xl items-stretch gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
           {/* Left - Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-6 sm:p-8 md:p-10">
-              <h3 className="text-2xl sm:text-3xl text-white mb-8 sm:mb-[62px] font-bold">
+            <div className="rounded-3xl border border-zinc-700 bg-gradient-to-br from-zinc-800 to-zinc-900 p-5 sm:p-8 md:p-10">
+              <h3 className="mb-6 text-xl font-bold text-white sm:mb-8 sm:text-2xl md:text-3xl md:mb-[62px]">
                 {t('contact.formTitle')}
               </h3>
 
@@ -160,7 +160,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
                     onChange={(e) => setPrivacyAccepted(e.target.checked)}
                     className="mt-1 w-5 h-5 rounded border-2 border-zinc-700 bg-zinc-900/50 checked:bg-gradient-to-r checked:from-red-900 checked:to-red-800 focus:ring-2 focus:ring-red-900/20 cursor-pointer"
                   />
-                  <label htmlFor="privacy-consent" className="text-sm text-zinc-400 leading-relaxed cursor-pointer">
+                  <label htmlFor="privacy-consent" className="cursor-pointer text-xs leading-relaxed text-zinc-400 sm:text-sm">
                     {t('contact.privacyConsent')}{" "}
                     <button
                       type="button"
@@ -198,8 +198,8 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
             viewport={{ once: true, amount: 0.2 }}
           >
             {/* Quick Contact */}
-            <div className="rounded-3xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 p-10 h-full flex flex-col">
-              <h3 className="text-3xl text-white mb-[62px] font-bold">
+            <div className="flex h-full flex-col rounded-3xl border border-zinc-700 bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 sm:p-8 md:p-10">
+              <h3 className="mb-8 text-xl font-bold text-white sm:mb-10 sm:text-2xl md:mb-[62px] md:text-3xl">
                 {t('contact.contactTitle')}
               </h3>
 
@@ -264,7 +264,7 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
 
                 {/* Info Text */}
                 <div className="pt-2">
-                  <p className="text-sm text-zinc-400 leading-relaxed">
+                  <p className="text-xs leading-relaxed text-zinc-400 sm:text-sm">
                     {t('contact.infoText')}
                   </p>
                 </div>

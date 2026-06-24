@@ -365,22 +365,21 @@ export function ServicesNew() {
                 </div>
               )}
               
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
-                <div className="w-full translate-y-3 transition-transform duration-300 ease-out group-hover:translate-y-0">
-                  <div className="mb-3 flex min-h-[4rem] flex-col justify-start md:mb-2 md:min-h-[4.5rem]">
-                    <h3 className="break-words text-3xl font-bold leading-tight text-white">{service.title}</h3>
+              <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
+                <div className="w-full transition-transform duration-300 ease-out translate-y-1 group-hover:translate-y-0">
+                  <h3 className="mb-2 break-words text-2xl font-bold leading-tight text-white sm:text-3xl">
+                    {service.title}
+                  </h3>
+                  <div className="overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out max-h-[2.85rem] sm:max-h-[3.25rem] md:mb-0 md:max-h-0 md:opacity-0 md:group-hover:mb-3 md:group-hover:max-h-28 md:group-hover:opacity-100 lg:group-hover:max-h-32">
+                    <p className="line-clamp-2 text-sm leading-relaxed text-zinc-300 md:line-clamp-none">
+                      {service.description}
+                    </p>
                   </div>
-                  {/* 0fr→1fr вместо max-height — без постоянного пересчёта layout при hover */}
-                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
-                    <div className="min-h-0 overflow-hidden pb-4">
-                      <p className="text-zinc-300">{service.description}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-white/10 pt-6">
-                    <span className="text-lg font-semibold text-cartello-beige">{service.price}</span>
+                  <div className="mt-3 flex shrink-0 items-center justify-between border-t border-white/10 pt-4 sm:pt-5">
+                    <span className="text-base font-semibold text-cartello-beige sm:text-lg">{service.price}</span>
                     <button
                       type="button"
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 group-hover:bg-white group-hover:text-black"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 group-hover:bg-white group-hover:text-black"
                     >
                       <ArrowRight className="h-5 w-5" />
                     </button>

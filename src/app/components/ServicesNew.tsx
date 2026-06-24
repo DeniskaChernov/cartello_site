@@ -343,7 +343,7 @@ export function ServicesNew() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.2 }}
               onClick={() => openBooking(service)}
-              className="group relative isolate h-[min(32rem,78svh)] cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/10 sm:h-[500px]"
+              className="group relative isolate min-h-[360px] h-[min(28rem,72svh)] cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 sm:min-h-[440px] sm:h-[500px] sm:rounded-[2.5rem] lg:min-h-[460px] lg:h-[min(31rem,80svh)] xl:h-[500px]"
             >
               <img
                 src={service.image}
@@ -352,7 +352,7 @@ export function ServicesNew() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full transform-gpu object-cover brightness-[1.1] saturate-[1.06] transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/35 to-transparent opacity-[0.84] transition-opacity duration-300 group-hover:opacity-[0.78]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 from-40% via-zinc-950/55 via-75% to-transparent opacity-[0.88] transition-opacity duration-300 group-hover:opacity-[0.82]" />
               
               {/* Badge "Хит" */}
               {service.badge && (
@@ -365,23 +365,25 @@ export function ServicesNew() {
                 </div>
               )}
               
-              <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
-                <div className="w-full transition-transform duration-300 ease-out translate-y-1 group-hover:translate-y-0">
-                  <h3 className="mb-2 break-words text-2xl font-bold leading-tight text-white sm:text-3xl">
+              <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 lg:p-7 xl:p-8">
+                <div className="w-full transition-transform duration-300 ease-out translate-y-0.5 sm:translate-y-1 group-hover:translate-y-0">
+                  <h3 className="mb-1.5 break-words text-xl font-bold leading-tight text-white sm:mb-2 sm:text-2xl lg:text-[1.65rem] xl:text-3xl">
                     {service.title}
                   </h3>
-                  <div className="overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out max-h-[2.85rem] sm:max-h-[3.25rem] md:mb-0 md:max-h-0 md:opacity-0 md:group-hover:mb-3 md:group-hover:max-h-28 md:group-hover:opacity-100 lg:group-hover:max-h-32">
-                    <p className="line-clamp-2 text-sm leading-relaxed text-zinc-300 md:line-clamp-none">
+                  <div className="mb-1 overflow-hidden transition-[max-height,opacity,margin] duration-300 ease-out max-h-[2.65rem] sm:max-h-[3rem] lg:mb-0 lg:max-h-[2.85rem] lg:[@media(hover:hover)]:max-h-0 lg:[@media(hover:hover)]:opacity-0 lg:[@media(hover:hover)]:group-hover:mb-2 lg:[@media(hover:hover)]:group-hover:max-h-24 lg:[@media(hover:hover)]:group-hover:opacity-100 xl:[@media(hover:hover)]:group-hover:mb-3 xl:[@media(hover:hover)]:group-hover:max-h-32">
+                    <p className="line-clamp-2 text-[0.8125rem] leading-snug text-zinc-300 sm:text-sm sm:leading-relaxed lg:[@media(hover:hover)]:line-clamp-none">
                       {service.description}
                     </p>
                   </div>
-                  <div className="mt-3 flex shrink-0 items-center justify-between border-t border-white/10 pt-4 sm:pt-5">
-                    <span className="text-base font-semibold text-cartello-beige sm:text-lg">{service.price}</span>
+                  <div className="mt-2 flex shrink-0 items-center justify-between gap-3 border-t border-white/10 pt-3 sm:mt-3 sm:pt-4">
+                    <span className="min-w-0 flex-1 text-sm font-semibold leading-tight text-cartello-beige sm:text-base lg:text-[0.9375rem] xl:text-lg">
+                      {service.price}
+                    </span>
                     <button
                       type="button"
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 group-hover:bg-white group-hover:text-black"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 sm:h-10 sm:w-10 group-hover:bg-white group-hover:text-black"
                     >
-                      <ArrowRight className="h-5 w-5" />
+                      <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                     </button>
                   </div>
                 </div>
@@ -404,7 +406,7 @@ export function ServicesNew() {
                 ease: [0.21, 0.45, 0.27, 0.9],
               }}
               onClick={() => openBooking(service)}
-              className="group relative isolate flex min-h-[300px] cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30 sm:min-h-[350px]"
+              className="group relative isolate flex min-h-[280px] cursor-pointer flex-col overflow-hidden rounded-[1.75rem] border border-zinc-800 bg-zinc-900/50 transform-gpu transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-red-900/30 sm:min-h-[320px] sm:rounded-[2rem] md:min-h-[350px]"
             >
               <div className="absolute inset-0 opacity-[0.48] transition-opacity duration-300 group-hover:opacity-55">
                 <img
@@ -427,7 +429,7 @@ export function ServicesNew() {
                 </div>
               )}
 
-              <div className="relative flex-1 p-6 md:p-8 flex flex-col z-10 min-h-0">
+              <div className="relative flex-1 p-5 sm:p-6 md:p-8 flex flex-col z-10 min-h-0">
                 <p className="sr-only">
                   {service.title}. {service.price}. {service.description}
                 </p>
@@ -439,18 +441,16 @@ export function ServicesNew() {
                   )}
                 </div>
 
-                <div className="mt-auto flex flex-col gap-3 pt-2">
-                  <div className="flex min-h-[4.5rem] w-full flex-col justify-start sm:min-h-[5.25rem] md:min-h-[6rem]">
-                    <h3 className="break-words text-2xl font-bold leading-tight text-white transition-transform duration-200 group-hover:translate-x-1">
+                <div className="mt-auto flex flex-col gap-2 pt-2 sm:gap-3">
+                  <div className="flex min-h-[3.25rem] w-full flex-col justify-start sm:min-h-[3.75rem] lg:min-h-[4rem]">
+                    <h3 className="break-words text-xl font-bold leading-tight text-white transition-transform duration-200 sm:text-2xl group-hover:translate-x-1">
                       {service.title}
                     </h3>
                   </div>
-                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
-                    <div className="min-h-0 overflow-hidden pb-1">
-                      <p className="text-sm leading-relaxed text-zinc-400 transition-colors duration-200 md:text-base md:group-hover:text-zinc-300">
-                        {service.description}
-                      </p>
-                    </div>
+                  <div className="overflow-hidden transition-[max-height,opacity] duration-300 ease-out max-h-[2.5rem] sm:max-h-[2.75rem] md:[@media(hover:hover)]:max-h-0 md:[@media(hover:hover)]:opacity-0 md:[@media(hover:hover)]:group-hover:max-h-24 md:[@media(hover:hover)]:group-hover:opacity-100 lg:[@media(hover:hover)]:group-hover:max-h-20 xl:[@media(hover:hover)]:group-hover:max-h-24">
+                    <p className="line-clamp-2 text-sm leading-snug text-zinc-400 transition-colors duration-200 sm:leading-relaxed md:text-base md:[@media(hover:hover)]:line-clamp-none md:group-hover:text-zinc-300">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
               </div>

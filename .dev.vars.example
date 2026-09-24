@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local Worker development; never commit real values.
+TELEGRAM_BOT_TOKEN=""
+TELEGRAM_CHAT_ID=""
+GOOGLE_SHEETS_CREDENTIALS=""
+GOOGLE_SHEETS_ID=""

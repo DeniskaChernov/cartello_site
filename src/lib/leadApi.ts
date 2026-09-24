@@ -5,10 +5,11 @@ function trimTrailingSlash(url: string): string {
 }
 
 /**
- * URL для отправки заявок на ваш API (Railway).
- * Задайте VITE_LEAD_API_URL (полный URL) или VITE_API_BASE_URL + опционально VITE_LEAD_API_PATH.
+ * Cloudflare production always uses the same-origin Worker.
+ * Overrides are for Vite local development only.
  */
 export function getLeadSubmissionUrl(): string {
+  if (!import.meta.env.DEV) return DEFAULT_PATH;
   const explicit = import.meta.env.VITE_LEAD_API_URL?.trim();
   if (explicit) {
     return explicit;
@@ -18,19 +19,5 @@ export function getLeadSubmissionUrl(): string {
   if (base) {
     return `${trimTrailingSlash(base)}${path.startsWith("/") ? path : `/${path}`}`;
   }
-  if (import.meta.env.DEV) {
-    return DEFAULT_PATH;
-  }
-  throw new Error(
-    "Укажите VITE_LEAD_API_URL или VITE_API_BASE_URL в переменных окружения (см. .env.example).",
-  );
-}
-
-/** Опционально: API_KEY на бэкенде → тот же ключ во фронте как VITE_API_AUTH_TOKEN. */
-export function getLeadAuthHeader(): Record<string, string> {
-  const token = import.meta.env.VITE_API_AUTH_TOKEN?.trim();
-  if (!token) {
-    return {};
-  }
-  return { Authorization: `Bearer ${token}` };
+  return DEFAULT_PATH;
 }

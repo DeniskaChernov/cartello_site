@@ -3,7 +3,7 @@ import { Phone, MapPin, Clock, Send, MessageCircle, Instagram, Mail, ArrowRight,
 import { useState } from "react";
 import { toast } from "sonner";
 import { useLanguage } from "../contexts/LanguageContext";
-import { getLeadAuthHeader, getLeadSubmissionUrl } from "../../lib/leadApi";
+import { getLeadSubmissionUrl } from "../../lib/leadApi";
 import { SITE_IMAGES } from "../../lib/siteImages";
 
 interface ContactNewProps {
@@ -37,7 +37,6 @@ export function ContactNew({ onOpenPrivacyPolicy }: ContactNewProps) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            ...getLeadAuthHeader(),
           },
           body: JSON.stringify(formData),
         }

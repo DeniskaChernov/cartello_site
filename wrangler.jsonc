@@ -12,8 +12,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "cartello-leads",
-    // Replace with the ID printed by: npx wrangler d1 create cartello-leads
-    "database_id": "00000000-0000-0000-0000-000000000000",
+    "database_id": "9c9749bf-ecca-4296-ab0b-a35df420844a",
     "migrations_dir": "migrations"
   }],
   "ratelimits": [{

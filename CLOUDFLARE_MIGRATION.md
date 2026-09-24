@@ -53,7 +53,8 @@ npx wrangler d1 create cartello-leads
 
 ## 3. Как связать D1 с Worker
 
-В `wrangler.jsonc` замените `00000000-0000-0000-0000-000000000000` на ID базы.
+В `wrangler.jsonc` уже указан ID созданной базы Cartello:
+`9c9749bf-ecca-4296-ab0b-a35df420844a`. При переносе в другой аккаунт замените его на ID новой базы.
 `binding` оставьте `DB`; если выбрали другое имя базы, исправьте `database_name`.
 ID базы не секрет — сохраните изменение в Git. Выполните `npm run cf:typegen`.
 Не создавайте второй Wrangler config.

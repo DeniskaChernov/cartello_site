@@ -39,7 +39,7 @@ npm run cf:deploy      # сборка + проверка bundle + публика
 `npm run cf:dev` и `npm run dev`.
 
 Единственный источник конфигурации Cloudflare — `wrangler.jsonc`.
-Перед первым deploy замените нулевой `database_id` на ID своей D1.
+В `database_id` указана созданная D1 Cartello; deploy выполняйте в её Cloudflare-аккаунте.
 `DATABASE_URL`, Node/Deno server и Google SDK Worker не использует.
 
 ## Railway: резерв для отката

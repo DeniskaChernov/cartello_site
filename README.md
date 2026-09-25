@@ -1,33 +1,55 @@
 # Cartello — лендинг автоуслуг
 
-React + Vite + Tailwind. Локально: `npm run dev`. Сборка: `npm run build`.
+React 18 + Vite + Tailwind. Cloudflare Static Assets отдаёт сайт, Hono Worker
+обрабатывает `/api/send-telegram` и `/health`. Заявки поступают в Telegram,
+D1 и Google Sheets. Дизайн и тексты сайта сохранены.
 
-## Деплой на Railway (вариант А — один сервис, только сайт)
+**Первый deploy, данные, домен и откат:** [CLOUDFLARE_MIGRATION.md](CLOUDFLARE_MIGRATION.md).
 
-Один сервис из этого репозитория отдаёт **статику** (`dist`). Код API в папке `server/` сюда **не подключается** — его можно поднять отдельно, когда понадобятся заявки в Telegram.
+## Локальная работа
 
-1. **New project** → **Deploy from GitHub** → репозиторий `cartello_site`.
-2. **Settings → Service:**
-   - **Root Directory:** оставьте пустым (корень репозитория).
-   - Убедитесь, что **не** выбран Docker из `server/` — в корне лежит `railway.toml` с **Railpack** и `npm start`.
-3. **Variables** (для сборки фронта, если уже есть URL бэкенда с заявками):
-   - `VITE_LEAD_API_URL` = полный адрес POST, например  
-     `https://ваш-api.up.railway.app/api/send-telegram`  
-   Пока API нет — переменную можно не задавать (сайт откроется; отправка форм в проде потребует URL позже).
-4. **Deploy / Redeploy** после пуша в `main`.
+Установите Node.js 24 LTS. В папке проекта:
 
-Файл `railway.toml` задаёт билдер **RAILPACK** и команду запуска **`npm start`** (`serve dist -s`).
+```sh
+npm ci
+npm run cf:dev
+```
 
-**Фото фасада** в блоке контактов: `src/assets/facade-building.png` — при смене снимка замените этот файл.
+Откройте `http://127.0.0.1:8787`. Команда собирает сайт, применяет миграции
+к локальной D1 и запускает Worker. Авторизация Cloudflare не нужна.
+Для реальных интеграций скопируйте `.dev.vars.example` в `.dev.vars` и заполните
+четыре значения. Без них можно проверять сайт, D1, `/health` и валидацию API.
 
-Подробнее про переменные — `.env.example`.
+Для обновления интерфейса без пересборки запустите во втором терминале `npm run dev`
+и откройте адрес Vite. `/api` проксируется к локальному Worker.
 
-### API (Deno) и PostgreSQL
+```sh
+npm run cf:typegen      # типы из wrangler.jsonc
+npm run typecheck       # TypeScript frontend и Worker
+npm test               # workerd + D1 + имитация внешних API; тест импорта
+npm run test:browser   # обе формы в Chromium: desktop и mobile
+npm run cf:build        # Vite + dry-run сборка Worker
+npm run check:bundle    # проверка dist на серверные настройки и секреты
+npm run check:secrets   # эвристическая проверка файлов и истории Git
+npm run cf:deploy      # сборка + проверка bundle + публикация
+```
 
-Если бэкенд поднимается из `server/` (см. `server/Dockerfile`), для **сохранения заявок в базу** добавьте в Railway плагин **Postgres** и передайте в сервис API переменную **`DATABASE_URL`** (Railway подставит её автоматически). После успешной отправки в Telegram заявка дописывается в таблицу `leads`; при ошибке БД ответ пользователю всё равно успешный, ошибка пишется в лог. Схема дублируется в `server/migrations/001_leads.sql` (можно выполнить вручную в Query).
+Перед первым браузерным тестом: `npx playwright install chromium`.
+`npm run test:http` проверяет HTTP и Vite proxy, когда одновременно запущены
+`npm run cf:dev` и `npm run dev`.
 
-### Сборка висит долго («Building the image» 10+ минут)
+Единственный источник конфигурации Cloudflare — `wrangler.jsonc`.
+В `database_id` указана созданная D1 Cartello; deploy выполняйте в её Cloudflare-аккаунте.
+`DATABASE_URL`, Node/Deno server и Google SDK Worker не использует.
 
-- **Сайт (только фронт):** в настройках сервиса должен быть билдер **Railpack** (как в `railway.toml`), **Root Directory** = корень репо, **не** Dockerfile и **не** папка `server/`. Иначе Railway будет собирать **Docker** (образ Deno и т.п.) — это другой тип деплоя и часто долго.
-- **Первый деплой** на бесплатном тарифе иногда тянет 5–15 минут из‑за кэша и очереди; повторные обычно быстрее.
-- Откройте **View logs** и посмотрите, на чём стоит шаг: `npm install`, `vite build` или скачивание базового образа.
+## Railway: резерв для отката
+
+`server/`, `server/Dockerfile`, PostgreSQL migration и `railway.toml` сохранены.
+`npm start` по-прежнему раздаёт статический `dist` через `serve`.
+Старый Deno backend использует прежние Railway variables.
+Для отката используйте **предыдущий проверенный Railway deployment**, а не новую
+Cloudflare-сборку: в ней формы намеренно используют same-origin API.
+Не меняйте Railway production и его ветку автодеплоя до завершения переключения.
+
+Фотография фасада: `src/assets/facade-building.png`.
+Публичные SEO-переменные перечислены в `.env.example`.

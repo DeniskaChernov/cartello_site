@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import { useLanguage } from "../contexts/LanguageContext";
-import { getLeadAuthHeader, getLeadSubmissionUrl } from "../../lib/leadApi";
+import { getLeadSubmissionUrl } from "../../lib/leadApi";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -35,7 +35,6 @@ export function BookingModal({ isOpen, onClose, service }: BookingModalProps) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            ...getLeadAuthHeader(),
           },
           body: JSON.stringify({
             name: formData.name,

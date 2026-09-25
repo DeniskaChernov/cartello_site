@@ -1,0 +1,2 @@
+# Keep the Wrangler-generated runtime declarations unchanged and collapsed in GitHub diffs.
+worker-configuration.d.ts linguist-generated=true -whitespace

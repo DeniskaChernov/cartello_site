@@ -4,7 +4,6 @@ interface ImportMetaEnv {
   readonly VITE_LEAD_API_URL?: string;
   readonly VITE_API_BASE_URL?: string;
   readonly VITE_LEAD_API_PATH?: string;
-  readonly VITE_API_AUTH_TOKEN?: string;
   /** Продакшен-URL без слэша в конце, напр. https://cartello.uz */
   readonly VITE_SITE_URL?: string;
   /** Код из Google Search Console → Настройки → Подтверждение владения → HTML-тег */

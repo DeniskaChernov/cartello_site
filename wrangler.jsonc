@@ -5,6 +5,7 @@
   "compatibility_date": "2026-09-24",
   "workers_dev": true,
   "routes": [
+    { "pattern": "cartello.uz", "custom_domain": true },
     { "pattern": "www.cartello.uz", "custom_domain": true }
   ],
   "assets": {

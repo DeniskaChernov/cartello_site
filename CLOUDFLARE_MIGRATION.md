@@ -5,13 +5,14 @@
 Проект не требует платного тарифа. Бесплатные квоты конечны; следите за их расходом
 в Cloudflare → Workers & Pages / D1.
 
-## Состояние публикации на 24 сентября 2026
+## Состояние публикации на 25 сентября 2026
 
 - Worker `cartello` опубликован в аккаунте Cartello Group:
   <https://cartello.cartello-site.workers.dev>.
 - Первая проверенная версия: `8c9187ec-26f8-4ddf-b40a-c4c4d3ef38da`, исходный commit `445d2c5`.
-- `www.cartello.uz` подключён как Custom Domain к Worker. HTTPS, сайт, файлы,
-  SPA fallback, `/health` и валидация API на этом домене проверены успешно.
+- `cartello.uz` и `www.cartello.uz` подключены как Custom Domains к Worker.
+  HTTPS, сайт, файлы, SPA fallback, `/health` и валидация API на обоих доменах
+  проверены успешно. Версия: `51d86e8e-44dd-4756-ab7a-d938069d2f56`.
 - Обе миграции применены к удалённой D1 `cartello-leads`; таблица `leads` пока пуста.
 - Через HTTPS проверены сайт, статические файлы, SPA fallback, `/health` с реальной D1,
   ответы 400 на некорректные заявки и JSON 404 для неизвестного API.
@@ -19,14 +20,11 @@
 - Worker secrets отсутствуют. Реальная доставка Telegram/Google Sheets и перенос
   старых заявок ещё не выполнены. Формы сохранены, но к приёму заявок пока не готовы.
 - Публикация выполнена вручную через Wrangler. Автопубликация из GitHub ещё не подключена.
-- `cartello.uz` продолжает использовать Railway: Cloudflare отклонил привязку корневого
-  домена с ошибкой 100117 из-за существующей CNAME. Перед подключением требуется удалить
-  только CNAME `cartello.uz` → `9griyp6d.up.railway.app` (DNS only, TTL Auto по скриншоту
-  владельца). TXT Google и Railway оставьте. Wrangler OAuth не имеет доступа к обычным
-  DNS-записям; удаление этой записи необходимо выполнить в панели DNS владельца.
-- В `routes` пока указан только `www.cartello.uz`. После удаления конфликтующей CNAME
-  добавьте `{ "pattern": "cartello.uz", "custom_domain": true }` и выполните deploy.
-  PR остаётся draft, `main` не изменён.
+- После подтверждённого владельцем удаления конфликтующей CNAME корневой домен
+  подключён к Cloudflare. Прежняя запись для отката по скриншоту владельца:
+  CNAME `cartello.uz` → `9griyp6d.up.railway.app`, DNS only, TTL Auto.
+  TXT Google и Railway в ходе работы не изменялись.
+- В `routes` сохранены оба домена. PR остаётся draft, `main` не изменён.
 
 ## 1. Что изменилось
 
@@ -134,7 +132,7 @@ npm run cf:deploy
 
 Deploy собирает `dist`, проверяет отсутствие серверных секретов в bundle и публикует
 Worker со статикой. Deploy применяет Custom Domains из `routes` в `wrangler.jsonc`;
-сейчас там только `www.cartello.uz`. Корневой `cartello.uz` ожидает удаления старой CNAME.
+сейчас там `cartello.uz` и `www.cartello.uz`.
 Повторные публикации — `npm run cf:deploy`.
 
 Для GitHub → Cloudflare после ручной проверки подключите Worker к репозиторию
@@ -246,9 +244,8 @@ ID PostgreSQL хранится в `railway_id`, новый `id` выдаёт D1:
 4. Если используете `www.cartello.uz`, добавьте его отдельным Custom Domain.
 5. Не меняйте MX/TXT и посторонние поддомены. Дождитесь активного сертификата.
 
-Владелец запросил подключение домена. `www.cartello.uz` уже подключён и сохранён
-в Wrangler config. Корневой домен ожидает удаления конфликтующей CNAME, затем его
-нужно добавить в `routes` с `custom_domain: true` и повторно выполнить deploy.
+По запросу владельца оба домена уже подключены, проверены по HTTPS и сохранены
+в Wrangler config с `custom_domain: true`. Повторно добавлять их в панели не нужно.
 
 ## 16. Как проверить HTTPS
 

@@ -34,7 +34,7 @@ function setMeta(property: string, content: string, isProperty = true) {
 }
 
 /**
- * Канонический URL, проверка GSC, Open Graph / Twitter, hreflang, JSON-LD (@graph: WebSite + AutomotiveBusiness).
+ * Канонический URL, проверка GSC, Open Graph / Twitter, JSON-LD (@graph: WebSite + AutomotiveBusiness).
  */
 export function SeoHead() {
   useEffect(() => {
@@ -80,19 +80,8 @@ export function SeoHead() {
     setMeta("description", SITE_DESCRIPTION, false);
     setMeta("robots", "index, follow, max-image-preview:large", false);
 
-    const homeUrl = `${SITE_URL}/`;
-    for (const lang of ["ru", "uz", "x-default"]) {
-      let link = document.querySelector<HTMLLinkElement>(
-        `link[rel="alternate"][hreflang="${lang}"]`,
-      );
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "alternate";
-        link.hreflang = lang;
-        document.head.appendChild(link);
-      }
-      link.href = homeUrl;
-    }
+    // Add hreflang only when translations have distinct, crawlable URLs.
+    // The current language switch changes content at the same URL.
 
     const businessId = `${SITE_URL}/#business`;
     const websiteId = `${SITE_URL}/#website`;
